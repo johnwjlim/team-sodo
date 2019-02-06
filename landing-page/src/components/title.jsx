@@ -9,23 +9,34 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 2.5rem 0;
   text-align: center;
-  top: 6vh;
+  // top: 6vh;
+  // top: 20vh;
+  top: 23vh;
 `;
 
 const Header = styled.h1`
   font-weight: 700;
-  font-size: 48pt;
+  // font-size: 48pt;
+  font-size: 42pt;
   letter-spacing: 10px;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 28pt;
+  }
 `;
 
 const Subtitle = styled.p`
   color: #484848;
-  font-weight: 400;
-  font-size: 22pt;
+  font-weight: 300;
+  font-size: 20pt;
   line-height: 1;
   color: white;
   letter-spacing: 0.5px;
+
+  @media (max-width: 768px) {
+    font-size: 14pt;
+  }
 `;
 
 const Dash = styled.div`
