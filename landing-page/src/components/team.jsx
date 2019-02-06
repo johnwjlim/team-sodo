@@ -29,9 +29,9 @@ const TextCard = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 17pt;  
+  font-size: 16pt;  
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 `;
 
 const Statement = styled.p`
@@ -39,7 +39,7 @@ const Statement = styled.p`
   max-width: 800px;
   margin: 2.5rem auto;
   font-weight: 300;
-  font-size: 17pt;
+  font-size: 16pt;
   line-height: 1.5;
   text-align: center;
 
@@ -85,7 +85,7 @@ class Team extends React.Component {
             </Card>
             <Card>
               <ImageWrapper>
-                <Img fixed={this.props.robin.childImageSharp.fixed}></Img>
+                <Img fixed={this.props.christian.childImageSharp.fixed}></Img>
                 <TextCard>
                   <Title>Christian Hahn</Title>
                   <Detail>Full Stack Developer</Detail>
@@ -94,7 +94,7 @@ class Team extends React.Component {
             </Card>
             <Card>
               <ImageWrapper>
-                <Img fixed={this.props.robin.childImageSharp.fixed}></Img>
+                <Img fixed={this.props.john.childImageSharp.fixed}></Img>
                 <TextCard>
                   <Title>John Lim</Title>
                   <Detail>Product Designer</Detail>

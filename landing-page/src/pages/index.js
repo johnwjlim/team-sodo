@@ -75,7 +75,7 @@ const StatementWrapper = styled.div`
 const Statement = styled.p`
   padding: 1.25rem 0;
   font-weight: 300;
-  font-size: 17pt;
+  font-size: 16pt;
   line-height: 1.5;
   text-align: center;
 
@@ -140,7 +140,7 @@ class IndexPage extends React.Component {
               <Img fluid={this.props.data.viaduct.childImageSharp.fluid}></Img>
             </CardWrapper>
           </CardGrid>
-          <Team robin={this.props.data.robin}/>
+          <Team robin={this.props.data.robin} christian={this.props.data.christian} john={this.props.data.john}/>
           <Sponsors ischool={this.props.data.ischool} hopelink={this.props.data.hopelink} />
         </Content>
         <Contact />
@@ -182,10 +182,17 @@ export const query = graphql`
         }
       }
     }
-    skyline:file(relativePath: {eq: "images/skyline.jpg"}) {
+    christian:file(relativePath: {eq: "images/christian.jpg"}) {
       childImageSharp {
-        fluid (maxWidth: 2400, maxHeight: 1600) {
-          ...GatsbyImageSharpFluid
+        fixed (width: 200, height: 200) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    john:file(relativePath: {eq: "images/john.jpg"}) {
+      childImageSharp {
+        fixed (width: 200, height: 200) {
+          ...GatsbyImageSharpFixed
         }
       }
     }
