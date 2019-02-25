@@ -11,6 +11,8 @@ import Team from "../components/team"
 import Sponsors from "../components/sponsors"
 import Contact from "../components/contact"
 
+import 'w3-css/w3.css';
+
 const StyledLink = styled(Link)`
   position: relative;
   text-decoration: none;
@@ -117,10 +119,9 @@ const HeaderItem = styled.div`
   margin: 0 1.25rem;
 `;
 
-const HeaderTitle = styled.h3`
+const HeaderTitle = styled.a`
   font-weight: 500;
-  font-size: 16pt;
-  margin: 1rem 0;
+  font-size: 14pt;
   color: #767676;
 `;
 
@@ -141,15 +142,21 @@ class IndexPage extends React.Component {
       />
       <Container>
         <Content>
-          <StickyHeader>
+          <StickyHeader className="w3-bar w3-border w3-light-grey" >
             <HeaderItem>
-              <HeaderTitle>ABOUT</HeaderTitle>
+              <HeaderTitle className="w3-bar-item w3-button">ABOUT</HeaderTitle>
             </HeaderItem>
             <HeaderItem>
-              <HeaderTitle>WHO WE ARE</HeaderTitle>
+              <HeaderTitle className="w3-bar-item w3-button">WHO WE ARE</HeaderTitle>
             </HeaderItem>
             <HeaderItem>
-              <HeaderTitle>CONTACT</HeaderTitle>
+              <HeaderTitle className="w3-bar-item w3-button">CONTACT</HeaderTitle>
+            </HeaderItem>
+            <HeaderItem>
+              <HeaderTitle className="w3-bar-item w3-button">RESOURCES</HeaderTitle>
+            </HeaderItem>
+            <HeaderItem>
+              <HeaderTitle className="w3-bar-item w3-button">ROAD ALERTS</HeaderTitle>
             </HeaderItem>
           </StickyHeader>
           <About>
