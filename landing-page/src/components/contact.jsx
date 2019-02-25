@@ -1,6 +1,4 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -13,7 +11,10 @@ const Text = styled.p`
   font-size: 18pt;
   text-align: center;
   line-height: 1.5;
-  // margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: 14pt;
+  }
 `;
 
 
@@ -24,6 +25,10 @@ const Address = styled.p`
   text-align: center;
   line-height: 1.5;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 14pt;
+  }
 `;
 
 class Contact extends React.Component {
@@ -36,7 +41,7 @@ class Contact extends React.Component {
       <Container>
         <Text>Questions or comments? Give us a shout. </Text>
         <Address>
-          <a href="https://sodo.surge.sh" style={{color: "#484848", textDecoration: "none"}}>heyjerry@justsendit.com</a>
+          <a href="https://sodo.surge.sh" style={{color: "#484848", textDecoration: "none"}}>hey@justsendit.com</a>
         </Address>
       </Container>
     )

@@ -1,5 +1,4 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import logo from "../images/iSchoolPrimary_RGB_Purple.svg"
@@ -31,7 +30,7 @@ const Grid = styled.div`
 
 const ImageWrapper = styled.a`
   display: block;
-  margin: 2.5rem 0;
+  padding: 2.5rem 0;
 `;
 
 class Sponsors extends React.Component {

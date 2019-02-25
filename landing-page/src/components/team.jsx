@@ -14,9 +14,9 @@ const Grid = styled.div`
 `;
 
 const Card = styled.div`
-  break-inside: avoid;
   position: relative;
   padding: 1.25rem;
+  text-align: center;
 `;
 
 const ImageWrapper = styled.div`
@@ -51,7 +51,7 @@ const Statement = styled.p`
 
 const Detail = styled.p`
   font-weight: 300;
-  font-size: 14pt;
+  font-size: 12pt;
 `;
 
 const Dash = styled.div`
@@ -75,40 +75,32 @@ class Team extends React.Component {
           <Statement>We are a diverse group of problem solvers that each bring our own unique skillsets and perspectives to the table.</Statement>
           <Grid>
             <Card>
-              <ImageWrapper>
-                <Img fixed={this.props.robin.childImageSharp.fixed}></Img>
-                <TextCard>
-                  <Title>Robin Yang</Title>
-                  <Detail>Product Manager</Detail>
-                </TextCard>
-              </ImageWrapper>
+              <Img fixed={this.props.robin.childImageSharp.fixed}></Img>
+              <TextCard>
+                <Title>Robin Yang</Title>
+                <Detail>Product Manager</Detail>
+              </TextCard>
             </Card>
             <Card>
-              <ImageWrapper>
-                <Img fixed={this.props.christian.childImageSharp.fixed}></Img>
-                <TextCard>
-                  <Title>Christian Hahn</Title>
-                  <Detail>Full Stack Developer</Detail>
-                </TextCard>
-              </ImageWrapper>
+              <Img fixed={this.props.christian.childImageSharp.fixed}></Img>
+              <TextCard>
+                <Title>Christian Hahn</Title>
+                <Detail>Full Stack Developer</Detail>
+              </TextCard>
             </Card>
             <Card>
-              <ImageWrapper>
-                <Img fixed={this.props.john.childImageSharp.fixed}></Img>
-                <TextCard>
-                  <Title>John Lim</Title>
-                  <Detail>Product Designer</Detail>
-                </TextCard>
-              </ImageWrapper>
+              <Img fixed={this.props.john.childImageSharp.fixed}></Img>
+              <TextCard>
+                <Title>John Lim</Title>
+                <Detail>Product Designer</Detail>
+              </TextCard>
             </Card>
             <Card>
-              <ImageWrapper>
-                <Img fixed={this.props.robin.childImageSharp.fixed}></Img>
-                <TextCard>
-                  <Title>Kelsie Johnson</Title>
-                  <Detail>Back End Developer</Detail>
-                </TextCard>
-              </ImageWrapper>
+              <Img fixed={this.props.kelsie.childImageSharp.fixed}></Img>
+              <TextCard>
+                <Title>Kelsie Johnson</Title>
+                <Detail>Back End Developer</Detail>
+              </TextCard>
             </Card>
           </Grid>
         </Container>

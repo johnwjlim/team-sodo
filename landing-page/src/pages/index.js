@@ -2,11 +2,10 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import Headroom from "react-headroom"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import logo from "../images/Team-Sodo-Logo-White.svg"
-import Header from "../components/header"
 import HeroTitle from "../components/title"
 import Team from "../components/team"
 import Sponsors from "../components/sponsors"
@@ -35,7 +34,8 @@ const Image = styled(Img)`
 const Container = styled.div`
   position: relative;
   z-index: 20;
-  padding: 1.25rem 0;
+  // padding: 1.25rem 0;
+  padding: 0.5rem 0;
   padding-bottom: 0;
   background: #ffffff;
   // margin-top: calc(50h - 1.25rem);
@@ -48,6 +48,7 @@ const Content = styled.div`
   max-width: 1080px;
   margin: 1rem auto;
   padding: 0 1.25rem;
+  margin-top: 0;
 `;
 
 const About = styled.p`
@@ -103,6 +104,26 @@ const SecondImage = styled(Img)`
   // top: 50vh;
 `;
 
+const StickyHeader = styled.div`
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background: white;
+  z-index: 30; 
+  display: flex;
+`;
+
+const HeaderItem = styled.div`
+  margin: 0 1.25rem;
+`;
+
+const HeaderTitle = styled.h3`
+  font-weight: 500;
+  font-size: 16pt;
+  margin: 1rem 0;
+  color: #767676;
+`;
+
 class IndexPage extends React.Component {
   constructor() {
     super(); 
@@ -120,6 +141,17 @@ class IndexPage extends React.Component {
       />
       <Container>
         <Content>
+          <StickyHeader>
+            <HeaderItem>
+              <HeaderTitle>ABOUT</HeaderTitle>
+            </HeaderItem>
+            <HeaderItem>
+              <HeaderTitle>WHO WE ARE</HeaderTitle>
+            </HeaderItem>
+            <HeaderItem>
+              <HeaderTitle>CONTACT</HeaderTitle>
+            </HeaderItem>
+          </StickyHeader>
           <About>
             The Regional Alliance for Resilient and Equitable Transportation (RARET) covers King, Snohomish, and Pierce Counties. RARET works with special needs transportation providers (think paratransit vehicles) to find ways to supplement the system in event of a major emergency, such as an earthquake, fire, or flooding.
           </About>
@@ -129,8 +161,8 @@ class IndexPage extends React.Component {
             <Statement>We're creating and piloting a central repository of road conditions to provide a one-stop-shop of transportation conditions and situational awareness in the central Puget Sound region   </Statement>
           </StatementWrapper>
           {/* <Dash /> */}
-          <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-          </div>
+          {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+          </div> */}
           {/* <Link to="/page-2/">Go to page 2</Link> */}
           <CardGrid>
             <CardWrapper>
@@ -140,7 +172,7 @@ class IndexPage extends React.Component {
               <Img fluid={this.props.data.viaduct.childImageSharp.fluid}></Img>
             </CardWrapper>
           </CardGrid>
-          <Team robin={this.props.data.robin} christian={this.props.data.christian} john={this.props.data.john}/>
+          <Team robin={this.props.data.robin} christian={this.props.data.christian} john={this.props.data.john} kelsie={this.props.data.kelsie}/>
           <Sponsors ischool={this.props.data.ischool} hopelink={this.props.data.hopelink} />
         </Content>
         <Contact />
@@ -177,21 +209,28 @@ export const query = graphql`
     }
     robin:file(relativePath: {eq: "images/robin.jpg"}) {
       childImageSharp {
-        fixed {
+        fixed (width: 180, height: 180) {
           ...GatsbyImageSharpFixed
         }
       }
     }
     christian:file(relativePath: {eq: "images/christian.jpg"}) {
       childImageSharp {
-        fixed (width: 200, height: 200) {
+        fixed (width: 180, height: 180) {
           ...GatsbyImageSharpFixed
         }
       }
     }
     john:file(relativePath: {eq: "images/john.jpg"}) {
       childImageSharp {
-        fixed (width: 200, height: 200) {
+        fixed (width: 180, height: 180) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    kelsie:file(relativePath: {eq: "images/kelsie.jpg"}) {
+      childImageSharp {
+        fixed (width: 180, height: 180) {
           ...GatsbyImageSharpFixed
         }
       }
