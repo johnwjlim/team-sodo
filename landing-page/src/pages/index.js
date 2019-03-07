@@ -1,8 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import {Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import Headroom from "react-headroom"
+
+import ReactDOM  from 'react-dom';
+import {DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -128,6 +131,41 @@ const HeaderTitle = styled.a`
 class IndexPage extends React.Component {
   constructor() {
     super(); 
+    this.scrollToTop = this.scrollToTop.bind(this);
+  }
+
+  componentDidMount() {
+
+    Events.scrollEvent.register('begin', function() {
+      console.log("begin", arguments);
+    });
+
+    Events.scrollEvent.register('end', function() {
+      console.log("end", arguments);
+    });
+
+  }
+  scrollToTop() {
+    scroll.scrollToTop();
+  }
+  scrollToBottom() {
+    scroll.scrollToBottom({ 
+      duration: 1000,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    });
+  }
+  scrollTo() {
+    scroller.scrollTo('scroll-to-element', {
+      duration: 800,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    })
+  }
+
+  componentWillUnmount() {
+    Events.scrollEvent.remove('begin');
+    Events.scrollEvent.remove('end');
   }
 
   render() {
@@ -144,13 +182,18 @@ class IndexPage extends React.Component {
         <Content>
           <StickyHeader className="w3-bar w3-border w3-light-grey" >
             <HeaderItem>
-              <HeaderTitle className="w3-bar-item w3-button">ABOUT</HeaderTitle>
+              <HeaderTitle className="w3-bar-item w3-button">
+              <a onClick={() => scroll.scrollTo(550)}>ABOUT</a></HeaderTitle>
             </HeaderItem>
             <HeaderItem>
-              <HeaderTitle className="w3-bar-item w3-button">WHO WE ARE</HeaderTitle>
+              <HeaderTitle className="w3-bar-item w3-button">
+              <a onClick={() => scroll.scrollTo(2530)}>WHO WE ARE</a>
+              </HeaderTitle>
             </HeaderItem>
             <HeaderItem>
-              <HeaderTitle className="w3-bar-item w3-button">CONTACT</HeaderTitle>
+              <HeaderTitle className="w3-bar-item w3-button">
+              <a onClick={() => scroll.scrollToBottom()}>CONTACT</a>
+              </HeaderTitle>
             </HeaderItem>
             <HeaderItem>
               <HeaderTitle className="w3-bar-item w3-button">RESOURCES</HeaderTitle>
