@@ -3,17 +3,16 @@ import {Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import Headroom from "react-headroom"
-
 import ReactDOM  from 'react-dom';
 import {DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-
+import {Link as RoutingLink} from "react-router-dom";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import HeroTitle from "../components/title"
 import Team from "../components/team"
 import Sponsors from "../components/sponsors"
 import Contact from "../components/contact"
-
+import {Navbar, Nav} from 'react-bootstrap';
 import 'w3-css/w3.css';
 
 const StyledLink = styled(Link)`
@@ -199,7 +198,9 @@ class IndexPage extends React.Component {
               <HeaderTitle className="w3-bar-item w3-button">RESOURCES</HeaderTitle>
             </HeaderItem>
             <HeaderItem>
-              <HeaderTitle className="w3-bar-item w3-button">ROAD ALERTS</HeaderTitle>
+              <HeaderTitle className="w3-bar-item w3-button">
+              <Link to="/roadalerts" className="link" style={{ textDecoration: 'none' }}>ROAD ALERTS</Link>
+              </HeaderTitle>
             </HeaderItem>
           </StickyHeader>
           <About>
@@ -228,6 +229,8 @@ class IndexPage extends React.Component {
         <Contact />
       </Container>
   </Layout>
+
+  
     )
   }
 }
@@ -301,4 +304,3 @@ export const query = graphql`
     }
   }
 `;
-                                                                              
