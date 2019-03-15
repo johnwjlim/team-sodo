@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import {Card, Navbar, Nav, Button} from 'react-bootstrap';
 import {Link} from "gatsby";
-import SnohomishData from "../components/Robin Datascrape Files/snohomishAlerts"
+import SnohomishData from "../components/Robin Datascrape Files/alerts"
 
 const Container = styled.div`
   position: relative;
@@ -70,7 +70,7 @@ class RoadAlerts extends React.Component{
                   <Card.Text>
                     9 alerts
                   </Card.Text>
-                  <Button variant="dark">Select</Button>
+                  <Button variant="dark"><Link to="/snohomishalerts">Select</Link></Button>
                   </Card.Body>
                 </Card>
                 <Card>
