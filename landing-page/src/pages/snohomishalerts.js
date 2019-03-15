@@ -1,8 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-import {Navbar, Nav} from 'react-bootstrap';
+import {Card, Navbar, Nav} from 'react-bootstrap';
 import {Link} from "gatsby";
+<<<<<<< HEAD
 import SnohomishData from "../components/Robin Datascrape Files/alerts"
+=======
+import {snohomishAlerts, kingAlerts} from "../components/Robin Datascrape Files/alerts"
+>>>>>>> 783db5ab6bfe1a80be2058d3e2bb4a1bbab05b05
 
 const Container = styled.div`
   position: relative;
@@ -11,6 +15,7 @@ const Container = styled.div`
   padding: 0.5rem 0;
   padding-bottom: 0;
   background: #ffffff;
+  justifyContent: 'space-between'
 `;
 
 const Content = styled.div`
@@ -37,7 +42,15 @@ const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
 
-let dict = SnohomishData.dict;
+const Span = styled.span`
+  padding-left: 120px;
+  padding-right: 120px;
+`;
+
+let snohoDict = snohomishAlerts;
+let kingDict = kingAlerts;
+
+console.log(snohoDict)
 
 class SnohomishAlerts extends React.Component{
     constructor(props) {
@@ -57,6 +70,46 @@ class SnohomishAlerts extends React.Component{
                   </Nav>
                 </Navbar>
                 <Header2>Snohomish County Road Conditions</Header2>
+                <Card>
+                  <Card.Body>
+                  <Card.Title>164th St SE — from SR9 to Broadway Avenue — Snohomish</Card.Title>
+                  <Card.Text>
+                  Closed: Mar 7, 2019   8:15am	<Span>Opened: Mar 7, 2019   9:45am	</Span>	Problem: Snow and ice
+                  </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card>
+                  <Card.Body>
+                  <Card.Title>240th St SE — from Snohomish Woodinville Rd to 75th Ave SE — Woodinville</Card.Title>
+                  <Card.Text>
+                  Closed: Mar 8, 2019   4:15pm	<Span>Opened: Mar 10, 2019   9:15pm</Span> Problem: Construction/Maintenance
+                  </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card>
+                  <Card.Body>
+                  <Card.Title>3rd Ave NE — from 172nd St NE to 176th St NE — Lakewood</Card.Title>
+                  <Card.Text>
+                  Closed: Mar 8, 2019   3:30pm <Span>Opened: Mar 9, 2019 3:30pm	</Span> Problem: Accident
+                  </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card>
+                  <Card.Body>
+                  <Card.Title>43rd Ave SE — from 18700 43rd Ave SE to 18700 43rd Ave SE — Bothell</Card.Title>
+                  <Card.Text>
+                  Closed: Jul 11, 2016   10:00am <Span></Span>	 	Problem: LONG-TERM CLOSURE
+                  </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card>
+                  <Card.Body>
+                  <Card.Title>99th Ave NE — from 42nd St NE to 54th Pl NE — Lake Stevens</Card.Title>
+                  <Card.Text>
+                  Closed: Mar 5, 2019   5:45am	<Span>Opened: Mar 5, 2019 9:00am</Span> Problem: Other
+                  </Card.Text>
+                  </Card.Body>
+                </Card>
               </Content>
             </Container>
               </div>

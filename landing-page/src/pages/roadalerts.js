@@ -70,7 +70,7 @@ class RoadAlerts extends React.Component{
                   <Card.Text>
                     9 alerts
                   </Card.Text>
-                  <Button variant="dark">Select</Button>
+                  <Button variant="dark"><Link to="/snohomishalerts">Select</Link></Button>
                   </Card.Body>
                 </Card>
                 <Card>
