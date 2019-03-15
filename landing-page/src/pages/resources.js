@@ -3,6 +3,10 @@ import styled from "styled-components"
 import {Card, Navbar, Nav, Button} from 'react-bootstrap';
 import {Link} from "gatsby";
 import SnohomishData from "../components/Robin Datascrape Files/alerts"
+import XLSX from 'xlsx';
+
+
+
 
 const Container = styled.div`
   position: relative;
@@ -37,12 +41,22 @@ const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
 
-class RoadAlerts extends React.Component{
+
+
+
+class Resources extends React.Component{
     constructor(props) {
       super(props);
     }
+
+    
+
+    
     render() {
+        
+
        return <div>
+           
           <Container>
             <Header><Link to="/" style={{textDecoration: "none"}} className="link">RARET</Link></Header>
               <Content>
@@ -54,38 +68,11 @@ class RoadAlerts extends React.Component{
                     <Nav.Link style={{color: 'black'}}>Road Conditions</Nav.Link>
                   </Nav>
                 </Navbar>
-                <Header2>Select a County</Header2>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>King County</Card.Title>
-                  <Card.Text>
-                    4 alerts
-                  </Card.Text>
-                  <Button variant="dark">Select</Button>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>Snohomish County</Card.Title>
-                  <Card.Text>
-                    9 alerts
-                  </Card.Text>
-                  <Button variant="dark">Select</Button>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>Pierce County</Card.Title>
-                  <Card.Text>
-                    4 alerts
-                  </Card.Text>
-                  <Button variant="dark">Select</Button>
-                  </Card.Body>
-                </Card>
+
               </Content>
             </Container>
             </div>
        }
  }
 
- export default RoadAlerts;
+ export default Resources;

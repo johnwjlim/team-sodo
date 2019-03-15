@@ -195,7 +195,9 @@ class IndexPage extends React.Component {
               </HeaderTitle>
             </HeaderItem>
             <HeaderItem>
-              <HeaderTitle className="w3-bar-item w3-button">RESOURCES</HeaderTitle>
+              <HeaderTitle className="w3-bar-item w3-button">
+              <Link to="/resources" className="link" style={{ textDecoration: 'none' }}>RESOURCES</Link>
+              </HeaderTitle>
             </HeaderItem>
             <HeaderItem>
               <HeaderTitle className="w3-bar-item w3-button">

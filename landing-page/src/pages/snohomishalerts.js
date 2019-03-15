@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import {Navbar, Nav} from 'react-bootstrap';
 import {Link} from "gatsby";
-import SnohomishData from "../components/Robin Datascrape Files/snohomishAlerts"
+import SnohomishData from "../components/Robin Datascrape Files/alerts"
 
 const Container = styled.div`
   position: relative;

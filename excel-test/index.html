@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Excel to JSON Demo</title>
+    <script src="xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        /* set up XMLHttpRequest */
+        var arr = [];
+        var url = "dialysis.xlsx";
+        var oReq = new XMLHttpRequest();
+        oReq.open("GET", url, true);
+        oReq.responseType = "arraybuffer";
+
+        function asyncReq(callback){ 
+        oReq.onload = function(e) {
+            var arraybuffer = oReq.response;
+
+            /* convert data to binary string */
+            var data = new Uint8Array(arraybuffer);
+            var arr = new Array();
+            for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+            var bstr = arr.join("");
+
+            /* Call XLSX */
+            var workbook = XLSX.read(bstr, {
+                type: "binary"
+            });
+
+            var first_sheet_name = workbook.SheetNames[0];
+            /* Get worksheet */
+            var worksheet = workbook.Sheets[first_sheet_name];
+            a = XLSX.utils.sheet_to_json(worksheet, {
+                raw: true
+            });
+            callback(a);
+        }}
+        oReq.send();
+        asyncReq(function(result){
+            console.log(result);
+        })
+    </script>
+</body>
+</html>
