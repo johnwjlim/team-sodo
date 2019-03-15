@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import {Card, Navbar, Nav} from 'react-bootstrap';
+import {Card, Navbar, Nav, Button} from 'react-bootstrap';
 import {Link} from "gatsby";
 import {snohomishAlerts, kingAlerts} from "../components/Robin Datascrape Files/alerts"
+
 
 const Container = styled.div`
   position: relative;
@@ -48,7 +49,7 @@ let kingDict = kingAlerts;
 
 console.log(snohoDict)
 
-class SnohomishAlerts extends React.Component{
+class KingDialysis extends React.Component{
     constructor(props) {
       super(props);
     }
@@ -65,51 +66,62 @@ class SnohomishAlerts extends React.Component{
                     <Nav.Link style={{color: 'black'}}>Road Conditions</Nav.Link>
                   </Nav>
                 </Navbar>
-                <Header2>Snohomish County Road Conditions</Header2>
+                <Header2>King County Dialysis Clinics</Header2>
                 <Card>
                   <Card.Body>
-                  <Card.Title>164th St SE — from SR9 to Broadway Avenue — Snohomish</Card.Title>
+                  <Card.Title>TOTAL RENAL CARE, INC</Card.Title>
                   <Card.Text>
-                  Closed: Mar 7, 2019   8:15am	<Span>Opened: Mar 7, 2019   9:45am	</Span>	Problem: Snow and ice
+                  Address:	4110 NE 4TH ST STE E, Renton
+                  <br></br>
+                  Phone: (425) 226-2408
                   </Card.Text>
                   </Card.Body>
                 </Card>
                 <Card>
                   <Card.Body>
-                  <Card.Title>240th St SE — from Snohomish Woodinville Rd to 75th Ave SE — Woodinville</Card.Title>
+                  <Card.Title>NKC FEDERAL WAY EAST KIDNEY CENTER</Card.Title>
                   <Card.Text>
-                  Closed: Mar 8, 2019   4:15pm	<Span>Opened: Mar 10, 2019   9:15pm</Span> Problem: Construction/Maintenance
+                  Address:	33820 Weyerhauser Way S STE 100, Federal Way
+                  <br></br>
+                  Phone: (206) 720-8839
                   </Card.Text>
                   </Card.Body>
                 </Card>
                 <Card>
                   <Card.Body>
-                  <Card.Title>3rd Ave NE — from 172nd St NE to 176th St NE — Lakewood</Card.Title>
+                  <Card.Title>NKC LAKE WASHINGTON KIDNEY CENTER</Card.Title>
                   <Card.Text>
-                  Closed: Mar 8, 2019   3:30pm <Span>Opened: Mar 9, 2019 3:30pm	</Span> Problem: Accident
+                  Address:	1474 112TH AVE NE, Suite 100, Bellevue	
+                  <br></br>
+                  Phone: (425) 454-0067
                   </Card.Text>
                   </Card.Body>
                 </Card>
                 <Card>
                   <Card.Body>
-                  <Card.Title>43rd Ave SE — from 18700 43rd Ave SE to 18700 43rd Ave SE — Bothell</Card.Title>
+                  <Card.Title>NKC KENT KIDNEY CENTER</Card.Title>
                   <Card.Text>
-                  Closed: Jul 11, 2016   10:00am <Span></Span>	 	Problem: LONG-TERM CLOSURE
+                  Address:	25316 74TH AVE S STE 101, Kent	
+                  <br></br>
+                  Phone: (253) 850-6810
                   </Card.Text>
                   </Card.Body>
                 </Card>
                 <Card>
                   <Card.Body>
-                  <Card.Title>99th Ave NE — from 42nd St NE to 54th Pl NE — Lake Stevens</Card.Title>
+                  <Card.Title>NKC KIRKLAND KIDNEY CENTER</Card.Title>
                   <Card.Text>
-                  Closed: Mar 5, 2019   5:45am	<Span>Opened: Mar 5, 2019 9:00am</Span> Problem: Other
+                  Address:	11327 NE 120TH ST, Kirkland
+                  <br></br>
+                  Phone: (425) 821-8785
                   </Card.Text>
                   </Card.Body>
                 </Card>
+                <Button variant="dark"><Link to="/counties">Go Back</Link></Button>
               </Content>
             </Container>
               </div>
        }
  }
 
- export default SnohomishAlerts;
+ export default KingDialysis;

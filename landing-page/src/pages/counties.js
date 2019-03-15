@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import {Card, Navbar, Nav, Button} from 'react-bootstrap';
 import {Link} from "gatsby";
-import SnohomishData from "../components/Robin Datascrape Files/alerts"
 
 const Container = styled.div`
   position: relative;
@@ -37,7 +36,7 @@ const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
 
-class Resources extends React.Component{
+class Counties extends React.Component{
     constructor(props) {
       super(props);
     }
@@ -54,27 +53,32 @@ class Resources extends React.Component{
                     <Nav.Link style={{color: 'black'}}>Road Conditions</Nav.Link>
                   </Nav>
                 </Navbar>
-                <Header2>Resources</Header2>
-
+                <Header2>Select a County for Dialysis Clinics:</Header2>
                 <Card>
                   <Card.Body>
-                  <Card.Title>Dialysis</Card.Title>
-                  <Button variant="dark"><Link to="/counties">Select</Link></Button>
+                  <Card.Title>King County</Card.Title>
+                  <Button variant="dark"><Link to="/kingdialysis">Select</Link></Button>
                   </Card.Body>
                 </Card>
-
+                <br></br>
                 <Card>
                   <Card.Body>
-                  <Card.Title>Coming soon...</Card.Title>
-                  <Card.Text>
-                    Other resources
-                  </Card.Text>
-
+                  <Card.Title>Pierce County</Card.Title>
+                  <Button variant="dark"><Link to="/piercedialysis">Select</Link></Button>
                   </Card.Body>
                 </Card>
-                
+                <br></br>
+                <Card>
+                  <Card.Body>
+                  <Card.Title>Snohomish County</Card.Title>
+                  <Button variant="dark"><Link to="/snohomishdialysis">Select</Link></Button>
+                  </Card.Body>
+                </Card>
+                <br></br>
+                <br></br>
 
-
+               
+                  <Button variant="dark"><Link to="/resources">Go Back</Link></Button>
                   
 
               </Content>
@@ -83,4 +87,4 @@ class Resources extends React.Component{
        }
  }
 
- export default Resources;
+ export default Counties;

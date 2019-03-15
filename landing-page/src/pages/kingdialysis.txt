@@ -48,7 +48,7 @@ let kingDict = kingAlerts;
 
 console.log(snohoDict)
 
-class SnohomishAlerts extends React.Component{
+class KingDialysis extends React.Component{
     constructor(props) {
       super(props);
     }
@@ -112,4 +112,4 @@ class SnohomishAlerts extends React.Component{
        }
  }
 
- export default SnohomishAlerts;
+ export default KingDialysis;
