@@ -66,7 +66,7 @@ class KingDialysis extends React.Component{
                     <Nav.Link style={{color: 'black'}}>Road Conditions</Nav.Link>
                   </Nav>
                 </Navbar>
-                <Header2>King County Dialysis Clinics</Header2>
+                <Header2>Dialysis Clinics</Header2>
                 <Card>
                   <Card.Body>
                   <Card.Title>TOTAL RENAL CARE, INC</Card.Title>
@@ -77,46 +77,7 @@ class KingDialysis extends React.Component{
                   </Card.Text>
                   </Card.Body>
                 </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>NKC FEDERAL WAY EAST KIDNEY CENTER</Card.Title>
-                  <Card.Text>
-                  Address:	33820 Weyerhauser Way S STE 100, Federal Way
-                  <br></br>
-                  Phone: (206) 720-8839
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>NKC LAKE WASHINGTON KIDNEY CENTER</Card.Title>
-                  <Card.Text>
-                  Address:	1474 112TH AVE NE, Suite 100, Bellevue	
-                  <br></br>
-                  Phone: (425) 454-0067
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>NKC KENT KIDNEY CENTER</Card.Title>
-                  <Card.Text>
-                  Address:	25316 74TH AVE S STE 101, Kent	
-                  <br></br>
-                  Phone: (253) 850-6810
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>NKC KIRKLAND KIDNEY CENTER</Card.Title>
-                  <Card.Text>
-                  Address:	11327 NE 120TH ST, Kirkland
-                  <br></br>
-                  Phone: (425) 821-8785
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
+         
                 <Button variant="dark"><Link to="/counties">Go Back</Link></Button>
               </Content>
             </Container>
