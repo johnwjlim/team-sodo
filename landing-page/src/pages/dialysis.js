@@ -3,6 +3,7 @@ import Papa from 'papaparse';
 import { Link } from "gatsby";
 import styled from "styled-components"
 import { Card, Navbar, Nav, Button } from 'react-bootstrap';
+import Spinner from 'react-spinner-material';
 
 const Container = styled.div`
   position: relative;
@@ -49,7 +50,8 @@ class Dialysis extends React.Component {
       king: false,
       allCounty: true,
       pierce: false,
-      currentCountyArray: []
+      currentCountyArray: [],
+      spinnerOn: true
     };
 
     this.getData = this.getData.bind(this);
@@ -57,8 +59,11 @@ class Dialysis extends React.Component {
     this.handlePierceClick = this.handlePierceClick.bind(this);
     this.countyDictionaries = this.countyDictionaries.bind(this);
     this.handleKingClick = this.handleKingClick.bind(this)
+    this.handleAllCountiesClick = this.handleAllCountiesClick.bind(this)
+
     
   }
+
 
   handleSnohoClick() {
     let snohomishArray = []
@@ -77,10 +82,33 @@ class Dialysis extends React.Component {
     this.setState({
      allCounty: false,
       snohomish: true,
-      currentCountyArray: snohomishArray
-      
+      currentCountyArray: snohomishArray,
+      spinnerOn: false
     });
-    console.log(this.state.snohomish);
+  }
+}
+
+handleAllCountiesClick() {
+    let allCountiesArray = []
+    for (let i = 1; i < this.state.data.length - 1; i++) {
+      let blah = {
+        providerNumber: this.state.data[i][0], Network: this.state.data[i][1], facilityName: this.state.data[i][2],
+        addressLine1: this.state.data[i][3], addressLine2: this.state.data[i][4], City: this.state.data[i][5],
+        State: this.state.data[i][6], Zip: this.state.data[i][7], County: this.state.data[i][8], phoneNumber: this.state.data[i][9],
+        profitOrNonProfit: this.state.data[i][10], chainOwned: this.state.data[i][11], chainOrganization: this.state.data[i][12],
+        lateShift: this.state.data[i][13], numberOfDialysisStations: this.state.data[i][14], offersInCenterHemodialysis: this.state.data[i][15],
+        offersInCenterPeritonealDialysis: this.state.data[i][16], offersHomeHemodialysisTraining: this.state.data[i][7], Location: this.state.data[i][18]
+      };
+    
+        allCountiesArray.push(blah);
+    
+    this.setState({
+     allCounty: true,
+
+      currentCountyArray: allCountiesArray,
+      spinnerOn: false
+    });
+
   }
 }
 
@@ -101,7 +129,8 @@ handlePierceClick() {
     this.setState({
       allCounty: false,
       pierce: true,
-      currentCountyArray: pierceArray
+      currentCountyArray: pierceArray,
+      spinnerOn: false
       
     });
     console.log(this.state.pierce);
@@ -125,7 +154,8 @@ handleKingClick() {
     this.setState({
       allCounty: false,
       king: true,
-      currentCountyArray: kingArray
+      currentCountyArray: kingArray,
+      spinnerOn: false
       
     });
     console.log(this.state.king);
@@ -139,7 +169,7 @@ handleKingClick() {
 }
 
   fetchCsv() {
-    return fetch('https://cors.io/?https://raw.githubusercontent.com/kelsiej/csv/master/dialysis.csv').then(function (response) {
+    return fetch('https://cors.io/?http://raw.githubusercontent.com/kelsiej/csv/master/dialysis.csv').then(function (response) {
       let reader = response.body.getReader();
       let decoder = new TextDecoder('utf-8');
 
@@ -176,7 +206,8 @@ handleKingClick() {
     this.setState({
       allCounty: false,
     
-      currentCountyArray: allArray
+      currentCountyArray: allArray,
+      spinnerOn: false
       
     });
     console.log(this.state.allCounty);
@@ -307,12 +338,13 @@ handleKingClick() {
               <Button onClick={this.handleSnohoClick} variant="dark">Snohomish</Button>
               <Button onClick={this.handlePierceClick} variant="dark">Pierce</Button>
               <Button onClick={this.handleKingClick} variant="dark">King</Button>
-              <Button onClick={this.countyDictionaries} variant="dark">Filter</Button>
+              <Button onClick={this.handleAllCountiesClick} variant="dark">All</Button>
             </Content>
           </div>
           
           <div>
             <Content>
+            
               {currentCounty.map(function (object, i) {
                 return <div className={"row"} key={i}>
                   <Card>
@@ -324,6 +356,10 @@ handleKingClick() {
                   </Card>
                 </div>;
               })}
+
+<div>
+            <Spinner size={50} spinnerColor={"#333"} spinnerWidth={2} visible={this.state.spinnerOn} />
+      </div>
 
             </Content>
           </div>
