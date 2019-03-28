@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 
 const Container = styled.div`
-  padding: 2.5rem 0;
+  padding: 8rem 0;
 `;
 const Grid = styled.div`
   display: flex;
