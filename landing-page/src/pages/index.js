@@ -12,8 +12,9 @@ import HeroTitle from "../components/title"
 import Team from "../components/team"
 import Sponsors from "../components/sponsors"
 import Contact from "../components/contact"
-import {Navbar, Nav} from 'react-bootstrap';
 import 'w3-css/w3.css';
+
+import Header from "../components/test-header"
 
 const StyledLink = styled(Link)`
   position: relative;
@@ -179,6 +180,7 @@ class IndexPage extends React.Component {
       />
       <Container>
         <Content>
+          <Header/>
           <StickyHeader className="w3-bar w3-border w3-light-grey" >
             <HeaderItem>
               <HeaderTitle className="w3-bar-item w3-button">
