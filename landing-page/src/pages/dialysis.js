@@ -321,8 +321,8 @@ class Dialysis extends React.Component {
                                 </div>;
                             })}
 
-                            <div>
-                                <Spinner size={50} spinnerColor={"#333"} spinnerWidth={2} visible={this.state.spinnerOn} />
+                            <div className = "centerDiv">
+                                <Spinner size={75} spinnerColor={"#7fffd4"} spinnerWidth={2} visible={this.state.spinnerOn} />
                             </div>
                         </Content>
                     </div>
