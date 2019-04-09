@@ -1,15 +1,9 @@
 import React from 'react';
 import styled from 'styled-components'
 
-const Container = styled.div`
-  position: fixed;
-  margin: 1.15em;
-  height: 80vh;
-  width: 25em;
-  top: 5vh;
-  bottom: 5vh;
-  z-index: 30;
-  background-color: white;
+
+const Header = styled.h3`
+ font-weight: 600;
 `;
 
 class Panel extends React.Component {
@@ -18,10 +12,10 @@ class Panel extends React.Component {
   }
 
   render() {
-    return (
-      <Container>
+    const viewport  = this.props.viewport;
 
-      </Container>
+    return (
+      <Header>Test header</Header>
     )
   }
 }
