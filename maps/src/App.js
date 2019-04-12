@@ -39,7 +39,7 @@ const Panel = styled.div`
   position: fixed;
   margin: 1.25em;
   height: 80vh;
-  width: 23vw;
+  width: 23em;
   top: 5vh;
   bottom: 5vh;
   z-index: 2;
@@ -77,7 +77,6 @@ class App extends Component {
   };
 
   _onViewportChange = viewport => this.setState({viewport})
-
 
   render() {
 

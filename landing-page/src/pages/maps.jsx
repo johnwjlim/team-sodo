@@ -16,26 +16,16 @@ const navStyle = {
 class Map extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   viewport: {
-    //     latitude: 47.609,
-		// 		longitude: -122.305,
-    //     zoom: 12.44,
-    //     bearing: 0.0,
-    //     pitch: 0.0,
-    //     width: 1600,
-    //     height: 800,
-    //   }
-      this.state = {
-        viewport: {
-          longitude: -122.3,
-          latitude: 47.6,
-          zoom: 12.44,
-          width: 1600,
-          height: 800
-        }
+    this.state = {
+      viewport: {
+        longitude: -122.3,
+        latitude: 47.6,
+        zoom: 12.44,
+        width: '100vw',
+        height: '100vh'
       }
-    };
+    }
+  };
 
   // componentDidMount() {
   //   const { long, lat, zoom} = this.state;
@@ -52,10 +42,9 @@ class Map extends React.Component {
         mapboxApiAccessToken={TOKEN}
         {...this.state.viewport}
         onViewPortChange={(viewport) => this.setState({viewport})}
-      >
-      </MapGL>
+      />
     )
-  }
+  };
 
 }
 
