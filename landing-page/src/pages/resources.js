@@ -3,6 +3,7 @@ import styled from "styled-components"
 import {Card, Navbar, Nav, Button} from 'react-bootstrap';
 import {Link} from "gatsby";
 import SnohomishData from "../components/Robin Datascrape Files/alerts"
+import LinkButton from './linkbutton'
 
 const Container = styled.div`
   position: relative;
@@ -37,6 +38,12 @@ const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
 
+const Link1 = styled.link`
+color: red;
+`;
+
+
+
 class Resources extends React.Component{
     constructor(props) {
       super(props);
@@ -55,30 +62,24 @@ class Resources extends React.Component{
                   </Nav>
                 </Navbar>
                 <Header2>Resources</Header2>
+                <div className="card-container">
 
                 <Card>
                   <Card.Body>
-                  <Card.Title>Dialysis</Card.Title>
-                  <Button variant="dark"><Link to="/dialysis">Select</Link></Button>
+                  <Card.Title><Link to="/dialysis" className="link1" style={{ textDecoration: 'none' }}>Dialysis Clinics</Link></Card.Title>
                   </Card.Body>
                 </Card>
+                </div>
+                <div className="card-container">
 
                 <Card>
-                  <Card.Body>
-                  <Card.Title>Coming soon...</Card.Title>
-                  <Card.Text>
-                    Other resources
-                  </Card.Text>
-
+                <Card.Body>
+                  <Card.Title><Link to="/cancer" className="link1" style={{ textDecoration: 'none' }}>Cancer Treatment Clinics</Link></Card.Title>
                   </Card.Body>
                 </Card>
+                </div>
                 
-                <Card>
-                  <Card.Body>
-                  <Card.Title>Dialysis</Card.Title>
-                  <Button variant="dark"><Link to="/excel">Select</Link></Button>
-                  </Card.Body>
-                </Card>
+
 
 
 
