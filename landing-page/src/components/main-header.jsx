@@ -40,7 +40,6 @@ const Links = styled.div`
 const StyledLink = styled(Link)`
   font-family: neue-haas-unica;
   text-decoration: none;
-  // font-weight: 500;
   font-size: 17px;
   margin-left: 3rem;  
 `;

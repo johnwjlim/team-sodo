@@ -1,10 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Img from 'gatsby-image';
-import SnohomishData from "../components/Robin Datascrape Files/alerts"
+import {snohomishAlerts, kingAlerts} from "../components/Robin Datascrape Files/alerts"
 
 import Header from "../components/main-header"
+import Layout from "../components/layout"
+
 
 const Container = styled.div`
   max-width: 1080px;
@@ -81,17 +83,27 @@ const Text = styled.p`
   color: #333333;
 `;
 
-
+const dict = snohomishAlerts();
 
 class Roads extends React.Component {
   constructor() {
     super();
+    this.state = ({dict: ""})
   }
 
+  async componentWillMount() {
+    const snoho = await snohomishAlerts();
+    console.log(snoho);
+  }
+  
+
   render() {
+    // const object = snohomishAlerts();
+    // console.log(object)
     return (
       <>
         <Header/>
+        {/* <p>{dict}</p> */}
         <Container>
           <Title>King County Road Conditions</Title>
           <Card>
