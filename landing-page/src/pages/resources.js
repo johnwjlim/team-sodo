@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import {Card, Navbar, Nav, Button} from 'react-bootstrap';
-import {Link} from "gatsby";
+import { Card, Navbar, Nav, Button } from 'react-bootstrap';
+import { Link } from "gatsby";
 import SnohomishData from "../components/Robin Datascrape Files/alerts"
 import LinkButton from './linkbutton'
 
@@ -44,51 +44,57 @@ color: red;
 
 
 
-class Resources extends React.Component{
-    constructor(props) {
-      super(props);
-    }
-    render() {
-       return <div>
-          <Container>
-            <Header><Link to="/" style={{textDecoration: "none"}} className="link">RARET</Link></Header>
-              <Content>
-                <Line/>
-                <Navbar style={{minHeight: '60px'}} bg="light" variant="light">
-                  <Nav className="tabs">
-                    <Nav.Link><Link to="/" className="link" style={{textDecoration: "none"}}>Home</Link></Nav.Link>
-                    <Nav.Link >Resources</Nav.Link>
-                    <Nav.Link style={{color: 'black'}}>Road Conditions</Nav.Link>
-                  </Nav>
-                </Navbar>
-                <Header2>Resources</Header2>
-                <div className="card-container">
+class Resources extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div>
+      <Container>
+        <Header><Link to="/" style={{ textDecoration: "none" }} className="link">RARET</Link></Header>
+        <Content>
+          <Line />
+          <Navbar style={{ minHeight: '60px' }} bg="light" variant="light">
+            <Nav className="tabs">
+              <Nav.Link><Link to="/" className="link" style={{ textDecoration: "none" }}>Home</Link></Nav.Link>
+              <Nav.Link >Resources</Nav.Link>
+              <Nav.Link style={{ color: 'black' }}>Road Conditions</Nav.Link>
+            </Nav>
+          </Navbar>
+          <Header2>Resources</Header2>
+          <div className="card-container">
 
-                <Card>
-                  <Card.Body>
-                  <Card.Title><Link to="/dialysis" className="link1" style={{ textDecoration: 'none' }}>Dialysis Clinics</Link></Card.Title>
-                  </Card.Body>
-                </Card>
-                </div>
-                <div className="card-container">
+            <Card>
+              <Card.Body>
+                <Card.Title><Link to="/dialysis" className="link1" style={{ textDecoration: 'none' }}>Dialysis Clinics</Link></Card.Title>
+              </Card.Body>
+            </Card>
+          </div>
+          <div className="card-container">
+            <Card>
+              <Card.Body>
+                <Card.Title><Link to="/cancer" className="link1" style={{ textDecoration: 'none' }}>Cancer Treatment Clinics</Link></Card.Title>
+              </Card.Body>
+            </Card>
+          </div>
+          <div className="card-container">
+            <Card>
+              <Card.Body>
+                <Card.Title><Link to="/em-contacts" className="link1" style={{ textDecoration: 'none' }}>Emergency Manager Contacts</Link></Card.Title>
+              </Card.Body>
+            </Card>
+          </div>
 
-                <Card>
-                <Card.Body>
-                  <Card.Title><Link to="/cancer" className="link1" style={{ textDecoration: 'none' }}>Cancer Treatment Clinics</Link></Card.Title>
-                  </Card.Body>
-                </Card>
-                </div>
-                
 
 
 
 
-                  
 
-              </Content>
-            </Container>
-            </div>
-       }
- }
 
- export default Resources;
+        </Content>
+      </Container>
+    </div>
+  }
+}
+
+export default Resources;
