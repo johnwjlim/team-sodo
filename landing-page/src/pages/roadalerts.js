@@ -61,7 +61,7 @@ class RoadAlerts extends React.Component{
                   <Card.Text>
                     4 alerts
                   </Card.Text>
-                  <Button variant="dark">Select</Button>
+                  <Button variant="dark"><Link to="/kingalerts">Select</Link></Button>
                   </Card.Body>
                 </Card>
                 <Card>

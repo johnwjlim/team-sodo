@@ -72,6 +72,8 @@ const TopBar = styled.div`
 
 const CloseButton = styled.button`
   cursor: pointer;
+  background-color: none;
+  border: none;
 `;
 
 class ListingCard extends React.Component {
