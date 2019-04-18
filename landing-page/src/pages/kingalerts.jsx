@@ -107,7 +107,6 @@ class KingAlerts extends React.Component {
               <li key={title} onClick={() => this.setState({activeListing: title})}>
                 {title}
               </li>
-              
             )
           })}
         </ul>

@@ -7,7 +7,7 @@ const Wrap = styled.div`
   position: -webkit-sticky;
   top: 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-  z-index: 20;
+  z-index: 50;
   background-color: white;
 `;
 
