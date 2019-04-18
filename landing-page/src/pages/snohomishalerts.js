@@ -55,8 +55,6 @@ class SnohomishAlerts extends React.Component{
       
     }
     render() {
-
-    // console.log("snohoDict" + snohoDict);
        return <div>
           <Container>
             <Header><Link to="/" style={{textDecoration: "none"}} className="link">RARET</Link></Header>
