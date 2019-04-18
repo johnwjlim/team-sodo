@@ -130,7 +130,7 @@ class Roads extends React.Component {
                   <Text>White Center</Text>
                 </TextBox>
               </Column>
-          </Content>
+            </Content>
           </Card>
         </Container>
       </>

@@ -31,7 +31,7 @@ const Header = styled.h1`
   }
 `;
 
-const Header2 = styled.h2`
+const Header2 = styled.h1`
   padding-top: 1rem;
 `;
 const Line = styled.div`
