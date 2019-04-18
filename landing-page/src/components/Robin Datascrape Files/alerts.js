@@ -40,18 +40,17 @@ export function snohomishAlerts() {
         }
     }
 
-    // Consolidate names and times into a single dictionary
-    // Keys are road names and values are are the time dictionary
-    let dict = {};
+    // Consolidate names and times into an array of objects
+    let arr = [];
     for (let i = 0; i < names.length; i++) {
-        dict[names[i]] = times[i];
+        arr[i] = {"name": names[i], "info": times[i]};
     }
     // console.log(dict);
 
     // return dict;
 
     return { 
-      dict
+      arr
     };
   })
   .catch(function(err){
@@ -83,17 +82,16 @@ export function kingAlerts() {
       info.push(line);
     }
 
-    // Consolidate names and info into a single dictionary
-    // Keys are road names and values are the info dictionary
-    let dict = {};
+    // Consolidate names and info into an array of objects
+    let arr = [];
     for (let i = 0; i < names.length; i++) {
-        dict[names[i]] = info[i];
+      arr[i] = {"name": names[i], "info": info[i]}
     }
     // console.log(dict);
     // return {
     //   dict
     // }
-    return dict;
+    return arr;
   })
   .catch(function(err){
     console.log("Error Retrieving Data from King County Alerts")
