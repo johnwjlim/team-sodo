@@ -17,7 +17,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1.25rem;
+  padding: 1rem 1.25rem;
   display: flex;
   justify-content: space-between;
   color: #333333;
@@ -40,7 +40,7 @@ const Links = styled.div`
 const StyledLink = styled(Link)`
   font-family: neue-haas-unica;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 16px;
   margin-left: 3rem;  
 `;
 
