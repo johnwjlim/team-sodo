@@ -50,7 +50,7 @@ class RoadAlerts extends React.Component{
                 <Navbar style={{minHeight: '60px'}} bg="light" variant="light">
                   <Nav className="tabs">
                     <Nav.Link><Link to="/" className="link" style={{textDecoration: "none"}}>Home</Link></Nav.Link>
-                    <Nav.Link >Resources</Nav.Link>
+                    <Nav.Link ><Link to="/resources" className="link" style={{textDecoration: "none"}}>Resources</Link></Nav.Link>
                     <Nav.Link style={{color: 'black'}}>Road Conditions</Nav.Link>
                   </Nav>
                 </Navbar>
