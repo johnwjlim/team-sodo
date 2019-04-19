@@ -88,7 +88,7 @@ class ListingCard extends React.Component {
           <CardSubtitle>ROAD ALERT</CardSubtitle>
           <CloseButton onClick={() => this.props.onClose()}>X</CloseButton>
         </TopBar>
-        <CardTitle>Road Restriction</CardTitle>
+        {/* <CardTitle>Road Restriction</CardTitle> */}
         <Content>
           <Column style={{marginRight: "1.5em"}}>
             <Img fluid={this.props.map.childImageSharp.fluid}/>
@@ -99,7 +99,6 @@ class ListingCard extends React.Component {
             </TitleBox>
             <TextBox>
               <Label>DESCRIPTION</Label>
-              {/* <Text>Installation of thermoplastic markings and chain link fence, along with painting and project clean-up work requiring lane restrictions March 4-22. Work hours are weekdays from 7 a.m. to 5 p.m. Some of this work is weather dependent and requires dry pavement. Motorists should expect delays.</Text> */}
               <Text>{this.props.activeListing.info.desc}</Text>
             </TextBox>
             <TextBox>
