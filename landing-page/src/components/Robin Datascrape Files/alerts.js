@@ -46,12 +46,7 @@ export function snohomishAlerts() {
         arr[i] = {"name": names[i], "info": times[i]};
     }
     // console.log(dict);
-
-    // return dict;
-
-    // return { 
-    //   arr
-    // };
+    
     return arr;
   })
   .catch(function(err){
