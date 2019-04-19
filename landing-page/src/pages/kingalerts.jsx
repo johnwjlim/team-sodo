@@ -34,7 +34,6 @@ class KingAlerts extends React.Component {
   
   async componentWillMount() {
     const dictionary = await kingAlerts();
-    // console.log(dictionary);
     this.setState({dict: dictionary});
   }
 
@@ -54,6 +53,10 @@ class KingAlerts extends React.Component {
           })}
         </ul>
       )
+    } else {
+      return (
+        <h4>Loading...</h4>
+      )
     }
   }
 
@@ -61,10 +64,6 @@ class KingAlerts extends React.Component {
 
 
   render() {
-    // console.log(this.state);
-    // console.log(active)
-    console.log(this.state.activeListing);
-
     return (
       <>
         <Header/>
@@ -77,7 +76,7 @@ class KingAlerts extends React.Component {
               onClose={() => this.setState({active: false})}
               activeListing={this.state.activeListing}
             /> : this.renderList()
-            }
+          }
         </Container>
       </>
     )
