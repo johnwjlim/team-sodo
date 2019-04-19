@@ -49,9 +49,10 @@ export function snohomishAlerts() {
 
     // return dict;
 
-    return { 
-      arr
-    };
+    // return { 
+    //   arr
+    // };
+    return arr;
   })
   .catch(function(err){
     console.log("Error Retrieving Data from Snohomish County Alerts")

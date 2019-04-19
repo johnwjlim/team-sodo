@@ -3,9 +3,15 @@ import styled from "styled-components"
 import { graphql } from "gatsby";
 import Img from 'gatsby-image';
 import {snohomishAlerts, kingAlerts} from "../components/Robin Datascrape Files/alerts"
-
+import {Card} from 'react-bootstrap';
 import Header from "../components/main-header"
-import Card from "../components/listingCard"
+import ListingCard from "../components/listingCard" 
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faAngleRight)
 
 const Container = styled.div`
   max-width: 1080px;
@@ -21,7 +27,11 @@ const Title = styled.h1`
   letter-spacing: -0.3px;
 `;
 
-
+const cardStyle = {
+  margin: '10px',
+  borderRadius: '10px',
+  cursor: 'pointer',
+}
 
 class KingAlerts extends React.Component {
   constructor() {
@@ -44,11 +54,16 @@ class KingAlerts extends React.Component {
         <ul>
           {list.map(object => {
             return (
-              <li key={object.name} onClick={() => {
+              <Card style ={cardStyle}>
+              <Card.Body>
+                <li key={object.name} onClick={() => {
                   this.setState({activeListing: object, active: true})}
                 }>
                 {object.name}
               </li>
+              <FontAwesomeIcon icon="angle-right" size="2x" transform="right-450 up-8" />
+              </Card.Body>
+              </Card>
             )
           })}
         </ul>
@@ -61,8 +76,6 @@ class KingAlerts extends React.Component {
   }
 
 
-
-
   render() {
     return (
       <>
@@ -71,7 +84,7 @@ class KingAlerts extends React.Component {
           <Title>King County Road Conditions</Title>
           { 
             this.state.active ?
-            <Card 
+            <ListingCard 
               map={this.props.data.map} 
               onClose={() => this.setState({active: false})}
               activeListing={this.state.activeListing}

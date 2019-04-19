@@ -88,7 +88,7 @@ class ListingCard extends React.Component {
           <CardSubtitle>ROAD ALERT</CardSubtitle>
           <CloseButton onClick={() => this.props.onClose()}>X</CloseButton>
         </TopBar>
-        {/* <CardTitle>Road Restriction</CardTitle> */}
+        <CardTitle>Road Restriction</CardTitle>
         <Content>
           <Column style={{marginRight: "1.5em"}}>
             <Img fluid={this.props.map.childImageSharp.fluid}/>
