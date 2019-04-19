@@ -29,7 +29,8 @@ const Title = styled.h1`
 
 const cardStyle = {
   margin: '10px',
-  borderRadius: '10px'
+  borderRadius: '10px',
+  cursor: 'pointer',
 }
 
 class KingAlerts extends React.Component {
@@ -67,6 +68,10 @@ class KingAlerts extends React.Component {
             )
           })}
         </ul>
+      )
+    } else {
+      return (
+        <h4>Loading...</h4>
       )
     }
   }
