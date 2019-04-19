@@ -64,7 +64,7 @@ class SnohomishAlerts extends React.Component{
     
     async componentWillMount() {
       const dictionary = await snohomishAlerts();
-      // console.log(dictionary);
+      console.log(dictionary);
       this.setState({dict: dictionary});
     }
 
@@ -95,7 +95,7 @@ class SnohomishAlerts extends React.Component{
     render() {
       // console.log(this.state);
       // console.log(active)
-      console.log(this.state.activeListing);
+      // console.log(this.state.activeListing);
   
       return (
         <>
