@@ -8,7 +8,7 @@ const Wrap = styled.div`
   top: 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   z-index: 50;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.88);
 `;
 
 const Container = styled.div`

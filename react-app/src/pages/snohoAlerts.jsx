@@ -17,7 +17,17 @@ const Container = styled.div`
 
 const Title = styled.h1`
   font-weight: 600;
+  margin: 0;
+  margin-bottom: 0.1em;
+`;
+const Subtitle = styled.h3`
+  font-weight: 400;
+  margin: 0;
+`;
+
+const TitleBox = styled.div`
   margin: 1em 0;
+  margin-bottom: 1.5em;
 `;
 
 const Card = styled.div`
@@ -119,7 +129,10 @@ class KingAlerts extends React.Component {
       <>
         {/* <Header/> */}
         <Container>
-          <Title>Snohomish County Road Conditions</Title>
+          <TitleBox>
+            <Title>Snohomish County</Title>
+            <Subtitle>Road restrictions and closures within Snohomish County</Subtitle>
+          </TitleBox>
           { 
             this.state.active ?
             <ListingCard 

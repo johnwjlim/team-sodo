@@ -58,8 +58,8 @@ const Label = styled.h5`
 `;
 
 const Text = styled.p`
-  color: #333333;
   margin: 0;
+  letter-spacing: -0.1px;
 `;
 
 const TopBar = styled.div`
