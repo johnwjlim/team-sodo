@@ -10,7 +10,7 @@ const Container = styled.div`
 
 const Title = styled.h1`
   margin: 1em 0;
-  // margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
   font-weight: 600;
 `;
 const Line = styled.div`
