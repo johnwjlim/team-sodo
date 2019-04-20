@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import {snohomishAlerts} from "../../components/datascrape/alerts"
 import ListingCard from "../../components/kingCoListing" 
+import Header from '../../components/header'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,6 +14,7 @@ const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   text-align: left;
+  padding: 0.5rem 1.25rem;
 `;
 
 const Title = styled.h1`
@@ -127,7 +129,7 @@ class KingAlerts extends React.Component {
   render() {
     return (
       <>
-        {/* <Header/> */}
+        <Header/>
         <Container>
           <TitleBox>
             <Title>Snohomish County</Title>

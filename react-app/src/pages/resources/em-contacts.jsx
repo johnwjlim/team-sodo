@@ -3,6 +3,7 @@ import Papa from 'papaparse';
 import styled from "styled-components"
 import { Card, Navbar, Nav, Button } from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
+import Header from '../../components/header'
 
 const Container = styled.div`
   position: relative;
@@ -19,15 +20,16 @@ const Content = styled.div`
   padding: 0 1.25rem;
   margin-top: 0;
 `;
-const Header = styled.h1`
-  font-weight: 700;
-  font-size: 48pt;
-  padding-left: 150px;
-  letter-spacing: 10px;
-  @media (max-width: 768px) {
-    font-size: 28pt;
-  }
-`;
+// const Header = styled.h1`
+//   font-weight: 700;
+//   font-size: 48pt;
+//   padding-left: 150px;
+//   letter-spacing: 10px;
+//   @media (max-width: 768px) {
+//     font-size: 28pt;
+//   }
+// `;
+
 const Header2 = styled.h2`
   padding-top: 1rem;
 `;
@@ -263,6 +265,7 @@ class EMcontacts extends React.Component {
 
         return (
             <div>
+                <Header/>
                 <Container>
                     <div>
                         <Content>

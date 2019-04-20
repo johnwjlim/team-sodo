@@ -2,10 +2,13 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from '@reach/router'
 
+import Header from '../../components/header'
+
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   text-align: left;
+  padding: 0.5rem 1.25rem;
 `;
 
 const Title = styled.h1`
@@ -56,36 +59,39 @@ class RoadAlerts extends React.Component{
     }
     render() {
        return (
-          <Container>
-            <Title>Select a County</Title>
-            <Card>
-              <CardBody>
-              <CardTitle>King County</CardTitle>
-              <CardText>
-                4 alerts
-              </CardText>
-              <Button variant="dark"><ButtonLink to="/kingalerts">Select</ButtonLink></Button>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardBody>
-              <CardTitle>Snohomish County</CardTitle>
-              <CardText>
-                9 alerts
-              </CardText>
-              <Button variant="dark"><ButtonLink to="/snohomishalerts">Select</ButtonLink></Button>
-              </CardBody>
-            </Card>
-            {/* <Card>
-              <CardBody>
-              <CardTitle>Pierce County</CardTitle>
-              <CardText>
-                4 alerts
-              </CardText>
-              <Button variant="dark">Select</Button>
-              </CardBody>
-            </Card> */}
-        </Container>
+         <>
+          <Header />
+            <Container>
+              <Title>Select a County</Title>
+              <Card>
+                <CardBody>
+                <CardTitle>King County</CardTitle>
+                <CardText>
+                  4 alerts
+                </CardText>
+                <Button variant="dark"><ButtonLink to="/kingalerts">Select</ButtonLink></Button>
+                </CardBody>
+              </Card>
+              <Card>
+                <CardBody>
+                <CardTitle>Snohomish County</CardTitle>
+                <CardText>
+                  9 alerts
+                </CardText>
+                <Button variant="dark"><ButtonLink to="/snohomishalerts">Select</ButtonLink></Button>
+                </CardBody>
+              </Card>
+              {/* <Card>
+                <CardBody>
+                <CardTitle>Pierce County</CardTitle>
+                <CardText>
+                  4 alerts
+                </CardText>
+                <Button variant="dark">Select</Button>
+                </CardBody>
+              </Card> */}
+          </Container>
+          </>
        )
       }
  }

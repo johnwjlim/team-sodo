@@ -13,6 +13,7 @@ import Resources from './pages/resources/resources'
 import Cancer from './pages/resources/cancer'
 import Dialysis from './pages/resources/dialysis'
 import EMContacts from './pages/resources/em-contacts'
+import Home from './pages/home'
 
 const Container = styled.div`
   background-color: #fdfdfd;
@@ -22,8 +23,8 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <Header/>
-        <Router style={{padding: "0.5rem 1.25rem"}}>
+        <Router>
+          <Home path="/"/>
           <RoadAlerts path="/roadalerts"/>
           <KingAlerts path="/kingalerts" />
           <SnohoAlerts path="/snohomishalerts" />
