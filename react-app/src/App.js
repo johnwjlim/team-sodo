@@ -6,13 +6,13 @@ import styled from 'styled-components';
 import { Router } from '@reach/router'
 
 import Header from './components/header'
-import RoadAlerts from './pages/roadAlerts'
-import KingAlerts from './pages/kingAlerts'
-import SnohoAlerts from './pages/snohoAlerts'
-import Resources from './pages/resources'
-import Cancer from './pages/cancer'
-import Dialysis from './pages/dialysis'
-import EMContacts from './pages/em-contacts'
+import RoadAlerts from './pages/roadAlerts/roadAlerts'
+import KingAlerts from './pages/roadAlerts/kingAlerts'
+import SnohoAlerts from './pages/roadAlerts/snohoAlerts'
+import Resources from './pages/resources/resources'
+import Cancer from './pages/resources/cancer'
+import Dialysis from './pages/resources/dialysis'
+import EMContacts from './pages/resources/em-contacts'
 
 const Container = styled.div`
   background-color: #fdfdfd;
