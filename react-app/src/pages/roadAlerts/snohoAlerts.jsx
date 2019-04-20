@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import {kingAlerts} from "../components/datascrape/alerts"
-import ListingCard from "../components/kingCoListing" 
+import {snohomishAlerts} from "../../components/datascrape/alerts"
+import ListingCard from "../../components/kingCoListing" 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -47,6 +47,7 @@ const CardBody = styled.div`
 
 const CardText = styled.h3`
   font-weight: 500;
+  letter-spacing: -0.3px;
   margin: 0;
   margin-bottom: 0.2em;
 `;
@@ -61,7 +62,6 @@ const List = styled.ul`
   list-style: none;
   padding: 1.5em 1em;
   border-radius: 8px;
-  // border: 1px solid #dddddd;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
   background-color: white;
 `;
@@ -84,13 +84,14 @@ class KingAlerts extends React.Component {
   }
   
   async componentWillMount() {
-    const dictionary = await kingAlerts();
+    const dictionary = await snohomishAlerts();
     this.setState({dict: dictionary});
   }
 
   renderList() {
     if (this.state.dict !== null) {
       const list = this.state.dict;
+      console.log(list);
       var tempDate = new Date();
       var date = tempDate.getFullYear() + '/' + (tempDate.getMonth()+1) + '/' + tempDate.getDate() + ', '+ tempDate.getHours()+':'+ tempDate.getMinutes();
       const currDate = "Last updated on: "+ date;
@@ -105,7 +106,7 @@ class KingAlerts extends React.Component {
                 <Card>
                   <CardBody>
                     <CardText>{object.name}</CardText>
-                    <CardMicroText>{object.info.date}</CardMicroText>
+                    <CardMicroText>{object.info[0]}</CardMicroText>
                   </CardBody>
                 {/* <FontAwesomeIcon icon="angle-right" size="2x"/> */}
                 <i className="material-icons" style={{fontSize: "30px", color: "#484848"}}>chevron_right</i>
@@ -129,8 +130,8 @@ class KingAlerts extends React.Component {
         {/* <Header/> */}
         <Container>
           <TitleBox>
-            <Title>King County</Title>
-            <Subtitle>Road closures and restrictions within unincorporated King County</Subtitle>
+            <Title>Snohomish County</Title>
+            <Subtitle>Road restrictions and closures within Snohomish County</Subtitle>
           </TitleBox>
           { 
             this.state.active ?
