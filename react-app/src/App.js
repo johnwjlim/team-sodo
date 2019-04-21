@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Router } from '@reach/router'
 
 import RoadAlerts from './pages/roadAlerts/roadAlerts'
-import KingAlerts from './pages/roadAlerts/transitions'
+import KingAlerts from './pages/roadAlerts/kingAlerts'
 import SnohoAlerts from './pages/roadAlerts/snohoAlerts'
 import Resources from './pages/resources/resources'
 import Cancer from './pages/resources/cancer'

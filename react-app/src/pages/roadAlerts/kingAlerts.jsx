@@ -1,17 +1,10 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 import {kingAlerts} from "../../components/datascrape/alerts"
 import ListingCard from "../../components/kingCoListing" 
 import Header from '../../components/header'
 import SEO from '../../components/seo'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
-import { CSSTransition } from 'react-transition-group';
-
-library.add(faAngleRight)
 
 const Container = styled.div`
   max-width: 1200px;
@@ -30,7 +23,7 @@ const Subtitle = styled.h3`
   margin: 0;
 `;
 
-const TitleBox = styled.div`f
+const TitleBox = styled.div`
   margin: 1em 0;
   margin-bottom: 1.5em;
 `;
@@ -66,7 +59,6 @@ const List = styled.ul`
   list-style: none;
   padding: 1.5em 1em;
   border-radius: 8px;
-  // border: 1px solid #dddddd;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
   background-color: white;
 `;
@@ -79,78 +71,82 @@ const ListTitle = styled.h4`
   padding-bottom: 0.75em;
 `;
 
-class KingAlerts extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      dict: null,
-      active: false,
-    };
-  }
-  
-  async componentWillMount() {
-    const dictionary = await kingAlerts();
-    this.setState({dict: dictionary});
+export default function KingAlerts() {
+  const [dict, setDict] = useState([]);
+  const [active, setActive] = useState(false);
+  const [activeListing, setActiveListing] = useState(null);
+  const [inProp, setInProp] = useState(false);
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await kingAlerts();
+      setDict(data);
+    }
+    fetchData();
+  }, [])
+
+  useEffect(() => console.log(inProp))
+
+  function createList() {
+    const array = dict;
+    return array.map(object => {
+      return (
+        <li 
+          key={object.name} 
+          onClick={() => {
+            setActive(true);
+            setActiveListing(object);
+          }}
+        >
+          <Card>
+            <CardBody>
+              <CardText>{object.name}</CardText>
+              <CardMicroText>{object.info.date}</CardMicroText>
+            </CardBody>
+            <i className="material-icons" style={{fontSize: "30px", color: "#484848"}}>chevron_right</i>
+          </Card>
+        </li>
+      )
+    })
   }
 
-  renderList() {
-    if (this.state.dict !== null) {
-      const list = this.state.dict;
+  function renderList() {
+    if (dict.length > 0) {
       var tempDate = new Date();
       var date = tempDate.getFullYear() + '/' + (tempDate.getMonth()+1) + '/' + tempDate.getDate() + ', '+ tempDate.getHours()+':'+ tempDate.getMinutes();
       const currDate = "Last updated on: "+ date;
       return (
         <List>
-        <ListTitle>{currDate}</ListTitle>
-          {list.map(object => {
-            return (
-              <li key={object.name} onClick={() => {
-                this.setState({activeListing: object, active: true})
-              }}>
-                <Card>
-                  <CardBody>
-                    <CardText>{object.name}</CardText>
-                    <CardMicroText>{object.info.date}</CardMicroText>
-                  </CardBody>
-                {/* <FontAwesomeIcon icon="angle-right" size="2x"/> */}
-                <i className="material-icons" style={{fontSize: "30px", color: "#484848"}}>chevron_right</i>
-                </Card>
-              </li>
-            )
-          })}
+          <ListTitle>{currDate}</ListTitle>
+          {createList()}
         </List>
-      )
+      );
     } else {
-      return (
-        <h4>Loading...</h4>
-      )
+      return <h4>Loading...</h4>
     }
-  }
+  }   
 
-
-  render() {
-    return (
-      <>  
-        <SEO title="King County" />
-        <Header/>
-        <Container>
-          <TitleBox>
-            <Title>King County</Title>
-            <Subtitle>Road closures and restrictions within unincorporated King County</Subtitle>
-          </TitleBox>
+  return (
+    <>
+      <SEO title="King County" />
+      <Header />
+      <Container>
+        <TitleBox>
+          <Title>King County</Title>
+          <Subtitle>Road closures and restrictions in unincorporated King County</Subtitle>
           { 
-            this.state.active ?
+            active ?
             <ListingCard 
-              onClose={() => this.setState({active: false})}
-              activeListing={this.state.activeListing}
+              onClose={() => {
+                setActive(false);
+              }}
+              activeListing={activeListing}
             /> 
-            : this.renderList()
+            : renderList()
           }
-        </Container>
-      </>
-    )
-  }
-
+        </TitleBox>
+      </Container>
+    </>
+  )
 }
-
-export default KingAlerts;
