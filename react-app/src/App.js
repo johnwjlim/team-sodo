@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
-
 import { Router } from '@reach/router'
 
-import Header from './components/header'
 import RoadAlerts from './pages/roadAlerts/roadAlerts'
-import KingAlerts from './pages/roadAlerts/kingAlerts'
+import KingAlerts from './pages/roadAlerts/transitions'
 import SnohoAlerts from './pages/roadAlerts/snohoAlerts'
 import Resources from './pages/resources/resources'
 import Cancer from './pages/resources/cancer'
 import Dialysis from './pages/resources/dialysis'
 import EMContacts from './pages/resources/em-contacts'
 import Home from './pages/home'
+import Example from './pages/example'
+import Transitions from './pages/roadAlerts/transitions'
 
 const Container = styled.div`
   background-color: #fdfdfd;
@@ -26,12 +25,15 @@ class App extends Component {
         <Router>
           <Home path="/"/>
           <RoadAlerts path="/roadalerts"/>
-          <KingAlerts path="/kingalerts" />
-          <SnohoAlerts path="/snohomishalerts" />
+          <KingAlerts path="/roadalerts/kingalerts" />
+          <SnohoAlerts path="/roadalerts/snohomishalerts" />
           <Resources path= "/resources"/>
           <Cancer path="/cancer"/>
           <Dialysis path="/dialysis"/>
           <EMContacts path="/em-contacts"/>
+          <Example path="/example" />
+          <Transitions path="/transitions"/>
+
         </Router>
       </Container>
     );

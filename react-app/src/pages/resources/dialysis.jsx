@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Card, Navbar, Nav, Button } from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
 import Header from '../../components/header'
+import SEO from '../../components/seo'
 
 const Container = styled.div`
   position: relative;
@@ -281,6 +282,7 @@ class Dialysis extends React.Component {
 
         return (
             <div>
+                <SEO title="Dialysis Centers" />
                 <Header/>
                 <Container>
                     <div>

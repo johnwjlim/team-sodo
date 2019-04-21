@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Card, Navbar, Nav, Button } from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
 import Header from '../../components/header'
+import SEO from '../../components/seo'
 
 const Container = styled.div`
   position: relative;
@@ -84,6 +85,7 @@ class Cancer extends React.Component {
         let cancerFacilities = this.state.data;
         return (
             <div>
+                <SEO title="Cancer Facilities" />
                 <Header/>
                 <Container>
                     <div>

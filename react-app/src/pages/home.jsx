@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Header from "../components/header";
+import SEO from '../components/seo'
 
 const Container = styled.div`
   max-width: 1200px;
@@ -10,9 +11,8 @@ const Container = styled.div`
 `;
 
 const Memes = styled.div`
-  position: fixed;
-  top: 40vh;
-  left: 24vw;
+  position: relative;
+  top: 30vh;  
 `;
 
 const Title = styled.h1`
@@ -34,10 +34,11 @@ export default class Home extends React.Component {
   render() {
     return (
       <>
+        <SEO title="Home" />
         <Header/>
         <Container>
           <Memes>
-            <Title>Awww shoot... we haven't built actually built the home page yet!</Title>
+            <Title>Awww shoot... we haven't actually built the home page yet</Title>
             <SubText>Fret not! We'll get to it. Eventually. I hope.</SubText>
           </Memes>
         </Container>

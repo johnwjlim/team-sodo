@@ -1,12 +1,15 @@
 import React from "react"
 import styled from "styled-components"
+
 import {kingAlerts} from "../../components/datascrape/alerts"
 import ListingCard from "../../components/kingCoListing" 
 import Header from '../../components/header'
+import SEO from '../../components/seo'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { CSSTransition } from 'react-transition-group';
 
 library.add(faAngleRight)
 
@@ -27,7 +30,7 @@ const Subtitle = styled.h3`
   margin: 0;
 `;
 
-const TitleBox = styled.div`
+const TitleBox = styled.div`f
   margin: 1em 0;
   margin-bottom: 1.5em;
 `;
@@ -127,7 +130,8 @@ class KingAlerts extends React.Component {
 
   render() {
     return (
-      <>
+      <>  
+        <SEO title="King County" />
         <Header/>
         <Container>
           <TitleBox>
@@ -139,7 +143,8 @@ class KingAlerts extends React.Component {
             <ListingCard 
               onClose={() => this.setState({active: false})}
               activeListing={this.state.activeListing}
-            /> : this.renderList()
+            /> 
+            : this.renderList()
           }
         </Container>
       </>

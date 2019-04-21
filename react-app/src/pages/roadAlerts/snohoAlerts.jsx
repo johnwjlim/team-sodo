@@ -3,6 +3,7 @@ import styled from "styled-components"
 import {snohomishAlerts} from "../../components/datascrape/alerts"
 import ListingCard from "../../components/kingCoListing" 
 import Header from '../../components/header'
+import SEO from '../../components/seo'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -129,6 +130,7 @@ class KingAlerts extends React.Component {
   render() {
     return (
       <>
+        <SEO title="Snohomish County" />
         <Header/>
         <Container>
           <TitleBox>

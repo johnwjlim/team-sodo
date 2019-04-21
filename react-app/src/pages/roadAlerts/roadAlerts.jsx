@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Link } from '@reach/router'
 
 import Header from '../../components/header'
+import SEO from '../../components/seo'
 
 const Container = styled.div`
   max-width: 1200px;
@@ -60,6 +61,7 @@ class RoadAlerts extends React.Component{
     render() {
        return (
          <>
+          <SEO title="Road Alerts"/>
           <Header />
             <Container>
               <Title>Select a County</Title>
@@ -69,7 +71,7 @@ class RoadAlerts extends React.Component{
                 <CardText>
                   4 alerts
                 </CardText>
-                <Button variant="dark"><ButtonLink to="/kingalerts">Select</ButtonLink></Button>
+                <Button variant="dark"><ButtonLink to="kingalerts">Select</ButtonLink></Button>
                 </CardBody>
               </Card>
               <Card>
@@ -78,7 +80,7 @@ class RoadAlerts extends React.Component{
                 <CardText>
                   9 alerts
                 </CardText>
-                <Button variant="dark"><ButtonLink to="/snohomishalerts">Select</ButtonLink></Button>
+                <Button variant="dark"><ButtonLink to="snohomishalerts">Select</ButtonLink></Button>
                 </CardBody>
               </Card>
               {/* <Card>

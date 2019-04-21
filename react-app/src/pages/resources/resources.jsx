@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Card } from 'react-bootstrap';
 import { Link } from '@reach/router';
 import Header from '../../components/header'
+import SEO from '../../components/seo'
 
 
 const Container = styled.div`
@@ -54,6 +55,7 @@ class Resources extends React.Component {
   }
   render() {
     return <>
+      <SEO title="Resources"/>
       <Header/>
       <Container>
         {/* <Header><Link to="/" style={{ textDecoration: "none" }} className="link">RARET</Link></Header> */}

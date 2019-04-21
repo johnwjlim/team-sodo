@@ -14,8 +14,11 @@
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
+    "react-pose": "^4.0.8",
     "react-scripts": "2.1.8",
     "react-spinner-material": "^1.1.1",
+    "react-spring": "^8.0.19",
+    "react-transition-group": "^4.0.0",
     "request-promise": "^4.2.4",
     "styled-components": "^4.2.0"
   },

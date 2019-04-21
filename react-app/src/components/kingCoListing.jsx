@@ -1,5 +1,6 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import styled from "styled-components"
+import { Transition } from "react-transition-group"
 
 import placeholder from "../images/map-sample.png"
 
@@ -80,44 +81,68 @@ const StyledImage = styled.img`
   height: auto;
 `;
 
-class ListingCard extends React.Component {
-  constructor() {
-    super();
-  }
 
-  render() {
-    return (
-      <Card>
-        <TopBar>
-          <CardSubtitle>ROAD ALERT</CardSubtitle>
-          <CloseButton onClick={() => this.props.onClose()}>X</CloseButton>
-        </TopBar>
-        <CardTitle>Road Restriction</CardTitle>
-        <Content>
-          <Column style={{marginRight: "1.5em"}}>
-            <StyledImage src={placeholder}/>
-          </Column>
-          <Column style={{marginLeft: "1.5em"}} >
-            <TitleBox>
-              <RoadName>{this.props.activeListing.name}</RoadName>
-            </TitleBox>
-            <TextBox>
-              <Label>DESCRIPTION</Label>
-              <Text>{this.props.activeListing.info.desc}</Text>
-            </TextBox>
-            <TextBox>
-              <Label>TIME</Label>
-              <Text>{this.props.activeListing.info.date}</Text>
-            </TextBox>
-            {/* <TextBox>
-              <Label>REGION</Label>
-              <Text>White Center</Text>
-            </TextBox> */}
-          </Column>
-        </Content>
-      </Card>
-    )
-  }
+export default function ListingCard(props) {
+  const [inProp, setInProp] = useState(false);
+
+  useEffect(() => {
+    setInProp(true);
+  })
+
+  const duration = 200;
+
+  const defaultStyle = {
+    transition: `opacity ${duration}ms ease-in-out`,
+    opacity: 0,
+    padding: "1em 0",
+    }
+  
+  const transitionStyles = {
+    entering: { opacity: 1 },
+    entered:  { opacity: 1 },
+    exiting:  { opacity: 0 },
+    exited:  { opacity: 0 },
+  };
+
+  return (
+    <Transition in={inProp} timeout={duration}>
+      { state => (
+        <div style={{
+          ...defaultStyle,
+          ...transitionStyles[state]
+        }}>
+          <Card>
+            <TopBar>
+              <CardSubtitle>ROAD ALERT</CardSubtitle>
+              <CloseButton onClick={() => props.onClose()}>X</CloseButton>
+            </TopBar>
+            <CardTitle>Road Restriction</CardTitle>
+            <Content>
+              <Column style={{marginRight: "1.5em"}}>
+                <StyledImage src={placeholder}/>
+              </Column>
+              <Column style={{marginLeft: "1.5em"}} >
+                <TitleBox>
+                  <RoadName>{props.activeListing.name}</RoadName>
+                </TitleBox>
+                <TextBox>
+                  <Label>DESCRIPTION</Label>
+                  <Text>{props.activeListing.info.desc}</Text>
+                </TextBox>
+                <TextBox>
+                  <Label>TIME</Label>
+                  <Text>{props.activeListing.info.date}</Text>
+                </TextBox>
+                {/* <TextBox>
+                  <Label>REGION</Label>
+                  <Text>White Center</Text>
+                </TextBox> */}
+              </Column>
+            </Content>
+          </Card>
+        </div>
+      )}
+    </Transition>
+
+  )
 }
-
-export default ListingCard;
