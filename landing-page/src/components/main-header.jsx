@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 const Wrap = styled.div`
   position: sticky;

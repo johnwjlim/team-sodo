@@ -16,13 +16,13 @@ library.add(faAngleRight)
 const Container = styled.div`
   max-width: 1080px;
   margin: 0 auto;
-  padding: 1.25rem;
+  // padding: 1.25rem;
 `;
 
 const Title = styled.h1`
   font-family: neue-haas-unica, sans-serif;
   font-weight: 600;
-  margin: 1.25em 0;
+  // margin: 1.25em 0;
   font-size: 32px;
   letter-spacing: -0.3px;
 `;
