@@ -38,7 +38,7 @@ const Line = styled.div`
 
 
 
-class Dialysis extends React.Component {
+class EMcontacts extends React.Component {
 
     constructor(props) {
         super(props);
@@ -65,14 +65,11 @@ class Dialysis extends React.Component {
         let snohomishArray = []
         for (let i = 1; i < this.state.data.length - 1; i++) {
             let blah = {
-                providerNumber: this.state.data[i][0], Network: this.state.data[i][1], facilityName: this.state.data[i][2],
-                addressLine1: this.state.data[i][3], addressLine2: this.state.data[i][4], City: this.state.data[i][5],
-                State: this.state.data[i][6], Zip: this.state.data[i][7], County: this.state.data[i][8], phoneNumber: this.state.data[i][9],
-                profitOrNonProfit: this.state.data[i][10], chainOwned: this.state.data[i][11], chainOrganization: this.state.data[i][12],
-                lateShift: this.state.data[i][13], numberOfDialysisStations: this.state.data[i][14], offersInCenterHemodialysis: this.state.data[i][15],
-                offersInCenterPeritonealDialysis: this.state.data[i][16], offersHomeHemodialysisTraining: this.state.data[i][7], Location: this.state.data[i][18]
-            };
-            if (blah.County == 'SNOHOMISH') {
+                county: this.state.data[i][0], city: this.state.data[i][1], EMOfficePhone: this.state.data[i][2], 
+                TTY: this.state.data[i][3], emergencyManager: this.state.data[i][4], title: this.state.data[i][5],
+                email: this.state.data[i][6], phone: this.state.data[i][7],
+                 };
+            if (blah.county == 'Snohomish') {
                 snohomishArray.push(blah);
             }
             this.setState({
@@ -89,13 +86,10 @@ class Dialysis extends React.Component {
 
         for (let i = 1; i < this.state.data.length - 1; i++) {
             let blah = {
-                providerNumber: this.state.data[i][0], Network: this.state.data[i][1], facilityName: this.state.data[i][2],
-                addressLine1: this.state.data[i][3], addressLine2: this.state.data[i][4], City: this.state.data[i][5],
-                State: this.state.data[i][6], Zip: this.state.data[i][7], County: this.state.data[i][8], phoneNumber: this.state.data[i][9],
-                profitOrNonProfit: this.state.data[i][10], chainOwned: this.state.data[i][11], chainOrganization: this.state.data[i][12],
-                lateShift: this.state.data[i][13], numberOfDialysisStations: this.state.data[i][14], offersInCenterHemodialysis: this.state.data[i][15],
-                offersInCenterPeritonealDialysis: this.state.data[i][16], offersHomeHemodialysisTraining: this.state.data[i][7], Location: this.state.data[i][18]
-            };
+                county: this.state.data[i][0], city: this.state.data[i][1], EMOfficePhone: this.state.data[i][2], 
+                TTY: this.state.data[i][3], emergencyManager: this.state.data[i][4], title: this.state.data[i][5],
+                email: this.state.data[i][6], phone: this.state.data[i][7],
+                 };
 
             allCountiesArray.push(blah);
 
@@ -111,14 +105,11 @@ class Dialysis extends React.Component {
         let pierceArray = []
         for (let i = 1; i < this.state.data.length - 1; i++) {
             let blah = {
-                providerNumber: this.state.data[i][0], Network: this.state.data[i][1], facilityName: this.state.data[i][2],
-                addressLine1: this.state.data[i][3], addressLine2: this.state.data[i][4], City: this.state.data[i][5],
-                State: this.state.data[i][6], Zip: this.state.data[i][7], County: this.state.data[i][8], phoneNumber: this.state.data[i][9],
-                profitOrNonProfit: this.state.data[i][10], chainOwned: this.state.data[i][11], chainOrganization: this.state.data[i][12],
-                lateShift: this.state.data[i][13], numberOfDialysisStations: this.state.data[i][14], offersInCenterHemodialysis: this.state.data[i][15],
-                offersInCenterPeritonealDialysis: this.state.data[i][16], offersHomeHemodialysisTraining: this.state.data[i][7], Location: this.state.data[i][18]
-            };
-            if (blah.County == 'PIERCE') {
+                county: this.state.data[i][0], city: this.state.data[i][1], EMOfficePhone: this.state.data[i][2], 
+                TTY: this.state.data[i][3], emergencyManager: this.state.data[i][4], title: this.state.data[i][5],
+                email: this.state.data[i][6], phone: this.state.data[i][7],
+                 };
+            if (blah.county == 'Pierce') {
                 pierceArray.push(blah);
             }
             this.setState({
@@ -128,21 +119,21 @@ class Dialysis extends React.Component {
                 spinnerOn: false
 
             });
+            
         }
+        console.log(this.state.data[1])
+     
     }
 
     handleKingClick() {
         let kingArray = []
         for (let i = 1; i < this.state.data.length - 1; i++) {
             let blah = {
-                providerNumber: this.state.data[i][0], Network: this.state.data[i][1], facilityName: this.state.data[i][2],
-                addressLine1: this.state.data[i][3], addressLine2: this.state.data[i][4], City: this.state.data[i][5],
-                State: this.state.data[i][6], Zip: this.state.data[i][7], County: this.state.data[i][8], phoneNumber: this.state.data[i][9],
-                profitOrNonProfit: this.state.data[i][10], chainOwned: this.state.data[i][11], chainOrganization: this.state.data[i][12],
-                lateShift: this.state.data[i][13], numberOfDialysisStations: this.state.data[i][14], offersInCenterHemodialysis: this.state.data[i][15],
-                offersInCenterPeritonealDialysis: this.state.data[i][16], offersHomeHemodialysisTraining: this.state.data[i][7], Location: this.state.data[i][18]
-            };
-            if (blah.County == 'KING') {
+                county: this.state.data[i][0], city: this.state.data[i][1], EMOfficePhone: this.state.data[i][2], 
+                TTY: this.state.data[i][3], emergencyManager: this.state.data[i][4], title: this.state.data[i][5],
+                email: this.state.data[i][6], phone: this.state.data[i][7],
+                 };
+            if (blah.county == 'King') {
                 kingArray.push(blah);
             }
             this.setState({
@@ -160,7 +151,7 @@ class Dialysis extends React.Component {
     }
 
     fetchCsv() {
-        return fetch('https://cors.io/?http://raw.githubusercontent.com/kelsiej/csv/master/dialysis.csv').then(function (response) {
+        return fetch('https://cors.io/?http://raw.githubusercontent.com/kelsiej/csv/master/Tri-County-Emergency-Management-Resources.csv').then(function (response) {
             let reader = response.body.getReader();
             let decoder = new TextDecoder('utf-8');
 
@@ -184,13 +175,10 @@ class Dialysis extends React.Component {
         let allArray = []
         for (let i = 1; i < this.state.data.length - 1; i++) {
             let blah = {
-                providerNumber: this.state.data[i][0], Network: this.state.data[i][1], facilityName: this.state.data[i][2],
-                addressLine1: this.state.data[i][3], addressLine2: this.state.data[i][4], City: this.state.data[i][5],
-                State: this.state.data[i][6], Zip: this.state.data[i][7], County: this.state.data[i][8], phoneNumber: this.state.data[i][9],
-                profitOrNonProfit: this.state.data[i][10], chainOwned: this.state.data[i][11], chainOrganization: this.state.data[i][12],
-                lateShift: this.state.data[i][13], numberOfDialysisStations: this.state.data[i][14], offersInCenterHemodialysis: this.state.data[i][15],
-                offersInCenterPeritonealDialysis: this.state.data[i][16], offersHomeHemodialysisTraining: this.state.data[i][7], Location: this.state.data[i][18]
-            };
+                county: this.state.data[i][0], city: this.state.data[i][1], EMOfficePhone: this.state.data[i][2], 
+                TTY: this.state.data[i][3], emergencyManager: this.state.data[i][4], title: this.state.data[i][5],
+                email: this.state.data[i][6], phone: this.state.data[i][7],
+                 };
 
             allArray.push(blah);
 
@@ -209,13 +197,10 @@ class Dialysis extends React.Component {
         let snohomishArray = []
         for (let i = 1; i < this.state.data.length - 1; i++) {
             let blah = {
-                providerNumber: this.state.data[i][0], Network: this.state.data[i][1], facilityName: this.state.data[i][2],
-                addressLine1: this.state.data[i][3], addressLine2: this.state.data[i][4], City: this.state.data[i][5],
-                State: this.state.data[i][6], Zip: this.state.data[i][7], County: this.state.data[i][8], phoneNumber: this.state.data[i][9],
-                profitOrNonProfit: this.state.data[i][10], chainOwned: this.state.data[i][11], chainOrganization: this.state.data[i][12],
-                lateShift: this.state.data[i][13], numberOfDialysisStations: this.state.data[i][14], offersInCenterHemodialysis: this.state.data[i][15],
-                offersInCenterPeritonealDialysis: this.state.data[i][16], offersHomeHemodialysisTraining: this.state.data[i][7], Location: this.state.data[i][18]
-            };
+                county: this.state.data[i][0], city: this.state.data[i][1], EMOfficePhone: this.state.data[i][2], 
+                TTY: this.state.data[i][3], emergencyManager: this.state.data[i][4], title: this.state.data[i][5],
+                email: this.state.data[i][6], phone: this.state.data[i][7],
+                 };
             if (blah.County == 'KING') {
                 kingArray.push(blah)
             }
@@ -259,13 +244,11 @@ class Dialysis extends React.Component {
         let snohomishArray = []
         for (let i = 1; i < this.state.data.length - 1; i++) {
             let blah = {
-                providerNumber: this.state.data[i][0], Network: this.state.data[i][1], facilityName: this.state.data[i][2],
-                addressLine1: this.state.data[i][3], addressLine2: this.state.data[i][4], City: this.state.data[i][5],
-                State: this.state.data[i][6], Zip: this.state.data[i][7], County: this.state.data[i][8], phoneNumber: this.state.data[i][9],
-                profitOrNonProfit: this.state.data[i][10], chainOwned: this.state.data[i][11], chainOrganization: this.state.data[i][12],
-                lateShift: this.state.data[i][13], numberOfDialysisStations: this.state.data[i][14], offersInCenterHemodialysis: this.state.data[i][15],
-                offersInCenterPeritonealDialysis: this.state.data[i][16], offersHomeHemodialysisTraining: this.state.data[i][7], Location: this.state.data[i][18]
-            };
+                county: this.state.data[i][0], city: this.state.data[i][1], EMOfficePhone: this.state.data[i][2], 
+                TTY: this.state.data[i][3], emergencyManager: this.state.data[i][4], title: this.state.data[i][5],
+                email: this.state.data[i][6], phone: this.state.data[i][7],
+                 };
+            
             if (blah.County == 'KING') {
                 kingArray.push(blah)
             }
@@ -296,7 +279,7 @@ class Dialysis extends React.Component {
                                 </Nav>
                             </Navbar>
 
-                            <Header2>Dialysis Clinics</Header2>
+                            <Header2>Emergency Manager Contacts</Header2>
 
                             <div class="flex-container">
                                 <Button className='btn1' onClick={this.handleAllCountiesClick} variant="dark">All</Button>
@@ -310,11 +293,19 @@ class Dialysis extends React.Component {
                     <div>
                         <Content>
                             {currentCounty.map(function (object, i) {
+                               
                                 return <div className={"row"} key={i}>
                                     <Card>
-                                        {[<Card.Body><Card.Title>{object.facilityName} </Card.Title>
-                                            <Card.Text className="fosfo" key={i}> Phone Number: {object.phoneNumber} <br></br>  Address: {object.addressLine1}
-                                                <br></br>  County: {object.County}</Card.Text>
+                                        {[<Card.Body><Card.Title>{object.city} </Card.Title>
+                                            <Card.Text className="fosfo" key={i}>   
+                                            {object.EMOfficePhone != '' ? 'EM Office Phone: ' + object.EMOfficePhone : ''} {object.EMOfficePhone != '' ? <br/> : ''}  
+                                            {object.email != '' ? 'Email: ' + object.email : ''} {object.email != '' ? <br/> : ''} 
+                                            {object.TTY != '' ? 'TTY: ' + object.TTY : ''} {object.TTY != '' ? <br/> : ''}  
+                                            {object.emergencyManager != '' ? 'Emergency Manager: ' + object.emergencyManager : ''}  {object.emergencyManager != '' ? <br/> : ''} 
+                                            {object.title != '' ? 'Title: ' + object.title : ''} {object.title != '' ? <br/> : ''}
+                                            {object.email != '' ? 'Email: ' + object.email : ''} {object.email != '' ? <br/> : ''} 
+                                            {object.phone != '' ? 'Phone: ' + object.phone : ''} {object.phone != '' ? <br/> : ''}
+                                                </Card.Text>
                                         </Card.Body>,
                                         ]}
                                     </Card>
@@ -331,4 +322,4 @@ class Dialysis extends React.Component {
         );
     }
 }
-export default Dialysis;
+export default EMcontacts;

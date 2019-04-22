@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import {Card, Navbar, Nav, Button} from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import {Link} from "gatsby";
 import SnohomishData from "../components/Robin Datascrape Files/alerts"
 
@@ -36,6 +36,28 @@ const Header2 = styled.h2`
 const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
+const Card = styled.div`
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  margin: 0;
+`;
+
+const CardBody = styled.div`
+  padding: 1em 1.25em;
+  // margin: 1em 0;
+`;
+
+const CardTitle = styled.h4``;
+
+const CardText = styled.p``;
+
+const Button = styled.button`
+  background-color: #484848;
+  color: white;
+  text-decoration: none;
+  padding: 0.35em 0.75em;
+  border-radius: 4px;
+`;
 
 class RoadAlerts extends React.Component{
     constructor(props) {
@@ -50,37 +72,37 @@ class RoadAlerts extends React.Component{
                 <Navbar style={{minHeight: '60px'}} bg="light" variant="light">
                   <Nav className="tabs">
                     <Nav.Link><Link to="/" className="link" style={{textDecoration: "none"}}>Home</Link></Nav.Link>
-                    <Nav.Link >Resources</Nav.Link>
+                    <Nav.Link ><Link to="/resources" className="link" style={{textDecoration: "none"}}>Resources</Link></Nav.Link>
                     <Nav.Link style={{color: 'black'}}>Road Conditions</Nav.Link>
                   </Nav>
                 </Navbar>
                 <Header2>Select a County</Header2>
                 <Card>
-                  <Card.Body>
-                  <Card.Title>King County</Card.Title>
-                  <Card.Text>
+                  <CardBody>
+                  <CardTitle>King County</CardTitle>
+                  <CardText>
                     4 alerts
-                  </Card.Text>
-                  <Button variant="dark">Select</Button>
-                  </Card.Body>
+                  </CardText>
+                  <Button variant="dark"><Link to="/kingalerts" style={{textDecoration: "none"}}>Select</Link></Button>
+                  </CardBody>
                 </Card>
                 <Card>
-                  <Card.Body>
-                  <Card.Title>Snohomish County</Card.Title>
-                  <Card.Text>
+                  <CardBody>
+                  <CardTitle>Snohomish County</CardTitle>
+                  <CardText>
                     9 alerts
-                  </Card.Text>
-                  <Button variant="dark"><Link to="/snohomishalerts">Select</Link></Button>
-                  </Card.Body>
+                  </CardText>
+                  <Button variant="dark"><Link to="/snohomishalerts" style={{textDecoration: "none"}}>Select</Link></Button>
+                  </CardBody>
                 </Card>
                 <Card>
-                  <Card.Body>
-                  <Card.Title>Pierce County</Card.Title>
-                  <Card.Text>
+                  <CardBody>
+                  <CardTitle>Pierce County</CardTitle>
+                  <CardText>
                     4 alerts
-                  </Card.Text>
+                  </CardText>
                   <Button variant="dark">Select</Button>
-                  </Card.Body>
+                  </CardBody>
                 </Card>
               </Content>
             </Container>

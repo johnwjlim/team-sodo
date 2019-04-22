@@ -1,8 +1,15 @@
 import React from "react"
 import styled from "styled-components"
-import {Card, Navbar, Nav} from 'react-bootstrap';
-import {Link} from "gatsby";
 import {snohomishAlerts, kingAlerts} from "../components/Robin Datascrape Files/alerts"
+import {Card, Navbar, Nav} from 'react-bootstrap';
+import Header from "../components/main-header"
+import ListingCard from "../components/listingCard" 
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faAngleRight)
 
 const Container = styled.div`
   position: relative;
@@ -21,17 +28,7 @@ const Content = styled.div`
   margin-top: 0;
 `;
 
-const Header = styled.h1`
-  font-weight: 700;
-  font-size: 48pt;
-  padding-left: 150px;
-  letter-spacing: 10px;
-  @media (max-width: 768px) {
-    font-size: 28pt;
-  }
-`;
-
-const Header2 = styled.h2`
+const Header2 = styled.h1`
   padding-top: 1rem;
 `;
 const Line = styled.div`
@@ -43,73 +40,87 @@ const Span = styled.span`
   padding-right: 120px;
 `;
 
-let snohoDict = snohomishAlerts;
-let kingDict = kingAlerts;
+const Title = styled.h1`
+  font-family: neue-haas-unica, sans-serif;
+  font-weight: 600;
+  margin: 1.25em 0;
+  font-size: 32px;
+  letter-spacing: -0.3px;
+`;
 
-console.log(snohoDict)
+const cardStyle = {
+  margin: '10px',
+  borderRadius: '10px'
+}
 
 class SnohomishAlerts extends React.Component{
-    constructor(props) {
-      super(props);
+    constructor() {
+      super();
+      this.state = {
+        dict: null,
+        active: false,
+      };
     }
+    
+    async componentWillMount() {
+      const dictionary = await snohomishAlerts();
+      console.log(dictionary);
+      this.setState({dict: dictionary});
+    }
+
+    renderList() {
+      if (this.state.dict !== null) {
+        const list = this.state.dict;
+        return (
+          <ul>
+            {list.map(object => {
+              return (
+                <Card style ={cardStyle}>
+                <Card.Body>
+                  <li key={object.name} onClick={() => {
+                    this.setState({activeListing: object, active: true})}
+                  }>
+                  {object.name}
+                </li>
+                <FontAwesomeIcon icon="angle-right" size="2x" transform="right-450 up-8" />
+                </Card.Body>
+                </Card>
+              )
+            })}
+          </ul>
+        )
+      }
+    }
+
     render() {
-       return <div>
+      // console.log(this.state);
+      // console.log(active)
+      // console.log(this.state.activeListing);
+  
+      return (
+        <>
+          <Header/>
           <Container>
-            <Header><Link to="/" style={{textDecoration: "none"}} className="link">RARET</Link></Header>
-              <Content>
-                <Line/>
-                <Navbar style={{minHeight: '60px'}} bg="light" variant="light">
-                  <Nav className="tabs">
-                    <Nav.Link><Link to="/" className="link" style={{textDecoration: "none"}}>Home</Link></Nav.Link>
-                    <Nav.Link >Resources</Nav.Link>
-                    <Nav.Link style={{color: 'black'}}>Road Conditions</Nav.Link>
-                  </Nav>
-                </Navbar>
-                <Header2>Snohomish County Road Conditions</Header2>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>164th St SE — from SR9 to Broadway Avenue — Snohomish</Card.Title>
-                  <Card.Text>
-                  Closed: Mar 7, 2019   8:15am	<Span>Opened: Mar 7, 2019   9:45am	</Span>	Problem: Snow and ice
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>240th St SE — from Snohomish Woodinville Rd to 75th Ave SE — Woodinville</Card.Title>
-                  <Card.Text>
-                  Closed: Mar 8, 2019   4:15pm	<Span>Opened: Mar 10, 2019   9:15pm</Span> Problem: Construction/Maintenance
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>3rd Ave NE — from 172nd St NE to 176th St NE — Lakewood</Card.Title>
-                  <Card.Text>
-                  Closed: Mar 8, 2019   3:30pm <Span>Opened: Mar 9, 2019 3:30pm	</Span> Problem: Accident
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>43rd Ave SE — from 18700 43rd Ave SE to 18700 43rd Ave SE — Bothell</Card.Title>
-                  <Card.Text>
-                  Closed: Jul 11, 2016   10:00am <Span></Span>	 	Problem: LONG-TERM CLOSURE
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card>
-                  <Card.Body>
-                  <Card.Title>99th Ave NE — from 42nd St NE to 54th Pl NE — Lake Stevens</Card.Title>
-                  <Card.Text>
-                  Closed: Mar 5, 2019   5:45am	<Span>Opened: Mar 5, 2019 9:00am</Span> Problem: Other
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Content>
-            </Container>
-              </div>
-       }
- }
+            <Title>Sonohomish County Road Conditions</Title>
+            {this.renderList()}
+          </Container>
+        </>
+      )
+    }
+  
+  }
+ 
 
  export default SnohomishAlerts;
+
+ export const query = graphql`
+  {
+    map:file(relativePath: {eq: "images/map-sample.png"}) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;

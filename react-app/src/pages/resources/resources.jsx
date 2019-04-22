@@ -1,11 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { Card, Navbar, Nav, Button } from 'react-bootstrap';
-import { Link } from "gatsby";
-import SnohomishData from "../components/Robin Datascrape Files/alerts"
-import LinkButton from './linkbutton'
+import { Card } from 'react-bootstrap';
+import { Link } from '@reach/router';
+import Header from '../../components/header'
+import SEO from '../../components/seo'
 
-import Header from '../components/main-header';
 
 const Container = styled.div`
   position: relative;
@@ -45,7 +44,7 @@ const Line = styled.div`
 `;
 
 const Link1 = styled.link`
-color: red;
+  color: red;
 `;
 
 
@@ -56,6 +55,7 @@ class Resources extends React.Component {
   }
   render() {
     return <>
+      <SEO title="Resources"/>
       <Header/>
       <Container>
         {/* <Header><Link to="/" style={{ textDecoration: "none" }} className="link">RARET</Link></Header> */}
