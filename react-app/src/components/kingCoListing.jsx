@@ -89,7 +89,7 @@ export default function ListingCard(props) {
     setInProp(true);
   })
 
-  const duration = 200;
+  const duration = 150;
 
   const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,

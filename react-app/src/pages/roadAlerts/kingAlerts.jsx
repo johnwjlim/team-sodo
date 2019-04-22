@@ -86,8 +86,6 @@ export default function KingAlerts() {
     fetchData();
   }, [])
 
-  useEffect(() => console.log(inProp))
-
   function createList() {
     const array = dict;
     return array.map(object => {
