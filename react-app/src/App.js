@@ -33,7 +33,6 @@ class App extends Component {
           <EMContacts path="/em-contacts"/>
           <Example path="/example" />
           <Transitions path="/transitions"/>
-
         </Router>
       </Container>
     );

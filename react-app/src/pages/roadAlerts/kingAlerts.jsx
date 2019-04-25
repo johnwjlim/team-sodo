@@ -75,8 +75,6 @@ export default function KingAlerts() {
   const [dict, setDict] = useState([]);
   const [active, setActive] = useState(false);
   const [activeListing, setActiveListing] = useState(null);
-  const [inProp, setInProp] = useState(false);
-
 
   useEffect(() => {
     async function fetchData() {
