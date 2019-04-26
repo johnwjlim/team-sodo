@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import ReactMapGL, {Marker, GeolocateControl} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import styled from 'styled-components'
 
-import Panel from './components/panel'
+import PanelContent from './components/panel'
 
 
 const TOKEN = 'pk.eyJ1Ijoid2psaW0iLCJhIjoiY2plNGtpMXFpNmw3ZTMzcXA4a3l1NmdwOSJ9.2Ou7bageJ-DCfiASBrV5HA';
@@ -20,10 +21,32 @@ const pinStyle = {
 
 const geolocateStyle = {
   position: 'absolute',
-  top: 0,
-  left: 0,
+  bottom: 10,
+  right: 0,
   padding: '10px'
 };
+
+const GeolocateStyle = styled.div`
+  position: absolute;
+  // bottom: 0;
+  // right: 0;
+  top: 0;
+  left: 0;
+  margin: 1.25em;
+`;
+
+const Panel = styled.div`
+  position: fixed;
+  margin: 1.25em;
+  height: 80vh;
+  width: 23em;
+  top: 5vh;
+  bottom: 5vh;
+  z-index: 2;
+  background-color: white;
+  padding: 0.75em;
+  cursor: default;
+`;
 
 class App extends Component {
   constructor() {
@@ -55,11 +78,12 @@ class App extends Component {
 
   _onViewportChange = viewport => this.setState({viewport})
 
-
   render() {
+
+    const {viewport} = this.state;
+
     return (
-      <>
-        <Panel />
+      <div>
         <ReactMapGL
           mapboxApiAccessToken={TOKEN}
           mapStyle="mapbox://styles/wjlim/cju7ha5756yds1fo9r7tz519u"
@@ -67,21 +91,30 @@ class App extends Component {
           {...this.state.settings}
           onViewportChange={this._onViewportChange}
         >
-          <Marker latitude={47.65} longitude={-122.30}>
+          <GeolocateStyle>
+            <GeolocateControl
+            onViewportChange={this._onViewportChange}
+            positionptions={{enableHighAccuracy: true}}
+            trackUserLocation={true}
+            />
+          </GeolocateStyle>
+          <Panel>
+            <PanelContent/>
+          </Panel>
+          <Marker latitude={47.65} longitude={-122.30} offsetLeft={-20} offsetTop={-10}>
             <svg style={{...pinStyle}}>
               <path d={ICON}></path>
             </svg>
           </Marker>
           <div style={geolocateStyle}>
             <GeolocateControl
-            onViewportChange={(viewport) => this._onViewportChange(viewport)}
-            positionOptions={{enableHighAccuracy: true}}
+            onViewportChange={this._onViewportChange}
+            positionptions={{enableHighAccuracy: true}}
             trackUserLocation={true}
-            >
-            </GeolocateControl>
+            />
           </div>
         </ReactMapGL>
-      </>
+      </div>
     );
   }
 }
