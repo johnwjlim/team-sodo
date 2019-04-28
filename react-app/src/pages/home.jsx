@@ -28,9 +28,7 @@ const Image = styled.img`
   max-width: 100%;
   height: auto;
   min-height: 800px;
-  // max-height: 800px;
   object-fit: cover;
-  // bottom: 20vh;
 `;
 
 const ImageWrapper = styled.div`
