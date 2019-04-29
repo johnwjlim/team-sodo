@@ -8,6 +8,8 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@reach/router": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
+    "i": "^0.3.6",
+    "npm": "^6.9.0",
     "papaparse": "^4.6.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
