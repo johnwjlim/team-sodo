@@ -17,6 +17,7 @@ const Title = styled.h1`
   font-weight: 600;
   margin: 0;
   margin-bottom: 0.1em;
+  // letter-spacing: -0.8px;
 `;
 const Subtitle = styled.h3`
   font-weight: 400;

@@ -16,12 +16,14 @@ const CardSubtitle = styled.h4`
   color: #8E8E93;
   font-weight: 500;
   margin: 0;
+  // letter-spacing: -0.5px;
 `;
 
 const CardTitle = styled.h2`
   color: #484848;
   font-weight: 600;
   margin: 0.25em 0;
+  letter-spacing: -0.5px;
 `;
 
 const Content = styled.div`
@@ -133,10 +135,6 @@ export default function ListingCard(props) {
                   <Label>TIME</Label>
                   <Text>{props.activeListing.info.date}</Text>
                 </TextBox>
-                {/* <TextBox>
-                  <Label>REGION</Label>
-                  <Text>White Center</Text>
-                </TextBox> */}
               </Column>
             </Content>
           </Card>
