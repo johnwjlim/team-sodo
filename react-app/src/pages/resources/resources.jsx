@@ -1,52 +1,49 @@
 import React from "react"
 import styled from "styled-components"
-import { Card } from 'react-bootstrap';
 import { Link } from '@reach/router';
 import Header from '../../components/header'
 import SEO from '../../components/seo'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
+library.add(faAngleRight)
 
 const Container = styled.div`
-  position: relative;
-  z-index: 20;
-  // padding: 1.25rem 0;
-  padding: 0.5rem 0;
-  padding-bottom: 0;
-  // background: #ffffff;
-`;
-
-const Content = styled.div`
   max-width: 1200px;
-  margin: 1rem auto;
-  padding: 0 1.25rem;
-  margin-top: 0;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0.5rem 1.25rem;
 `;
 
-// const Header = styled.h1`
-//   font-weight: 700;
-//   font-size: 48pt;
-//   padding-left: 150px;
-//   letter-spacing: 10px;
-//   @media (max-width: 768px) {
-//     font-size: 28pt;
-//   }
-// `;
-
-const Header2 = styled.h2`
-  font-family: neue-haas-unica, sans-serif;
+const Title = styled.h1`
+  margin: 1em 0;
+  margin-bottom: 1.5em;
   font-weight: 600;
-  margin: 1.25em 0;
-  font-size: 32px;
-  letter-spacing: -0.3px;
 `;
 const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
-
-const Link1 = styled.link`
-  color: red;
+const Card = styled.div`
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  margin: 1em 0;
+  width: 1000px;
 `;
 
+const CardBody = styled.div`
+  padding: 1em 1.25em;
+`;
+
+const CardTitle = styled.h3`
+  font-weight: 600;
+  margin: 0;
+`;
+
+
+const ButtonLink = styled(Link)`
+  color: black;
+`;
 
 
 class Resources extends React.Component {
@@ -58,40 +55,35 @@ class Resources extends React.Component {
       <SEO title="Resources"/>
       <Header/>
       <Container>
-        {/* <Header><Link to="/" style={{ textDecoration: "none" }} className="link">RARET</Link></Header> */}
-        <Content>
-          {/* <Line />
-          <Navbar style={{ minHeight: '60px' }} bg="light" variant="light">
-            <Nav className="tabs">
-              <Nav.Link><Link to="/" className="link" style={{ textDecoration: "none" }}>Home</Link></Nav.Link>
-              <Nav.Link >Resources</Nav.Link>
-              <Nav.Link style={{ color: 'black' }}>Road Conditions</Nav.Link>
-            </Nav>
-          </Navbar> */}
-          <Header2>Resources</Header2>
-          <div className="card-container">
-            <Card>
-              <Card.Body>
-                <Card.Title><Link to="/dialysis" className="link1" style={{ textDecoration: 'none' }}>Dialysis Clinics</Link></Card.Title>
-              </Card.Body>
-            </Card>
-          </div>
-          <div className="card-container">
-            <Card>
-              <Card.Body>
-                <Card.Title><Link to="/cancer" className="link1" style={{ textDecoration: 'none' }}>Cancer Treatment Clinics</Link></Card.Title>
-              </Card.Body>
-            </Card>
-          </div>
-          <div className="card-container">
-            <Card>
-              <Card.Body>
-                <Card.Title><Link to="/em-contacts" className="link1" style={{ textDecoration: 'none' }}>Emergency Manager Contacts</Link></Card.Title>
-              </Card.Body>
-            </Card>
-          </div>
-        </Content>
-      </Container>
+              <Title>Select a Resource</Title>
+              <Card>
+                <CardBody>
+                <CardTitle>Dialysis Centers</CardTitle>
+                <ButtonLink to="/dialysis"><FontAwesomeIcon icon="angle-right" size="2x" transform="right-450 up-8" /></ButtonLink>
+                </CardBody>
+              </Card>
+              <Card>
+                <CardBody>
+                <CardTitle>Cancer Centers</CardTitle>
+                <ButtonLink to="/cancer"><FontAwesomeIcon icon="angle-right" size="2x" transform="right-450 up-8" /></ButtonLink>
+                </CardBody>
+              </Card>
+              <Card>
+                <CardBody>
+                <CardTitle>Emergency Manager Contacts</CardTitle>
+                <ButtonLink to="/em-contacts"><FontAwesomeIcon icon="angle-right" size="2x" transform="right-450 up-8" /></ButtonLink>
+                </CardBody>
+              </Card>
+              {/* <Card>
+                <CardBody>
+                <CardTitle>Pierce County</CardTitle>
+                <CardText>
+                  4 alerts
+                </CardText>
+                <Button variant="dark">Select</Button>
+                </CardBody>
+              </Card> */}
+          </Container>
     </>
   }
 }

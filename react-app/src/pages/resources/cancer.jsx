@@ -22,7 +22,7 @@ const Content = styled.div`
   margin-top: 0;
 `;
 
-const Header2 = styled.h2`
+const Header1 = styled.h1`
   padding-top: 1rem;
 `;
 const Line = styled.div`
@@ -91,7 +91,7 @@ class Cancer extends React.Component {
                     <div>
 
                         <Content>
-                            <Header2> Cancer Treatment Clinics</Header2>
+                            <Header1> Cancer Treatment Clinics</Header1>
                         </Content>
                     </div>
                     <div>
