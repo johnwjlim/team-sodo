@@ -46,6 +46,15 @@ const Button = styled.button`
   font-size: 15px;
 `;
 
+const Center = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+min-height: 70vh;
+
+`;
 
 
 
@@ -317,17 +326,17 @@ class Dialysis extends React.Component {
                                 return <div className={"row"} key={i}>
                                     <Card>
                                         {[<Card.Body><Card.Title>{object.facilityName} </Card.Title>
-                                            <Card.Text className="fosfo" key={i}> Phone Number: {object.phoneNumber} <br></br>  Address: {object.addressLine1}
-                                                <br></br>  County: {object.County}</Card.Text>
+                                            <Card.Text className="fosfo" key={i}> Phone Number: {object.phoneNumber} <br/>  Address: {object.addressLine1}
+                                                <br/>  </Card.Text>
                                         </Card.Body>,
                                         ]}
                                     </Card>
                                 </div>;
                             })}
 
-                            <div className="centerDiv">
+                            <Center>
                                 <Spinner size={75} spinnerColor={"#7fffd4"} spinnerWidth={2} visible={this.state.spinnerOn} />
-                            </div>
+                                </Center>
                         </Content>
                     </div>
                 </Container>

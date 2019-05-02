@@ -29,7 +29,15 @@ const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
 
+const Center = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+min-height: 70vh;
 
+`;
 
 class Cancer extends React.Component {
 
@@ -108,9 +116,9 @@ class Cancer extends React.Component {
                                 </div>;
                             })}
 
-                            <div className = "centerDiv">
+                            <Center>
                                 <Spinner size={75} spinnerColor={"#7fffd4"} spinnerWidth={2} visible={this.state.spinnerOn} />
-                            </div>
+                                </Center>
                         </Content>
                     </div>
                 </Container>
