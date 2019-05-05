@@ -32,7 +32,9 @@ const Card = styled.div`
 `;
 
 const CardBody = styled.div`
-  padding: 1em 1.25em;
+  padding: 2em 1.5em;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const CardTitle = styled.h3`
@@ -45,6 +47,11 @@ const ButtonLink = styled(Link)`
   color: black;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #333333;
+`;
+
 
 class Resources extends React.Component {
   constructor(props) {
@@ -55,34 +62,31 @@ class Resources extends React.Component {
       <SEO title="Resources"/>
       <Header/>
       <Container>
-              <Title>Select a Resource</Title>
-              <Card>
-                <CardBody>
-                <CardTitle>Dialysis Centers</CardTitle>
-                <ButtonLink to="/dialysis"><FontAwesomeIcon icon="angle-right" size="2x" transform="right-450 up-8" /></ButtonLink>
-                </CardBody>
-              </Card>
-              <Card>
-                <CardBody>
-                <CardTitle>Cancer Centers</CardTitle>
-                <ButtonLink to="/cancer"><FontAwesomeIcon icon="angle-right" size="2x" transform="right-450 up-8" /></ButtonLink>
-                </CardBody>
-              </Card>
-              <Card>
-                <CardBody>
-                <CardTitle>Emergency Manager Contacts</CardTitle>
-                <ButtonLink to="/em-contacts"><FontAwesomeIcon icon="angle-right" size="2x" transform="right-450 up-8" /></ButtonLink>
-                </CardBody>
-              </Card>
-              {/* <Card>
-                <CardBody>
-                <CardTitle>Pierce County</CardTitle>
-                <CardText>
-                  4 alerts
-                </CardText>
-                <Button variant="dark">Select</Button>
-                </CardBody>
-              </Card> */}
+        <Title>Select a Resource</Title>
+        <StyledLink to='/dialysis'>
+          <Card>
+            <CardBody>
+              <CardTitle>Dialysis Centers</CardTitle>
+              <FontAwesomeIcon icon="angle-right" size="2x" />
+            </CardBody>
+          </Card>
+        </StyledLink>
+        <StyledLink to='/cancer'>
+          <Card>
+            <CardBody>
+              <CardTitle>Cancer Centers</CardTitle>
+              <FontAwesomeIcon icon="angle-right" size="2x" />
+            </CardBody>
+          </Card>
+        </StyledLink>
+        <StyledLink to='/em-contacts'>
+          <Card>
+            <CardBody>
+              <CardTitle>Emergency Manager Contacts</CardTitle>
+              <FontAwesomeIcon icon="angle-right" size="2x" />
+            </CardBody>
+          </Card>
+        </StyledLink>
           </Container>
     </>
   }
