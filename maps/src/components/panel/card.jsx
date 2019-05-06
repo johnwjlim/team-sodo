@@ -25,7 +25,6 @@ const Title = styled.h4`
   font-weight: 500;
   margin-bottom: 0.1rem;
   line-height: 1.2;
-  // letter-spacing: -0.3px;
 `;
 
 

@@ -14,7 +14,7 @@ const Panel = styled.div`
   width: 23em;
   z-index: 1;
   background-color: white;
-  padding: 2.5em 1.5em;
+  padding: 1.5em;
   flex-shrink: 0;
 `;
 
@@ -60,77 +60,6 @@ const PanelFooter = styled.a`
   text-align: center;
 `;
 
-
-// class App extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       viewport: {
-//         longitude: -122.3,
-//         latitude: 47.6,
-//         zoom: 12.44,
-//         width: "100vw",
-//         height: "100vh"
-//       },
-//       interactionState: {},
-//       settings: {
-//         dragPan: true,
-//         dragRotate: true,
-//         scrollZoom: true,
-//         touchZoom: true,
-//         touchRotate: true,
-//         keyboard: true,
-//         doubleClickZoom: true,
-//         minZoom: 11,
-//         maxZoom: 18,
-//         minPitch: 0,
-//         maxPitch: 85
-//       }
-//     }
-//   };
-
-//   _onViewportChange = viewport => this.setState({viewport})
-
-//   render() {
-
-//     const {viewport} = this.state;
-
-//     return (
-//       <div>
-//         <ReactMapGL
-//           mapboxApiAccessToken={TOKEN}
-//           mapStyle="mapbox://styles/wjlim/cju7ha5756yds1fo9r7tz519u"
-//           {...this.state.viewport}
-//           {...this.state.settings}
-//           onViewportChange={this._onViewportChange}
-//         >
-//           <GeolocateStyle>
-//             <GeolocateControl
-//             onViewportChange={this._onViewportChange}
-//             positionptions={{enableHighAccuracy: true}}
-//             trackUserLocation={true}
-//             />
-//           </GeolocateStyle>
-//           <Panel>
-//             <PanelContent/>
-//           </Panel>
-//           <Marker latitude={47.65} longitude={-122.30} offsetLeft={-20} offsetTop={-10}>
-//             <svg style={{...pinStyle}}>
-//               <path d={ICON}></path>
-//             </svg>
-//           </Marker>
-//           <div style={geolocateStyle}>
-//             <GeolocateControl
-//             onViewportChange={this._onViewportChange}
-//             positionptions={{enableHighAccuracy: true}}
-//             trackUserLocation={true}
-//             />
-//           </div>
-//         </ReactMapGL>
-//       </div>
-//     );
-//   }
-// }
 
 function App() {
   const [master, setMaster] = useState(Dummy.alerts);
