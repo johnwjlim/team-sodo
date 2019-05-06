@@ -46,27 +46,29 @@ export default function Map(props) {
     touchRotate: true,
     keyboard: true,
     doubleClickZoom: true,
-    minZoom: 9,
+    minZoom: 2,
     maxZoom: 18,
     minPitch: 0,
     maxPitch: 85,
   })
 
   useEffect(() => {
-    console.log(props.objects);
-  })
+    if (Object.keys(props.center).length !== 0) {
+      _goToViewport(props.center.long, props.center.lat);
+    } 
+  },[props.center])
 
   function compileMarkers() {
     let coords = props.objects;
-    console.log(coords);
     return (
-      coords.map(object => {
+      coords.map((object, index) => {
         return (
           <Marker
+            key={index}
             latitude={object.coord.lat}
             longitude={object.coord.long}
-            offsetLeft={-20}
-            offSetTop={-10}
+            offsetLeft={-12}
+            offsetTop={-24}
           >
             <svg style={{...pinStyle}}>
               <path d={ICON}></path>
@@ -78,7 +80,18 @@ export default function Map(props) {
   }
 
   function _onViewportChange(viewport) {
-    setViewport(viewport);
+    setViewport({...viewport,viewport});
+  }
+
+  function _goToViewport(longitude, latitude) {
+    setViewport({
+      ...viewport,
+      longitude,
+      latitude,
+      zoom: 14,
+      transitionInterpolator: new FlyToInterpolator(),
+      transitionDuration: 500
+    })
   }
 
   return (

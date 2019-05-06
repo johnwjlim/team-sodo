@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Header = styled.h2`
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
 `;
 
 const Date = styled.h4`

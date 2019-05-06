@@ -28,6 +28,10 @@ const List = styled.ul`
   margin: 1.5rem 0;
 `;
 
+const ListItem = styled.li`
+  cursor: pointer;
+`;
+
 const SegmentedControl = styled.section`
   display: flex;
   justify-content: space-between;
@@ -44,6 +48,16 @@ const ControlTitle = styled.h4`
   color: ${props => props.active ? "#333333" : "#767676" };
   font-weight: ${props => props.active? "500" : "400"};
   border-bottom: ${props => props.active ? "solid 1px #333333" : "none"};
+`;
+
+const PanelFooter = styled.a`
+  position: absolute;
+  bottom: 0;
+  color: #767676;
+  letter-spacing: -0.5px;
+  font-size: 14px;
+  margin-top: 2em;
+  text-align: center;
 `;
 
 
@@ -139,9 +153,11 @@ function App() {
       return (
         array.map(object => {
           return (
-            <li key={object.title}>
+            <ListItem key={object.title} onClick={() => {
+              setCenter(object.coord);
+            }}>
               <Card object={object} />
-            </li>
+            </ListItem>
           )
         })
       )
@@ -155,10 +171,9 @@ function App() {
   function createControl() {
     let titles = ["All Counties", "King County", "Snohomish County"];
     return (
-      titles.map(title => {
-        let index = titles.indexOf(title);
+      titles.map((title, index) => {
         return (
-          <StyledLink onClick={() => {
+          <StyledLink key={index} onClick={() => {
             setActive(index);
             }}>
             {
@@ -172,6 +187,7 @@ function App() {
     )
   }
 
+
   return (
     <Container>
       <Panel>
@@ -182,8 +198,9 @@ function App() {
         <List>
           {compileList()}
         </List>
+        <PanelFooter href="https://github.com/johnwjlim/team-sodo/tree/master/maps" target="_blank" rel="noopener noreferrer">github.com/johnwjlim/team-sodo/tree/master/maps</PanelFooter>
       </Panel>
-      <Map objects={visible} />
+      <Map objects={visible} center={center} />
     </Container>
   )
 }
