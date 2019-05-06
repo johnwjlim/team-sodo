@@ -1,7 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
 import './App.css';
-import ReactMapGL, {Marker, GeolocateControl} from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import styled from 'styled-components'
 
 import Title from './components/panel/title'
@@ -9,35 +7,6 @@ import Map from './components/map'
 import Dummy from './data/dummy'
 
 import Card from './components/panel/card'
-
-
-const TOKEN = 'pk.eyJ1Ijoid2psaW0iLCJhIjoiY2plNGtpMXFpNmw3ZTMzcXA4a3l1NmdwOSJ9.2Ou7bageJ-DCfiASBrV5HA';
-
-const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3
-  c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9
-  C20.1,15.8,20.2,15.8,20.2,15.7z`;
-
-const pinStyle = {
-  cursor: 'pointer',
-  fill: '#d00',
-  stroke: 'none'
-};
-
-const geolocateStyle = {
-  position: 'absolute',
-  bottom: 10,
-  right: 0,
-  padding: '10px'
-};
-
-const GeolocateStyle = styled.div`
-  position: absolute;
-  // bottom: 0;
-  // right: 0;
-  top: 0;
-  left: 0;
-  margin: 1.25em;
-`;
 
 const Panel = styled.div`
   position: relative;
@@ -153,6 +122,7 @@ function App() {
   const [master, setMaster] = useState(Dummy.alerts);
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(Dummy.alerts);
+  const [center, setCenter] = useState({});
 
   useEffect(() => {
     if (active > 0) {
@@ -213,7 +183,7 @@ function App() {
           {compileList()}
         </List>
       </Panel>
-      <Map />
+      <Map objects={visible} />
     </Container>
   )
 }

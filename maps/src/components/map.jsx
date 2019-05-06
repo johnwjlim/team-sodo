@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import ReactMapGL, {Marker, GeolocateControl} from 'react-map-gl';
+import ReactMapGL, {Marker, GeolocateControl, LinearInterpolator, FlyToInterpolator} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styled from 'styled-components'
 
@@ -26,14 +26,14 @@ const GeolocateStyle = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  margin: 1.25em;
+  padding: 1.25em 1em;
 `;
 
-export default function Map() {
+export default function Map(props) {
   const [viewport, setViewport] = useState({
     longitude: -122.3,
     latitude: 47.6,
-    zoom: 12.44,
+    zoom: 9,
     width: "100vw",
     height: "100vh"
   })
@@ -46,12 +46,36 @@ export default function Map() {
     touchRotate: true,
     keyboard: true,
     doubleClickZoom: true,
-    minZoom: 11,
+    minZoom: 9,
     maxZoom: 18,
     minPitch: 0,
     maxPitch: 85,
   })
 
+  useEffect(() => {
+    console.log(props.objects);
+  })
+
+  function compileMarkers() {
+    let coords = props.objects;
+    console.log(coords);
+    return (
+      coords.map(object => {
+        return (
+          <Marker
+            latitude={object.coord.lat}
+            longitude={object.coord.long}
+            offsetLeft={-20}
+            offSetTop={-10}
+          >
+            <svg style={{...pinStyle}}>
+              <path d={ICON}></path>
+            </svg>
+          </Marker>
+        )
+      })
+    )
+  }
 
   function _onViewportChange(viewport) {
     setViewport(viewport);
@@ -67,11 +91,12 @@ export default function Map() {
     >
       <GeolocateStyle>
         <GeolocateControl 
-          onViewportChange={ _onViewportChange}
+          onViewportChange={_onViewportChange}
           positionptions={{enableHighAccuracy: true}}
           trackUserLocation={true}
         />
       </GeolocateStyle>
+      {compileMarkers()}
     </ReactMapGL>
   )
 }
