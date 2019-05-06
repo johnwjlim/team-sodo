@@ -4,4 +4,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### This is a prototype Mapbox integrated front-end based on dummy data.
 
-[sodo-maps.surge.sh](sodo-maps.surge.sh)
+[sodo-maps.surge.sh](https://sodo-maps.surge.sh)
