@@ -1,0 +1,70 @@
+{
+  "alerts": [
+    { 
+      "title": "Montlake Bridge",
+      "street": "2907 Montlake Blvd E", 
+      "city": "Seattle", 
+      "county": 1, 
+      "desc": "Both lanes of traffic on the Montlake Bridge closed from 10 a.m. - 4 p.m. for the opening day of boating season.",
+      "coord": {
+        "lat": 47.647319,
+        "long": -122.304592
+      },
+      "type": 1,
+      "date": "5/4/2019, 10:00AM PST"
+    },
+    { 
+      "title": "140th Way SE",
+      "street": "140th Way SE from SE Fairwood Boulevard to Renton City Limit", 
+      "city": "Renton", 
+      "county": 1, 
+      "desc": "Guardrail maintenance requiring a lane restriction. Work is scheduled to take place weekdays beginning Friday, May 3 through Friday, May 17, from 7 a.m. to 4:30 p.m. Motorists will be directed through the work zone and should expect delays. The schedule for this work is subject to frequent change. Check back often for the latest information. https://bit.ly/2XwjQVT",
+      "coord": {
+        "lat": 47.457927,
+        "long": -122.152454
+      },
+      "type": 2,
+      "date": "5/1/2019, 08:32AM PST"
+    },
+    { 
+      "title": "4th Avenue SW",
+      "street": "4th Avenue SW between SW Roxbury Street and SW 100th Street", 
+      "city": "White Center", 
+      "county": 1, 
+      "desc": "A King County Housing Authority Project to improve drainage systems and add sidewalks, crosswalks and on-street parking on 4th Avenue SW in the Greenbridge Community between SW 100th Street and SW Roxbury Street. The work requires a full 24/7 road closure from Monday, April 29 to Monday, June 3. A detour will direct motorists to 8th Avenue SW and SW Roxbury Street, but alternate routes are available including 16th Avenue SW and Myers Way S.",
+      "coord": {
+        "lat": 47.515562,
+        "long": -122.339951
+      },
+      "type": 1,
+      "date": "4/29/2019, 07:00AM PST"
+    },
+    { 
+      "title": "232nd Pl SW",
+      "street": "232nd Pl SW from SR 104 to 89th Ave W", 
+      "city": "Edmonds", 
+      "county": 2, 
+      "desc": "Closure due to construction/maintenance",
+      "coord": {
+        "lat": 47.788283,
+        "long": -122.353575
+      },
+      "type": 1,
+      "date": "4/29/2019, 07:00AM PST"
+    },
+    { 
+      "title": "Tualco Road",
+      "street": "Tualco Road from #155 Riley", 
+      "city": "Monroe", 
+      "county": 2, 
+      "desc": "Riley Slough Bridge closure due to construction/maintenance",
+      "coord": {
+        "lat": 47.819779,
+        "long": -121.986605
+      },
+      "type": 1,
+      "date": "4/15/2019, 08:00AM PST"
+    }
+  ]
+
+}

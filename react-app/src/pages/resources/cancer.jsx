@@ -22,14 +22,22 @@ const Content = styled.div`
   margin-top: 0;
 `;
 
-const Header2 = styled.h2`
+const Header1 = styled.h1`
   padding-top: 1rem;
 `;
 const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
 
+const Center = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+min-height: 70vh;
 
+`;
 
 class Cancer extends React.Component {
 
@@ -91,7 +99,7 @@ class Cancer extends React.Component {
                     <div>
 
                         <Content>
-                            <Header2> Cancer Treatment Clinics</Header2>
+                            <Header1> Cancer Treatment Clinics</Header1>
                         </Content>
                     </div>
                     <div>
@@ -108,9 +116,9 @@ class Cancer extends React.Component {
                                 </div>;
                             })}
 
-                            <div className = "centerDiv">
+                            <Center>
                                 <Spinner size={75} spinnerColor={"#7fffd4"} spinnerWidth={2} visible={this.state.spinnerOn} />
-                            </div>
+                                </Center>
                         </Content>
                     </div>
                 </Container>

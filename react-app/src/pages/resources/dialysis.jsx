@@ -1,7 +1,7 @@
 import React from 'react';
 import Papa from 'papaparse';
 import styled from "styled-components"
-import { Card, Navbar, Nav, Button } from 'react-bootstrap';
+import { Card} from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
 import Header from '../../components/header'
 import SEO from '../../components/seo'
@@ -30,12 +30,33 @@ const Content = styled.div`
 //     font-size: 28pt;
 //   }
 // `;
-const Header2 = styled.h2`
+const Header1 = styled.h1`
   padding-top: 1rem;
 `;
 const Line = styled.div`
   border-bottom: solid 1.5px #000000;
 `;
+
+const Button = styled.button`
+  background-color: #484848;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  color: white;
+  margin-right: 25px;
+  font-size: 15px;
+`;
+
+const Center = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+min-height: 70vh;
+
+`;
+
+
 
 
 
@@ -288,7 +309,7 @@ class Dialysis extends React.Component {
                     <div>
                         <Content>
 
-                            <Header2>Dialysis Clinics</Header2>
+                            <Header1>Dialysis Clinics</Header1>
 
                             <div class="flex-container">
                                 <Button className='btn1' onClick={this.handleAllCountiesClick} variant="dark">All</Button>
@@ -305,17 +326,17 @@ class Dialysis extends React.Component {
                                 return <div className={"row"} key={i}>
                                     <Card>
                                         {[<Card.Body><Card.Title>{object.facilityName} </Card.Title>
-                                            <Card.Text className="fosfo" key={i}> Phone Number: {object.phoneNumber} <br></br>  Address: {object.addressLine1}
-                                                <br></br>  County: {object.County}</Card.Text>
+                                            <Card.Text className="fosfo" key={i}> Phone Number: {object.phoneNumber} <br/>  Address: {object.addressLine1}
+                                                <br/>  </Card.Text>
                                         </Card.Body>,
                                         ]}
                                     </Card>
                                 </div>;
                             })}
 
-                            <div className="centerDiv">
+                            <Center>
                                 <Spinner size={75} spinnerColor={"#7fffd4"} spinnerWidth={2} visible={this.state.spinnerOn} />
-                            </div>
+                                </Center>
                         </Content>
                     </div>
                 </Container>
