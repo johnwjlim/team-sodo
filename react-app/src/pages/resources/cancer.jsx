@@ -39,6 +39,9 @@ min-height: 70vh;
 
 `;
 
+const proxyurl = "https://cors-anywhere.herokuapp.com/"
+const cancerSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/Cancer-Treatment-Facility-Spreadsheet-inprogress.csv'
+
 class Cancer extends React.Component {
 
     constructor(props) {
@@ -60,7 +63,8 @@ class Cancer extends React.Component {
     }
 
     fetchCsv() {
-        return fetch('https://cors.io/?http://raw.githubusercontent.com/kelsiej/csv/master/Cancer-Treatment-Facility-Spreadsheet-inprogress.csv').then(function (response) {
+        // return fetch('https://cors.io/?http://raw.githubusercontent.com/kelsiej/csv/master/Cancer-Treatment-Facility-Spreadsheet-inprogress.csv').then(function (response) {
+        return fetch(cancerSource).then(function (response) {
             let reader = response.body.getReader();
             let decoder = new TextDecoder('utf-8');
 

@@ -13,9 +13,10 @@ import EMContacts from './pages/resources/em-contacts'
 import Home from './pages/home'
 import Example from './pages/example'
 import Transitions from './pages/roadAlerts/transitions'
+import Test from './pages/resources/resource-test'
 
 const Container = styled.div`
-  background-color: #fdfdfd;
+  background-color: #ffffff;
 `;
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
           <EMContacts path="/em-contacts"/>
           <Example path="/example" />
           <Transitions path="/transitions"/>
+          <Test path="/test" />
         </Router>
       </Container>
     );
