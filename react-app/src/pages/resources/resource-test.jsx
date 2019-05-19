@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { Link } from '@reach/router';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import firebase from "../../firebase";
 
@@ -40,6 +39,8 @@ export default function Resources() {
   const [cancer, setCancer] = useState([]);
   const [emContact, setEmContact] = useState([]);
 
+  const rootRef = firebase.database().ref();
+
   useEffect(() => {
     async function fetchData() {
       let dialysisData = await getDialysisData();
@@ -48,24 +49,30 @@ export default function Resources() {
       setDialysis(dialysisData);
       setCancer(cancerData);
       setEmContact(emContactData);
+
+      rootRef.once('value')
+        .then(((snapshot) => {
+          let cancerDatabase = snapshot.child("cancer").val();
+          if (arraysMatch(cancerDatabase, cancerData)) {
+            console.log("arrays match!");
+          } else {
+            console.log("arrays do not match!");
+          }
+        }))
+
+      // rootRef.set({dialysis: dialysisData, cancer: cancerData, em: emContactData})
+      //   .then(() => console.log("set succeeded"));
+
     }
-    function callCloudFunction() {
-      fetch(parseDialysis) 
-        .then(data => {
-          return data.json();
-        })
-        .then(object => {
-          console.log(object);
-        })
-    }
-    function helloGoodbye() {
-      let ref = firebase.database().ref();
-      ref.once('value')
-        .then((snapshot) => {
-          console.log(snapshot.key);
-        })
-    }
-    helloGoodbye();
+    // function callCloudFunction() {
+    //   fetch(parseDialysis) 
+    //     .then(data => {
+    //       return data.json();
+    //     })
+    //     .then(object => {
+    //       console.log(object);
+    //     })
+    // }
     fetchData();
   }, [])
 
@@ -74,6 +81,19 @@ export default function Resources() {
     // console.log(cancer);
     // console.log(emContact);
   })
+
+  function arraysMatch(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    for (var i = 0; arr1.length < i; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   function loadChecker() {
     if (dialysis.length < 1) {

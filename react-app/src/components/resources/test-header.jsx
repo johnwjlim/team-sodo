@@ -31,7 +31,7 @@ const Title =  styled(Link)`
   text-decoration: none;
   font-weight: 600;
   font-size: 28px;
-  letter-spacing: 7px;
+  letter-spacing: 5px;
   color: #333333;
 `;
 
@@ -48,7 +48,7 @@ const Links = styled.div`
 const StyledLink = styled(Link)`
   font-family: neue-haas-unica;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 16px;
   margin-left: 2.5rem;  
   color: #333333;
   letter-spacing: -0.5px;

@@ -63,6 +63,7 @@ export async function getCancerData() {
       phone: array[3]
     }
   })
+  objectArray.pop();
   return objectArray;
 }
 
