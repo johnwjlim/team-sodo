@@ -1,23 +1,25 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import { Link } from '@reach/router'
 
 const Wrap = styled.div`
-  position: sticky;
-  position: -webkit-sticky;
+  // position: sticky;
+  // position: -webkit-sticky;   
+  position: relative;
   top: 0;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
   z-index: 50;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.88);
+  margin: 0 auto;
 `;
 
 const Container = styled.div`
-  top: 0;
-  left: 14vw;
-  width: 100%;
-  max-width: 1200px;
+  // top: 0;
+  // left: 14vw;
+  // width: 100%;
+  // max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 1.25rem;
+  padding: 0.5rem 1.5rem;
   display: flex;
   justify-content: space-between;
   color: #333333;
@@ -28,20 +30,28 @@ const Title =  styled(Link)`
   font-family: neue-haas-unica;
   text-decoration: none;
   font-weight: 600;
-  font-size: 28px;
-  letter-spacing: 7px;
+  font-size: 26px;
+  letter-spacing: 6px;
+  color: #333333;
 `;
 
 const Links = styled.div`
   display: flex;
   align-items: center;
+  margin-right: 1rem
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const StyledLink = styled(Link)`
-  font-family: neue-haas-unica;
+  // font-family: neue-haas-unica;
   text-decoration: none;
   font-size: 16px;
-  margin-left: 3rem;  
+  margin-left: 2.5rem;  
+  color: #333333;
+  letter-spacing: -0.5px;
 `;
 
 class Header extends React.Component {
@@ -55,7 +65,7 @@ class Header extends React.Component {
         <Container>
           <Title to="/">RARET</Title>
           <Links>
-            <StyledLink to="/about">About</StyledLink>
+            <StyledLink to="/">About</StyledLink>
             <StyledLink to="/resources">Resources</StyledLink>
             <StyledLink to="/roadalerts">Road Alerts</StyledLink>
           </Links>
