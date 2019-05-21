@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { UPDATE_LISTING } from '../../../state/constants'
 
 import SegmentedControl from '../segmentedControl'
-
 import Card from "../card"
+import Listing from "./listing"
 
 
 const Container = styled.div`
@@ -34,10 +34,16 @@ const List = styled.ul`
   margin: 1.5rem 0;
   overflow: scroll;
   height: 75vh;
+  // border-top: 1px solid #c5c5c5;
 `;
 
 const ListItem = styled.li`
   cursor: pointer;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
 `;
 
 
@@ -46,6 +52,7 @@ export default function Panel() {
   const activeCounty = useSelector(state => state.categoryReducer.activeCounty)
   const data = useSelector(state => state.categoryReducer.data.dialysis)
   const dispatch = useDispatch()
+  const activeListing = useSelector(state => state.listingReducer.activeListing)
 
   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -81,7 +88,7 @@ export default function Panel() {
     return data.map((object, index) => {
       return (
         <ListItem key={index} onClick={() => setActive(object)}>
-          <Card object={object}/>
+          <Card object={object} index={index}/>
         </ListItem>
       )
     })
@@ -90,10 +97,19 @@ export default function Panel() {
 
   return (
     <Container>
-      <Title>Dialysis Centers</Title>
-      <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
-      <SegmentedControl />
-      <List>{compileList()}</List>
+      {
+        Object.keys(activeListing).length === 0 ? 
+        <>
+          <Title>Dialysis Centers</Title>
+          <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
+          <SegmentedControl />
+          <List>
+            {/* <Card /> */}
+            {compileList()}
+          </List> 
+        </>:
+        <Listing object={activeListing} />
+      }
     </Container>
   )
 }

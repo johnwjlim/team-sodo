@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   border-bottom: 1px solid #c5c5c5;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
+  border-top: ${props => props.active ? "solid 1px #c5c5c5" : "none"};
 `;
 
 const CardBody = styled.div`
@@ -23,13 +24,30 @@ const Subtitle = styled.h5`
 `;
 
 export default function Card(props) {
-  return (
-    <Container>
+
+  function renderCard() {
+    return (
       <CardBody>
         <Title>{props.object.facilityName}</Title>
         <Subtitle>{props.object.phoneNumber}</Subtitle>
         <Subtitle>{props.object.addressLine1}</Subtitle>
       </CardBody>
-    </Container>
+    )
+  }
+  return (
+    <>
+      {/* {
+        props.index === 0 ?
+        <Container active>
+          {renderCard()}
+        </Container> :
+        <Container>
+          {renderCard()}
+        </Container>
+      } */}
+      <Container>
+        {renderCard()}
+      </Container>
+    </>
   )
 }

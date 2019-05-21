@@ -27,11 +27,17 @@ export default function Map() {
   const dispatch = useDispatch()
   const viewport = useSelector(state => state.viewportReducer.viewport)
   const category = useSelector(state => state.categoryReducer)
-  const activeListing = useSelector(state => state.listingReducer)
+  const activeListing = useSelector(state => state.listingReducer.activeListing)
   const activeCounty = category.activeCounty
   
-  useEffect(() => console.log(category), [category])
-  useEffect(() => console.log(activeListing))
+  // useEffect(() => console.log(category), [category])
+  // useEffect(() => console.log(activeListing))
+  // useEffect(() => console.log(viewport))
+  useEffect(() => {
+    if (Object.keys(activeListing).length !== 0) {
+      _goToViewport(activeListing.longitude, activeListing.latitude)
+    }
+  },[activeListing])
   
   const [settings, setSettings] = useState({
     dragPan: true,
@@ -51,12 +57,40 @@ export default function Map() {
     dispatch({type: UPDATE_VIEWPORT, payload: viewport})
   }
 
+  function _goToViewport(longitude, latitude) {
+    let newViewport = {
+      ...viewport,
+      longitude,
+      latitude,
+      zoom: 14,
+      transitionInterpolator: new FlyToInterpolator(),
+      transitionDuration: 500
+    }
+    dispatch({
+      type: UPDATE_VIEWPORT,
+      payload: newViewport
+    })
+  }
+
 
   function compileMarkers() {
     let data = category.data.dialysis;
     if (data != null) {
-      if (activeCounty === "ALL") {
-        console.log(data);
+      if (Object.keys(activeListing).length !== 0) {
+        return (
+          <Marker
+            latitude={activeListing.latitude}
+            longitude={activeListing.longitude}
+            offsetLeft={-12}
+            offsetRight={-24}
+          >
+            <svg style={{...pinStyle}}>
+              <path d={ICON}></path>
+            </svg>
+          </Marker>
+        )
+      }
+      else if (activeCounty === "ALL") {
         return renderMarkers(data);
       } else {
         let array = [];
@@ -65,7 +99,6 @@ export default function Map() {
             array.push(object)
           }
         })
-        console.log(array);
         return renderMarkers(array);
       }
     }
