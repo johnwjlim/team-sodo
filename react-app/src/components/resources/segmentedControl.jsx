@@ -16,9 +16,9 @@ const StyledLink = styled.a`
 
 const ControlTitle = styled.h4`
   margin: 0;
-  color: ${props => props.active ? "#000000" : "#767676" };
-  font-weight: ${props => props.active? "400" : "400"};
-  border-bottom: ${props => props.active ? "solid 1px #000000" : "none"};
+  color: ${props => props.active ? "#333333" : "#A5A5A5" };
+  font-weight: ${props => props.active? "500" : "500"};
+  border-bottom: ${props => props.active ? "solid 1px #333333" : "none"};
 
   &:hover {
     color: #333333;

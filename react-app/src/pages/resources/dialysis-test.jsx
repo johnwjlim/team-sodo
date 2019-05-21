@@ -21,7 +21,7 @@ const Container = styled.div`
   display: flex;
 `;
 
-export default function Resources() {
+export default function Dialysis() {
   const [dialysis, setDialysis] = useState([]);
   const [cancer, setCancer] = useState([]);
   const [emContact, setEmContact] = useState([]);
@@ -29,38 +29,69 @@ export default function Resources() {
   /**
    * Firebase Database Root Reference
    */
-  const rootRef = firebase.database().ref();
+  const ref = firebase.database().ref("dialysis");
 
   /**
    * Redux selectors and dispatch 
    */
   const dispatch = useDispatch();
-  const activeCategory = useSelector(state => state.categoryReducer.activeCategory)
-  const activeData = useSelector(state => state.categoryReducer.data[activeCategory])
+  const parentState = useSelector(state => state)
+
+  useEffect(() => {
+    dispatch({type: RESET_LISTING})
+  },[])
+
 
   useEffect(() => {
     async function fetchData() {
       let dialysisData = await getDialysisData();
-      let cancerData = await getCancerData();
-      let emContactData = await getEMContacts();
-      setDialysis(dialysisData);
-      setCancer(cancerData);
-      setEmContact(emContactData);
+      let parsedKeys = dialysisData.map((object, index) => {
+        return object.facilityName
+      })
 
-      rootRef.once('value')
-        .then(((snapshot) => {
-          dispatch({type: "SET_DATA", payload: snapshot.val()});
-        }))
+      // ref.once('value')
+      //   .then(((snapshot) => {
+      //     let value = snapshot.val()
+      //     dispatch({type: "SET_DIALYSIS_DATA", payload: value});
+      //   }))
+      ref.on('value', snapshot => {
+        let value = snapshot.val()
+        let databaseKeys = value.map((object) => {
+          return object.facilityName
+        })
 
+        // check keys
+        if (arraysMatch(parsedKeys, databaseKeys)) {
+          // check coordinates
+          dispatch({type: "SET_DIALYSIS_DATA", payload: value})
+        } else {
+          // append and set new items
+        }
+      })
     }
     fetchData();
-    dispatch({type: RESET_LISTING})
-  }, [])
+  },[])
 
-  useEffect(() => {
-    // console.log(activeCategory);
-    // console.log(activeData);
-  })
+
+
+  function handleData(parsedArray, databaseArray) {
+    if (arraysMatch(databaseArray, parsedArray)) {
+      // handle coordinates
+
+    } else {
+
+      let existingFacilities = databaseArray.map((object, index) => {
+        return object.facilityName
+      })
+
+      let newStuff = parsedArray;
+      newStuff.forEach((object, index) => {
+        if (existingFacilities.includes(object.facilityName)) {
+          newStuff.splice(index, 1)
+        }
+      })
+    }
+  }
 
   function arraysMatch(arr1, arr2) {
     if (arr1.length !== arr2.length) {

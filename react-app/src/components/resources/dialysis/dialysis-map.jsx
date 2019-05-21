@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReactMapGL, {Marker, GeolocateControl, LinearInterpolator, FlyToInterpolator} from 'react-map-gl';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_VIEWPORT } from '../../../state/constants'
+import { UPDATE_VIEWPORT, UPDATE_LISTING } from '../../../state/constants'
 
 const TOKEN = 'pk.eyJ1Ijoid2psaW0iLCJhIjoiY2plNGtpMXFpNmw3ZTMzcXA4a3l1NmdwOSJ9.2Ou7bageJ-DCfiASBrV5HA';
 
@@ -27,8 +27,11 @@ export default function Map() {
   const dispatch = useDispatch()
   const viewport = useSelector(state => state.viewportReducer.viewport)
   const category = useSelector(state => state.categoryReducer)
+  const data = useSelector(state => state.categoryReducer.dialysis)
   const activeListing = useSelector(state => state.listingReducer.activeListing)
-  const activeCounty = category.activeCounty
+  const activeCounty = useSelector(state => state.categoryReducer.activeCounty)
+
+  const size = 20;
   
   // useEffect(() => console.log(category), [category])
   // useEffect(() => console.log(activeListing))
@@ -74,17 +77,20 @@ export default function Map() {
 
 
   function compileMarkers() {
-    let data = category.data.dialysis;
-    if (data != null) {
+    if (data.length !== 0) {
       if (Object.keys(activeListing).length !== 0) {
         return (
           <Marker
             latitude={activeListing.latitude}
             longitude={activeListing.longitude}
-            offsetLeft={-12}
-            offsetRight={-24}
+            // offsetLeft={-12}
+            // offsetTop={-24}
           >
-            <svg style={{...pinStyle}}>
+            <svg 
+              height={size}
+              viewBox="0 0 24 24"
+              style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
+              >
               <path d={ICON}></path>
             </svg>
           </Marker>
@@ -109,15 +115,19 @@ export default function Map() {
       let raw = object.Location;
       let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
       let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
+      let listing = {...object, latitude: lat, longitude: long}
       return (
         <Marker
           key={index}
           latitude={lat}
           longitude={long}
-          offsetLeft={-12}
-          offsetRight={-24}
         >
-          <svg style={{...pinStyle}}>
+          <svg 
+            height={size}
+            viewBox="0 0 24 24"
+            style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
+            onClick={() => dispatch({type: UPDATE_LISTING, payload: listing})}
+          >
             <path d={ICON}></path>
           </svg>
         </Marker>
