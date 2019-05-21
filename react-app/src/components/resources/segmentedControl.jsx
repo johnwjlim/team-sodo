@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { SET_COUNTY } from "../../state/constants"
+import { SET_COUNTY, SET_KING, RESET_VIEWPORT, SET_SNOHOMISH, SET_PIERCE } from "../../state/constants"
 
 const Container = styled.section`
   display: flex;
@@ -16,9 +16,13 @@ const StyledLink = styled.a`
 
 const ControlTitle = styled.h4`
   margin: 0;
-  color: ${props => props.active ? "#333333" : "#767676" };
-  font-weight: ${props => props.active? "500" : "400"};
-  border-bottom: ${props => props.active ? "solid 1px #333333" : "none"};
+  color: ${props => props.active ? "#000000" : "#767676" };
+  font-weight: ${props => props.active? "400" : "400"};
+  border-bottom: ${props => props.active ? "solid 1px #000000" : "none"};
+
+  &:hover {
+    color: #333333;
+  }
 `;
 
 export default function Control() {
@@ -28,6 +32,15 @@ export default function Control() {
   function setActive(data) {
     let newCounty = data.toUpperCase();
     dispatch({type: SET_COUNTY, payload: newCounty } )
+    if (newCounty === "ALL") {
+      dispatch({type: RESET_VIEWPORT})
+    } else if (newCounty === "KING") {
+      dispatch({type: SET_KING})
+    } else if (newCounty === "SNOHOMISH") {
+      dispatch({type: SET_SNOHOMISH})
+    } else if (newCounty === "PIERCE") {  
+      dispatch({type: SET_PIERCE})
+    }
   }
 
   function manipulation(string) {
