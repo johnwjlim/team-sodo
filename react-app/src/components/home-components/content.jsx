@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import JoseRizal from '../../images/jose-rizal.jpg';
 import Viaduct from '../../images/viaduct.jpg'
-
+import ContactGrid from './contactGrid';
 import ImageGrid from './imageGrid';
 
 const Background = styled.div`
@@ -20,7 +20,7 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  max-width: 40em;
+  max-width: 50em;
   margin: 2em auto;
 `;
 
@@ -47,21 +47,36 @@ const Image = styled.img`
   border-radius: 4px;
 `;
 
+const ContactSection = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding-left: 2.2rem;
+
+
+`;
+
 function Content() {
   return (
     <Background>
       <Container>
         <Box>
-          <p>The Regional Alliance for Resilient and Equitable Transportation is a coalition of non-profit and government agencies from King, Snohomish and Pierce counties.  RARET works with special needs transportation providers (think paratransit vehicles) to find ways to supplement the system in event of a major emergency, such as an earthquake, fire, or flooding</p>
-          <Header>What we're building</Header>
-          <p>We're creating and piloting a central repository of road conditions to provide a one-stop-shop of transportation conditions and situational awareness in the central Puget Sound region.</p>
-          <ImageWrapper>
-            <Image src={JoseRizal}></Image>
-            <Image src={Viaduct} />
-          </ImageWrapper>
-          <Header>The Team</Header>
-          <p>We're a diverse group of problem solvers that each bring our own unique skillsets and perspectives to the table.</p>
-          <ImageGrid />
+          <Header>RARET Workgroup</Header>
+          <p> The Regional Alliance for Resilient and Equitable Transportation (RARET) workgroup works to increase the life-sustaining transportation services available to seniors, people with disabilities,
+            low-income individuals, and other vulnerable populations in the event of a major emergency such as a natural or man-made disaster, severe weather event, or terrorist incident. It will increase the
+            preparedness and ability of special needs transportation providers to assist in the evacuation of special needs populations, transportation to emergency shelters, and/or maintaining access to
+            life-sustaining medical services and other necessary trips.</p>
+          <p> The ultimate goal of the project is to expand the network of special needs vehicles and resources available to the community to supplement the transit systems and to alleviate pressure on our
+            emergency response fleet.</p>
+          <p> If you are interested in joining the workgroup or attending a meeting, please contact:</p>
+          <br/>
+          <hr width="50%" align="center" padding-right="1rem"></hr>
+        
+          <ContactSection>
+            
+            <ContactGrid />
+          </ContactSection>
+
+      
         </Box>
       </Container>
     </Background>
