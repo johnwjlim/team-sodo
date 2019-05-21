@@ -1,7 +1,7 @@
-import UPDATE_LISTING from "../constants"
+import { UPDATE_LISTING, RESET_LISTING } from "../constants"
 
 const initialState = {
-  activeListing: {}
+  activeListing: {},
 }
 
 const listingReducer = (state = initialState, action) => {
@@ -16,6 +16,8 @@ const listingReducer = (state = initialState, action) => {
         ...state,
         activeListing: {}
       }
+    default: 
+      return state
   }
 }
 

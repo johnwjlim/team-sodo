@@ -8,8 +8,8 @@ const Header = styled.h2`
 `;
 
 const Subtitle = styled.h4`
-  font-weight: 400;
   margin: 0;
+  font-weight: 400;
 `;
 
 function Title() {

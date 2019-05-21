@@ -1,10 +1,11 @@
-import UPDATE_VIEWPORT from "../constants"
+import { UPDATE_VIEWPORT } from "../constants"
+import { RESET_VIEWPORT } from "../constants"
 
 const initialState = {
   viewport: {
     longitude: -122.3,
-    latitude: 47.6,
-    zoom: 9, 
+    latitude: 47.5,
+    zoom: 8.4, 
     width: "100vw",
     height: "100vh"
   }
@@ -17,9 +18,14 @@ const viewportReducer = (state = initialState, action) => {
         ...state,
         viewport: action.payload
       }
-      default:
-        return state;
+    case RESET_VIEWPORT:
+      return {
+        ...state,
+        viewport: initialState.viewport
+      }
+    default:
+      return state;
   }
 }
 
-export default viewportReducer;
+export default viewportReducer; 

@@ -2,6 +2,9 @@ import React, { Component, useState, useEffect } from 'react';
 import styled from 'styled-components'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import firebase from "../../firebase";
+import { useSelector, useDispatch } from 'react-redux'
+import { RESET_LISTING } from '../../state/constants'
+
 
 import "firebase/auth";
 import 'firebase/database';
@@ -9,37 +12,31 @@ import 'firebase/database';
 
 import Header from '../../components/resources/test-header';
 import SEO from '../../components/seo';
-
-
-import Title from '../../components/resources/title'
-import Map from '../../components/resources/resource-map'
+import Map from '../../components/resources/dialysis/dialysis-map'
+import Panel from '../../components/resources/dialysis/dialysis-panel'
 
 import { getDialysisData, getCancerData, getEMContacts } from '../../components/resources/parse'
-
-const HelloWorld =  'https://us-central1-raret-757bc.cloudfunctions.net/helloWorld'
-const parseDialysis = 'https://us-central1-raret-757bc.cloudfunctions.net/parseDialysis'
 
 const Container = styled.div`
   display: flex;
 `;
-
-const Panel = styled.div`
-  position: relative;
-  height: 100%;
-  width: 23em;
-  z-index: 1;
-  background-color: white;
-  padding: 1.5em;
-  flex-shrink: 0;
-`;
-
 
 export default function Resources() {
   const [dialysis, setDialysis] = useState([]);
   const [cancer, setCancer] = useState([]);
   const [emContact, setEmContact] = useState([]);
 
+  /**
+   * Firebase Database Root Reference
+   */
   const rootRef = firebase.database().ref();
+
+  /**
+   * Redux selectors and dispatch 
+   */
+  const dispatch = useDispatch();
+  const activeCategory = useSelector(state => state.categoryReducer.activeCategory)
+  const activeData = useSelector(state => state.categoryReducer.data[activeCategory])
 
   useEffect(() => {
     async function fetchData() {
@@ -52,34 +49,17 @@ export default function Resources() {
 
       rootRef.once('value')
         .then(((snapshot) => {
-          let cancerDatabase = snapshot.child("cancer").val();
-          if (arraysMatch(cancerDatabase, cancerData)) {
-            console.log("arrays match!");
-          } else {
-            console.log("arrays do not match!");
-          }
+          dispatch({type: "SET_DATA", payload: snapshot.val()});
         }))
 
-      // rootRef.set({dialysis: dialysisData, cancer: cancerData, em: emContactData})
-      //   .then(() => console.log("set succeeded"));
-
     }
-    // function callCloudFunction() {
-    //   fetch(parseDialysis) 
-    //     .then(data => {
-    //       return data.json();
-    //     })
-    //     .then(object => {
-    //       console.log(object);
-    //     })
-    // }
     fetchData();
+    dispatch({type: RESET_LISTING})
   }, [])
 
   useEffect(() => {
-    // console.log(dialysis);
-    // console.log(cancer);
-    // console.log(emContact);
+    // console.log(activeCategory);
+    // console.log(activeData);
   })
 
   function arraysMatch(arr1, arr2) {
@@ -105,15 +85,12 @@ export default function Resources() {
 
   return (
     <>
-    <SEO title="Resources"/>
-    <Header />
-    <Container>
-      <Panel>
-        <Title/>
-        {loadChecker()}
-      </Panel>
-      <Map />
-    </Container>
+      <SEO title="Dialysis Centers"/>
+      <Header />
+      <Container>
+        <Panel />
+        <Map />
+      </Container>
     </>
   )
 }

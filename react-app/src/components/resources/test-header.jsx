@@ -30,8 +30,8 @@ const Title =  styled(Link)`
   font-family: neue-haas-unica;
   text-decoration: none;
   font-weight: 600;
-  font-size: 28px;
-  letter-spacing: 5px;
+  font-size: 26px;
+  letter-spacing: 6px;
   color: #333333;
 `;
 
@@ -46,7 +46,7 @@ const Links = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  font-family: neue-haas-unica;
+  // font-family: neue-haas-unica;
   text-decoration: none;
   font-size: 16px;
   margin-left: 2.5rem;  

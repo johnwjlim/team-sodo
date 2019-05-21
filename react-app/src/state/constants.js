@@ -1,8 +1,12 @@
-/**
- * Reducers
- */
 
-export const UPDATE_VISIBILITY = "UPDATE_VIEWPORT";
+
+export const UPDATE_VIEWPORT = "UPDATE_VIEWPORT"
 export const UPDATE_LISTING = "UPDATE_LISTING"
 export const RESET_LISTING = "RESET_LISTING"
+export const RESET_VIEWPORT = "RESET_VIEWPORT"
+export const UPDATE_ACTIVE = "UPDATE_ACTIVE"
+export const SET_DATA = "SET_DATA"
+export const SET_DIALYSIS = "SET_DIALYSIS"
+export const SET_COUNTY = "SET_COUNTY"
+
 
