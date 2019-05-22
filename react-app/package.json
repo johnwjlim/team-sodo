@@ -10,6 +10,7 @@
     "@reach/router": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
     "firebase": "^6.0.2",
+    "google-map-react": "^1.1.4",
     "i": "^0.3.6",
     "npm": "^6.9.0",
     "papaparse": "^4.6.3",

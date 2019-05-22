@@ -34,7 +34,7 @@ class App extends Component {
           <EMContacts path="/em-contacts"/>
           <Example path="/example" />
           <Transitions path="/transitions"/>
-          {/* <Test path="/test" /> */}
+          <Test path="/test" />
         </Router>
       </Container>
     );

@@ -65,7 +65,7 @@ export default function Dialysis() {
           // doesn't actually do anything yet
           appendData()
         }
-        dispatch({type: "SET_DIALYSIS_DATA", payload: value})
+        // dispatch({type: "SET_DIALYSIS_DATA", payload: value})
       })
     }
     fetchData();
