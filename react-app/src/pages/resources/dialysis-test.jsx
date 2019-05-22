@@ -17,6 +17,10 @@ import Panel from '../../components/resources/dialysis/dialysis-panel'
 
 import { getDialysisData, getCancerData, getEMContacts } from '../../components/resources/parse'
 
+const TOKEN = 'pk.eyJ1Ijoid2psaW0iLCJhIjoiY2plNGtpMXFpNmw3ZTMzcXA4a3l1NmdwOSJ9.2Ou7bageJ-DCfiASBrV5HA';
+const mbxGeocode = require('@mapbox/mapbox-sdk/services/geocoding');
+const geocodeService = mbxGeocode({ accessToken: TOKEN });
+
 const Container = styled.div`
   display: flex;
 `;
@@ -41,7 +45,6 @@ export default function Dialysis() {
     dispatch({type: RESET_LISTING})
   },[])
 
-
   useEffect(() => {
     async function fetchData() {
       let dialysisData = await getDialysisData();
@@ -49,30 +52,53 @@ export default function Dialysis() {
         return object.facilityName
       })
 
-      // ref.once('value')
-      //   .then(((snapshot) => {
-      //     let value = snapshot.val()
-      //     dispatch({type: "SET_DIALYSIS_DATA", payload: value});
-      //   }))
-      ref.on('value', snapshot => {
+      ref.on('value', async snapshot => {
         let value = snapshot.val()
         let databaseKeys = value.map((object) => {
           return object.facilityName
         })
-
-        // check keys
         if (arraysMatch(parsedKeys, databaseKeys)) {
-          // check coordinates
+          let array = await checkCoordinates(value)
+          ref.set(array)
           dispatch({type: "SET_DIALYSIS_DATA", payload: value})
         } else {
-          // append and set new items
+          // doesn't actually do anything yet
+          appendData()
         }
+        dispatch({type: "SET_DIALYSIS_DATA", payload: value})
       })
     }
     fetchData();
   },[])
 
+  function appendData() {
 
+  }
+
+  async function requestCoordinates(string) {
+    return await geocodeService.forwardGeocode({
+      query: string,
+      limit: 1
+    })
+    .send()
+    .then(response => {
+      return response.body.features[0].center
+    })
+  }
+
+  async function checkCoordinates(data) {
+    return await Promise.all(data.map(async (object) => {
+      if (!object.hasOwnProperty('coords')) {
+        let query = object.addressLine1 + " " + object.Zip
+        let coordinates = await requestCoordinates(query)
+        console.log("if")
+        return {...object, coords: coordinates}
+      } else {
+        console.log("else")
+        return object
+      }
+    }))
+  }
 
   function handleData(parsedArray, databaseArray) {
     if (arraysMatch(databaseArray, parsedArray)) {

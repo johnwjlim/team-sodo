@@ -13,7 +13,7 @@ import EMContacts from './pages/resources/em-contacts'
 import Home from './pages/home'
 import Example from './pages/example'
 import Transitions from './pages/roadAlerts/transitions'
-import Test from './pages/resources/dialysis-test'
+import Test from './pages/roadAlerts/test'
 
 const Container = styled.div`
   background-color: #ffffff;
@@ -34,7 +34,7 @@ class App extends Component {
           <EMContacts path="/em-contacts"/>
           <Example path="/example" />
           <Transitions path="/transitions"/>
-          <Test path="/test" />
+          {/* <Test path="/test" /> */}
         </Router>
       </Container>
     );

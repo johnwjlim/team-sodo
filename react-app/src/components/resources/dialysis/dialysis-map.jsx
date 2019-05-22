@@ -36,9 +36,10 @@ export default function Map() {
   // useEffect(() => console.log(category), [category])
   // useEffect(() => console.log(activeListing))
   // useEffect(() => console.log(viewport))
+  // useEffect(() => console.log(data))
   useEffect(() => {
     if (Object.keys(activeListing).length !== 0) {
-      _goToViewport(activeListing.longitude, activeListing.latitude)
+      _goToViewport(activeListing.coords[0], activeListing.coords[1])
     }
   },[activeListing])
   
@@ -81,8 +82,8 @@ export default function Map() {
       if (Object.keys(activeListing).length !== 0) {
         return (
           <Marker
-            latitude={activeListing.latitude}
-            longitude={activeListing.longitude}
+            latitude={activeListing.coords[1]}
+            longitude={activeListing.coords[0]}
             // offsetLeft={-12}
             // offsetTop={-24}
           >
@@ -113,8 +114,11 @@ export default function Map() {
   function renderMarkers(data) {
     return data.map((object, index) => {
       let raw = object.Location;
-      let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
-      let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
+      // let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
+      // let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
+      let lat = object.coords[1]
+      let long = object.coords[0]
+      // console.log(object.coords[0])
       let listing = {...object, latitude: lat, longitude: long}
       return (
         <Marker
@@ -126,7 +130,7 @@ export default function Map() {
             height={size}
             viewBox="0 0 24 24"
             style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
-            onClick={() => dispatch({type: UPDATE_LISTING, payload: listing})}
+            onClick={() => dispatch({type: UPDATE_LISTING, payload: object})}
           >
             <path d={ICON}></path>
           </svg>
@@ -143,13 +147,13 @@ export default function Map() {
         {...settings}
         onViewportChange={_onViewportChange}
       >
-        <GeolocateStyle>
+        {/* <GeolocateStyle>
           <GeolocateControl 
             onViewportChange={_onViewportChange}
             positionptions={{enableHighAccuracy: true}}
             trackUserLocation={true}
           />
-        </GeolocateStyle>
+        </GeolocateStyle> */}
         {compileMarkers()}
       </ReactMapGL>
   )
