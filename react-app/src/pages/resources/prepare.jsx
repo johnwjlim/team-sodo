@@ -148,6 +148,42 @@ display:flex;
 justify-content:space-around;
 `;
 
+/**
+ * Sorry I had to move your styles.css page to the React component. 
+ * It was getting applied globally and affecting everything else otherwise.
+ */
+
+const StyledImage = styled.img`
+  padding-top: 1%;
+
+  object-fit: cover;
+  width: 95%;
+  height: 20rem;
+`
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+
+const StyledLink = styled.a`
+  text-decoration: none;
+  color: rgb(74, 37, 155);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visitied {
+    color: rgb(114, 104, 136);
+  }
+`;
+
+const Text = styled.p`
+  font-size: 1.2rem;
+`
+
 class Prepare extends React.Component {
 
     constructor(props) {
@@ -174,106 +210,106 @@ class Prepare extends React.Component {
                         <Header3>County Emergency Alert Systems  </Header3>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <p><a href="" target="_blank">RARET Regional Road Closure Tool -- need link!</a></p>
-                        <p><a href="https://public.coderedweb.com/CNE/en-US/BF0D5C5CC09C" target="_blank">King County</a></p>
-                        <p><a href="https://www.piercecountywa.org/921/Pierce-County-ALERT" target="_blank">Pierce County</a></p>
-                        <p><a href="http://public.alertsense.com/SignUp/public.aspx?regionid=1129" target="_blank">Snohomish County</a></p>
-                        <p><a href="http://www.snoco.org/App4/SPW/pwapp/roads/emclosure/index.html" target="_blank">Snohomish County Road Closures</a></p>
-                        <p><a href="https://www.wsdot.com/traffic/trafficalerts/pugetsound.aspx" target="_blank">Washington State Traffic Alerts</a></p>
+                        <Text><StyledLink href="" target="_blank">RARET Regional Road Closure Tool -- need link!</StyledLink></Text>
+                        <Text><StyledLink href="https://public.coderedweb.com/CNE/en-US/BF0D5C5CC09C" target="_blank">King County</StyledLink></Text>
+                        <Text><StyledLink href="https://www.piercecountywa.org/921/Pierce-County-ALERT" target="_blank">Pierce County</StyledLink></Text>
+                        <Text><StyledLink href="http://public.alertsense.com/SignUp/public.aspx?regionid=1129" target="_blank">Snohomish County</StyledLink></Text>
+                        <Text><StyledLink href="http://www.snoco.org/App4/SPW/pwapp/roads/emclosure/index.html" target="_blank">Snohomish County Road Closures</StyledLink></Text>
+                        <Text><StyledLink href="https://www.wsdot.com/traffic/trafficalerts/pugetsound.aspx" target="_blank">Washington State Traffic Alerts</StyledLink></Text>
                         <br /><br /><br /><br />
 
                         <Header3>City Emergency Alert Systems  </Header3>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <p><a href="https://www.smart911.com/smart911/registration/registrationLanding.action?cdnExternalPath=" target="_blank">Seattle</a></p>
-                        <p><a href="https://tacomawa.my.gov-i.com/signup" target="_blank">Tacoma</a></p>
-                        <p><a href="https://everettwa.gov/list.aspx?ListID=169" target="_blank">Everett</a></p>
+                        <Text><StyledLink href="https://www.smart911.com/smart911/registration/registrationLanding.action?cdnExternalPath=" target="_blank">Seattle</StyledLink></Text>
+                        <Text><StyledLink href="https://tacomawa.my.gov-i.com/signup" target="_blank">Tacoma</StyledLink></Text>
+                        <Text><StyledLink href="https://everettwa.gov/list.aspx?ListID=169" target="_blank">Everett</StyledLink></Text>
                         <br /><br /><br /><br />
 
                         <Header3>County Emergency Management Departments </Header3>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <p><a href="http://snohomishcountywa.gov/180/Emergency-Management" target="_blank">Snohomish County Emergency Management</a></p>
-                        <p><a href="http://www.kingcounty.gov/depts/emergency-management.aspx" target="_blank">King County Emergency Management</a></p>
-                        <p><a href="https://www.co.pierce.wa.us/Index.aspx?NID=104" target="_blank">Pierce County Emergency Management</a></p>
+                        <Text><StyledLink href="http://snohomishcountywa.gov/180/Emergency-Management" target="_blank">Snohomish County Emergency Management</StyledLink></Text>
+                        <Text><StyledLink href="http://www.kingcounty.gov/depts/emergency-management.aspx" target="_blank">King County Emergency Management</StyledLink></Text>
+                        <Text><StyledLink href="https://www.co.pierce.wa.us/Index.aspx?NID=104" target="_blank">Pierce County Emergency Management</StyledLink></Text>
                         <br /><br /><br /><br />
 
-                        <Header3>Take Weather By a Storm</Header3>
+                        <Header3>Take Weather By StyledLink Storm</Header3>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <p><a href="http://takewinterbystorm.org/" target="_blank">Take Winter by Storm</a> is a winter weather preparedness resource for all of Western Washington. Washington State has many
-                            hazards including heavy winds, earthquakes, freezing temperatures, and flooding. Check out the <a href="http://takewinterbystorm.org/" target="_blank">Take Winter by Storm</a> website
-                            to learn what the most relevant threats are in your area. Then, use the <a href="https://www.hopelink.org/sites/default/files/Know%20Your%20Hazards.docx" target="_blank">Know Your Hazards</a> document
-                            to create a plan.</p>
+                        <Text><StyledLink href="http://takewinterbystorm.org/" target="_blank">Take Winter by Storm</StyledLink> is StyledLink winter weather preparedness resource for all of Western Washington. Washington State has many
+                            hazards including heavy winds, earthquakes, freezing temperatures, and flooding. Check out the <StyledLink href="http://takewinterbystorm.org/" target="_blank">Take Winter by Storm</StyledLink> website
+                            to learn what the most relevant threats are in your area. Then, use the <StyledLink href="https://www.hopelink.org/sites/default/files/Know%20Your%20Hazards.docx" target="_blank">Know Your Hazards</StyledLink> document
+                            to create StyledLink plan.</Text>
                         <br /><br /><br /><br />
 
                         <Header3>All Hazards Preparedness</Header3>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <p>The <a href="https://www.hopelink.org/sites/default/files/Washington%20Hazards.pdf" target="_blank">Washington Hazards</a> document provides preparation and response tips to Washington’s most
-                            common hazards. Additional resources for <a href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Flooding_0.pdf" target="_blank">Flooding</a>, <a href=
-                                "https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Heavy%20Wind.pdf" target="_blank"> Heavy Wind</a> , and  <a href=
-                                    "https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Freezing%20Temps.pdf" target="_blank">Freezing Temperatures</a>.</p>
+                        <Text>The <StyledLink href="https://www.hopelink.org/sites/default/files/Washington%20Hazards.pdf" target="_blank">Washington Hazards</StyledLink> document provides preparation and response tips to Washington’s most
+                            common hazards. Additional resources for <StyledLink href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Flooding_0.pdf" target="_blank">Flooding</StyledLink>, <StyledLink href=
+                                "https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Heavy%20Wind.pdf" target="_blank"> Heavy Wind</StyledLink> , and  <StyledLink href=
+                                    "https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Freezing%20Temps.pdf" target="_blank">Freezing Temperatures</StyledLink>.</Text>
                         <br /><br /><br /><br />
 
                         <Header3>All Hazards Preparedness Resources</Header3>
                         <Bar></Bar>
                         <br /><br /><br />
                         <CenterLinks>
-                            <p><a href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-English.pdf" target="_blank">English</a>
-                            </p><p>  |  </p><p><a href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Korean.pdf" target="_blank">Korean</a>
-                            </p><p>  |  </p><p><a href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Russian.pdf" target="_blank">Russian</a>
-                            </p><p>  |  </p><p><a href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Spanish.pdf" target="_blank">Spanish</a>
-                            </p><p>  |  </p><p><a href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Tagalog.pdf" target="_blank">Tagalog</a>
-                            </p><p>  |  </p><p><a href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Chinese.pdf" target="_blank">Chinese</a>
-                            </p><p>  |  </p><p><a href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Vietnamese.pdf" target="_blank">Vietnamese</a>
-                            </p>
+                            <Text><StyledLink href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-English.pdf" target="_blank">English</StyledLink>
+                            </Text><Text>  |  </Text><Text><StyledLink href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Korean.pdf" target="_blank">Korean</StyledLink>
+                            </Text><Text>  |  </Text><Text><StyledLink href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Russian.pdf" target="_blank">Russian</StyledLink>
+                            </Text><Text>  |  </Text><Text><StyledLink href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Spanish.pdf" target="_blank">Spanish</StyledLink>
+                            </Text><Text>  |  </Text><Text><StyledLink href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Tagalog.pdf" target="_blank">Tagalog</StyledLink>
+                            </Text><Text>  |  </Text><Text><StyledLink href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Chinese.pdf" target="_blank">Chinese</StyledLink>
+                            </Text><Text>  |  </Text><Text><StyledLink href="https://www.hopelink.org/sites/default/files/All-Hazard-WA-State-Vietnamese.pdf" target="_blank">Vietnamese</StyledLink>
+                            </Text>
                             <br /><br />
                         </CenterLinks>
-                        <p>Personal and family preparedness is one of the most important things. If your employees are prepared at home, they are more likely to come to work. You should encourage your employees
-                                to create a <a href="https://www.hopelink.org/sites/default/files/Family%20Emegency%20Plan.pdf" target="_blank">Family Emergency Plan</a> and know <a href=
-                                "https://www.hopelink.org/sites/default/files/Alternative%20Routes%20to%20Work.docx" target="_blank">Alternative Routes to Work</a> .</p>
+                        <Text>Personal and family preparedness is one of the most important things. If your employees are prepared at home, they are more likely to come to work. You should encourage your employees
+                                to create StyledLink <StyledLink href="https://www.hopelink.org/sites/default/files/Family%20Emegency%20Plan.pdf" target="_blank">Family Emergency Plan</StyledLink> and know <StyledLink href=
+                                "https://www.hopelink.org/sites/default/files/Alternative%20Routes%20to%20Work.docx" target="_blank">Alternative Routes to Work</StyledLink> .</Text>
                         <br /><br /><br /><br />
 
                         <Header4>Additional Preparedness Resources</Header4>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <p><a href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20EmergencyChecklist.pdf" target="_blank">Emergency Checklist</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Clothing%20and%20Bedding.pdf" target="_blank">Clothing and Bedding </a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Emergency%20Financial%20Documents.pdf" target="_blank">Emergency Financial Documents</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Equipment%20and%20Tools.pdf" target="_blank">Equipment and Tools</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Food.pdf" target="_blank">Food</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Medications.docx" target="_blank">Medications</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Neighborhood%20Contact.docx" target="_blank">Neighborhood Contact</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Pet%20Emergency%20Supplies%20and%20Traveling%20Kit.docx" target="_blank">Pet Emergency Supplies and Traveling Kit</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Preparing%20Children%20for%20Emergencies.pdf" target="_blank">Preparing Children for Emergencies</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Preparing%20Seniors%20for%20Emergencies.docx" target="_blank">Preparing Seniors for Emergencies</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Public%20Safety%20Locations.docx" target="_blank">Public Safety Locations</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Sanitation%20and%20Hygiene%20Supplies.docx" target="_blank">Sanitation and Hygiene Supplies</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Water.pdf" target="_blank">Water</a></p>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20EmergencyChecklist.pdf" target="_blank">Emergency Checklist</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Clothing%20and%20Bedding.pdf" target="_blank">Clothing and Bedding </StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Emergency%20Financial%20Documents.pdf" target="_blank">Emergency Financial Documents</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Equipment%20and%20Tools.pdf" target="_blank">Equipment and Tools</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Food.pdf" target="_blank">Food</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Medications.docx" target="_blank">Medications</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Neighborhood%20Contact.docx" target="_blank">Neighborhood Contact</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Pet%20Emergency%20Supplies%20and%20Traveling%20Kit.docx" target="_blank">Pet Emergency Supplies and Traveling Kit</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Preparing%20Children%20for%20Emergencies.pdf" target="_blank">Preparing Children for Emergencies</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Preparing%20Seniors%20for%20Emergencies.docx" target="_blank">Preparing Seniors for Emergencies</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Public%20Safety%20Locations.docx" target="_blank">Public Safety Locations</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Sanitation%20and%20Hygiene%20Supplies.docx" target="_blank">Sanitation and Hygiene Supplies</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Water.pdf" target="_blank">Water</StyledLink></Text>
                         <br /> <br />
-                        <p><b>Driving or taking public transit in the winter can be tricky. Below is a list of resources to help you navigate the winter weather.</b></p>
+                        <Text><b>Driving or taking public transit in the winter can be tricky. Below is StyledLink list of resources to help you navigate the winter weather.</b></Text>
                         <br />
-                        <p><a href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Driving%20Brochure.pdf" target="_blank">WSDOT Driving Brochure</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Transit.pdf" target="_blank">Transit</a></p>
-                        <p><a href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Winter%20Driving.pdf" target="_blank">Winter Driving</a></p>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Driving%20Brochure.pdf" target="_blank">WSDOT Driving Brochure</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Transit.pdf" target="_blank">Transit</StyledLink></Text>
+                        <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Winter%20Driving.pdf" target="_blank">Winter Driving</StyledLink></Text>
                         <br /><br /><br /><br />
 
                         <Header5>Other Resources</Header5>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <p><a href="http://makeitthrough.org/" target="_blank">What to do to make it through</a>  <b>|</b>  <a href="http://makeitthrough.org/translated-materials/" target="_blank">Translated materials</a></p>
-                        <p><a href="http://www.weather.gov/ilm/mobile" target="_blank">Sign up to receive NWS severe weather alerts</a></p>
-                        <p><a href="https://www.ready.gov/" target="_blank">FEMAs Ready Program</a>  <b>|</b> <a href="https://www.ready.gov/individuals-access-functional-needs" target="_blank">Preparedness information for People with Disabilities and others with access and functional needs </a></p>
+                        <Text><StyledLink href="http://makeitthrough.org/" target="_blank">What to do to make it through</StyledLink>  <b>|</b>  <StyledLink href="http://makeitthrough.org/translated-materials/" target="_blank">Translated materials</StyledLink></Text>
+                        <Text><StyledLink href="http://www.weather.gov/ilm/mobile" target="_blank">Sign up to receive NWS severe weather alerts</StyledLink></Text>
+                        <Text><StyledLink href="https://www.ready.gov/" target="_blank">FEMAs Ready Program</StyledLink>  <b>|</b> <StyledLink href="https://www.ready.gov/individuals-access-functional-needs" target="_blank">Preparedness information for People with Disabilities and others with access and functional needs </StyledLink></Text>
                         <br /><br /><br /><br />
 
                         <Header5>Data Tools & Data Maps</Header5>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <p><a href="https://svi.cdc.gov/map.aspx?txtzipcode=98409&btnzipcode=Submit" target="_blank">CDC Social Vulnerability Index Tool</a> </p>
-                        <p><a href="https://test-fortress.wa.gov/doh/newwtn/WTNIBL" target="_blank"> Washington Tracking Network (environmental public health data)</a> </p>
-                        <p>Data Mapping Tools - Know your community: <a href="http://www.phe.gov/empowermap/Pages/default.aspx" target="_blank"> Public Health emPOWER Maps show individuals who have power dependencies</a></p>
-                        <p><a href="https://www.dshs.wa.gov/sesa/research-and-data-analysis/maps" target="_blank">Dept. Social and Health Services Maps:</a> Includes maps on Limited English Proficient populations (by county) and locations of assisted living facilities, nursing homes and other care facilities.</p>
+                        <Text><StyledLink href="https://svi.cdc.gov/map.aspx?txtzipcode=98409&btnzipcode=Submit" target="_blank">CDC Social Vulnerability Index Tool</StyledLink> </Text>
+                        <Text><StyledLink href="https://test-fortress.wa.gov/doh/newwtn/WTNIBL" target="_blank"> Washington Tracking Network (environmental public health data)</StyledLink> </Text>
+                        <Text>Data Mapping Tools - Know your community: <StyledLink href="http://www.phe.gov/empowermap/Pages/default.aspx" target="_blank"> Public Health emPOWER Maps show individuals who have power dependencies</StyledLink></Text>
+                        <Text><StyledLink href="https://www.dshs.wa.gov/sesa/research-and-data-analysis/maps" target="_blank">Dept. Social and Health Services Maps:</StyledLink> Includes maps on Limited English Proficient populations (by county) and locations of assisted living facilities, nursing homes and other care facilities.</Text>
 
 
 
@@ -286,9 +322,9 @@ class Prepare extends React.Component {
 
 
 
-                <div className='imageContainer'>
-                    <img className='cover' src={coverImage} />
-                </div>
+                <ImageContainer>
+                    <StyledImage className='cover' src={coverImage} />
+                </ImageContainer>
             </div>
         );
     }

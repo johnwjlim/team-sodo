@@ -14,6 +14,7 @@ import Home from './pages/home'
 import Example from './pages/example'
 import Transitions from './pages/roadAlerts/transitions'
 import Test from './pages/roadAlerts/test'
+import Prepare from './pages/resources/prepare'
 
 const Container = styled.div`
   background-color: #ffffff;
@@ -35,6 +36,7 @@ class App extends Component {
           <Example path="/example" />
           <Transitions path="/transitions"/>
           <Test path="/test" />
+          <Prepare path="/prepare"/>
         </Router>
       </Container>
     );
