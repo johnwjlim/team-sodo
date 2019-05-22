@@ -87,6 +87,14 @@ class Resources extends React.Component {
             </CardBody>
           </Card>
         </StyledLink>
+        <StyledLink to='/prepare'>
+          <Card>
+            <CardBody>
+              <CardTitle>Preparation</CardTitle>
+              <FontAwesomeIcon icon="angle-right" size="2x" />
+            </CardBody>
+          </Card>
+        </StyledLink>
           </Container>
     </>
   }

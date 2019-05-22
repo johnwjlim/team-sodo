@@ -94,18 +94,12 @@ export default function SimpleMap() {
   
   useEffect(() => {
     async function fetchData() {
-      const data = await kingAlerts();
-      setKingDict(data);
+      const kingData = await kingAlerts();
+      const snohoData = await snohomishAlerts()
+      setKingDict(kingData);
+      setSnohoDict(snohoData)
     }
     fetchData();
-  }, [])
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await snohomishAlerts()
-      setSnohoDict(data)
-    }
-    fetchData()
   }, [])
 
   function createList(array) {

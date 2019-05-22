@@ -6,6 +6,9 @@ import Spinner from 'react-spinner-material';
 import Header from '../../components/header'
 import SEO from '../../components/seo'
 
+const proxyurl = "https://cors-anywhere.herokuapp.com/"
+const emSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/Tri-County-Emergency-Management-Resources.csv'
+
 const Container = styled.div`
   position: relative;
   z-index: 20;
@@ -57,7 +60,7 @@ min-height: 70vh;
 
 `;
 
-class EMcontacts extends React.Component {
+class EMContacts extends React.Component {
 
     constructor(props) {
         super(props);
@@ -170,7 +173,7 @@ class EMcontacts extends React.Component {
     }
 
     fetchCsv() {
-        return fetch('https://cors.io/?http://raw.githubusercontent.com/kelsiej/csv/master/Tri-County-Emergency-Management-Resources.csv').then(function (response) {
+        return fetch(emSource).then(function (response) {
             let reader = response.body.getReader();
             let decoder = new TextDecoder('utf-8');
 
@@ -280,6 +283,7 @@ class EMcontacts extends React.Component {
             dictArray.push(blah);
         }
         let currentCounty = this.state.currentCountyArray;
+   
 
         return (
             <div>
@@ -332,4 +336,4 @@ class EMcontacts extends React.Component {
         );
     }
 }
-export default EMcontacts;
+export default EMContacts;

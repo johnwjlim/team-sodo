@@ -6,11 +6,15 @@ import { UPDATE_LISTING } from '../../../state/constants'
 import SegmentedControl from '../segmentedControl'
 import Card from "../card"
 import Listing from "./listing"
+import Header from "./panel-header"
 
+const Wrap = styled.div`
+  display: block;
+`;
 
 const Container = styled.div`
   position: relative;
-  height: 100%;
+  height: 100vh;
   width: 23em;
   z-index: 1;
   background-color: white;
@@ -23,10 +27,12 @@ const Container = styled.div`
 
 const Title = styled.h2`
   margin: 0;
+  // margin-top: 1em
 `
 
 const Subtitle = styled.h4`
   font-weight: 400;
+  // margin-bottom: 2em;
 `
 
 const List = styled.ul`
@@ -78,11 +84,11 @@ export default function Panel() {
 
   function setActive(data) {
     let raw = data.Location;
-    let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
-    let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
+    let lat = data.coords[1]
+    let long = data.coords[0]
     let listing = {...data, latitude: lat, longitude: long}
-    console.log(listing);
-    dispatch({type: UPDATE_LISTING, payload: listing})
+    // console.log(listing);
+    dispatch({type: UPDATE_LISTING, payload: data})
     
   }
 
@@ -98,21 +104,24 @@ export default function Panel() {
 
 
   return (
-    <Container>
-      {
-        Object.keys(activeListing).length === 0 ? 
-        <>
-          <Title>Dialysis Centers</Title>
-          <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
-          <SegmentedControl />
-          <List>
-            {/* <Card /> */}
-            {compileList()}
-          </List> 
-        </>:
-        <Listing object={activeListing} />
-      }
-    </Container>
+    <Wrap>
+      <Header />
+      <Container>
+        {
+          Object.keys(activeListing).length === 0 ? 
+          <>
+            <Title>Dialysis Centers</Title>
+            <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
+            <SegmentedControl />
+            <List>
+              {/* <Card /> */}
+              {compileList()}
+            </List> 
+          </>:
+          <Listing object={activeListing} />
+        }
+      </Container>
+    </Wrap>
   )
 }
 

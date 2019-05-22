@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import firebase from "../../firebase";
 import { useSelector, useDispatch } from 'react-redux'
-import { RESET_LISTING } from '../../state/constants'
+import { RESET_LISTING, SET_COUNTY, RESET_VIEWPORT } from '../../state/constants'
 
 
 import "firebase/auth";
@@ -23,6 +23,8 @@ const geocodeService = mbxGeocode({ accessToken: TOKEN });
 
 const Container = styled.div`
   display: flex;
+  // height: 100vh;
+  overflow: hidden;
 `;
 
 export default function Dialysis() {
@@ -43,29 +45,31 @@ export default function Dialysis() {
 
   useEffect(() => {
     dispatch({type: RESET_LISTING})
+    dispatch({type: SET_COUNTY, payload: "ALL"})
+    dispatch({type: RESET_VIEWPORT})
   },[])
 
   useEffect(() => {
     async function fetchData() {
-      let dialysisData = await getDialysisData();
-      let parsedKeys = dialysisData.map((object, index) => {
-        return object.facilityName
-      })
+      // let dialysisData = await getDialysisData();
+      // let parsedKeys = dialysisData.map((object, index) => {
+      //   return object.facilityName
+      // })
 
       ref.on('value', async snapshot => {
         let value = snapshot.val()
         let databaseKeys = value.map((object) => {
           return object.facilityName
         })
-        if (arraysMatch(parsedKeys, databaseKeys)) {
-          let array = await checkCoordinates(value)
-          ref.set(array)
-          dispatch({type: "SET_DIALYSIS_DATA", payload: value})
-        } else {
-          // doesn't actually do anything yet
-          appendData()
-        }
-        // dispatch({type: "SET_DIALYSIS_DATA", payload: value})
+        // if (arraysMatch(parsedKeys, databaseKeys)) {
+        //   let array = await checkCoordinates(value)
+        //   ref.set(array)
+        //   dispatch({type: "SET_DIALYSIS_DATA", payload: value})
+        // } else {
+        //   // doesn't actually do anything yet
+        //   appendData()
+        // }
+        dispatch({type: "SET_DIALYSIS_DATA", payload: value})
       })
     }
     fetchData();
@@ -143,7 +147,7 @@ export default function Dialysis() {
   return (
     <>
       <SEO title="Dialysis Centers"/>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <Panel />
         <Map />

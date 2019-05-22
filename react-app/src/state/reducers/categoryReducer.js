@@ -4,6 +4,7 @@ const initialState = {
   data: {},
   activeCounty: "ALL",
   dialysis: [],
+  cancer: []
 }
 
 const categoryReducer = (state = initialState, action) => {
