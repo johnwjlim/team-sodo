@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import firebase from "../../firebase";
 import { useSelector, useDispatch } from 'react-redux'
-import { RESET_LISTING } from '../../state/constants'
+import { RESET_LISTING, SET_COUNTY } from '../../state/constants'
 
 
 import "firebase/auth";
@@ -43,6 +43,7 @@ export default function Dialysis() {
 
   useEffect(() => {
     dispatch({type: RESET_LISTING})
+    dispatch({type: SET_COUNTY, payload: "ALL"})
   },[])
 
   useEffect(() => {

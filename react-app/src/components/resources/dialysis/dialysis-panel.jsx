@@ -23,10 +23,12 @@ const Container = styled.div`
 
 const Title = styled.h2`
   margin: 0;
+  // margin-top: 1em
 `
 
 const Subtitle = styled.h4`
   font-weight: 400;
+  // margin-bottom: 2em;
 `
 
 const List = styled.ul`
@@ -78,11 +80,11 @@ export default function Panel() {
 
   function setActive(data) {
     let raw = data.Location;
-    let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
-    let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
+    let lat = data.coords[1]
+    let long = data.coords[0]
     let listing = {...data, latitude: lat, longitude: long}
-    console.log(listing);
-    dispatch({type: UPDATE_LISTING, payload: listing})
+    // console.log(listing);
+    dispatch({type: UPDATE_LISTING, payload: data})
     
   }
 
