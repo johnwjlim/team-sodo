@@ -6,11 +6,15 @@ import { UPDATE_LISTING } from '../../../state/constants'
 import SegmentedControl from '../segmentedControl'
 import Card from "../card"
 import Listing from "./listing"
+import Header from "./panel-header"
 
+const Wrap = styled.div`
+  display: block;
+`;
 
 const Container = styled.div`
   position: relative;
-  height: 100%;
+  height: 100vh;
   width: 23em;
   z-index: 1;
   background-color: white;
@@ -100,21 +104,24 @@ export default function Panel() {
 
 
   return (
-    <Container>
-      {
-        Object.keys(activeListing).length === 0 ? 
-        <>
-          <Title>Dialysis Centers</Title>
-          <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
-          <SegmentedControl />
-          <List>
-            {/* <Card /> */}
-            {compileList()}
-          </List> 
-        </>:
-        <Listing object={activeListing} />
-      }
-    </Container>
+    <Wrap>
+      <Header />
+      <Container>
+        {
+          Object.keys(activeListing).length === 0 ? 
+          <>
+            <Title>Dialysis Centers</Title>
+            <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
+            <SegmentedControl />
+            <List>
+              {/* <Card /> */}
+              {compileList()}
+            </List> 
+          </>:
+          <Listing object={activeListing} />
+        }
+      </Container>
+    </Wrap>
   )
 }
 

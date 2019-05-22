@@ -23,6 +23,8 @@ const geocodeService = mbxGeocode({ accessToken: TOKEN });
 
 const Container = styled.div`
   display: flex;
+  // height: 100vh;
+  overflow: hidden;
 `;
 
 export default function Dialysis() {
@@ -49,25 +51,25 @@ export default function Dialysis() {
 
   useEffect(() => {
     async function fetchData() {
-      let dialysisData = await getDialysisData();
-      let parsedKeys = dialysisData.map((object, index) => {
-        return object.facilityName
-      })
+      // let dialysisData = await getDialysisData();
+      // let parsedKeys = dialysisData.map((object, index) => {
+      //   return object.facilityName
+      // })
 
       ref.on('value', async snapshot => {
         let value = snapshot.val()
         let databaseKeys = value.map((object) => {
           return object.facilityName
         })
-        if (arraysMatch(parsedKeys, databaseKeys)) {
-          let array = await checkCoordinates(value)
-          ref.set(array)
-          dispatch({type: "SET_DIALYSIS_DATA", payload: value})
-        } else {
-          // doesn't actually do anything yet
-          appendData()
-        }
-        // dispatch({type: "SET_DIALYSIS_DATA", payload: value})
+        // if (arraysMatch(parsedKeys, databaseKeys)) {
+        //   let array = await checkCoordinates(value)
+        //   ref.set(array)
+        //   dispatch({type: "SET_DIALYSIS_DATA", payload: value})
+        // } else {
+        //   // doesn't actually do anything yet
+        //   appendData()
+        // }
+        dispatch({type: "SET_DIALYSIS_DATA", payload: value})
       })
     }
     fetchData();
@@ -145,7 +147,7 @@ export default function Dialysis() {
   return (
     <>
       <SEO title="Dialysis Centers"/>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <Panel />
         <Map />
