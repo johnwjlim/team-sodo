@@ -67,8 +67,6 @@ export default function Listing(props) {
   const dispatch = useDispatch()
   const county = useSelector(state => state.categoryReducer.activeCounty)
 
-  useEffect(() => console.log(props.object))
-
   function goBack() {
     dispatch({type: RESET_LISTING})
     // dispatch({type: RESET_VIEWPORT})

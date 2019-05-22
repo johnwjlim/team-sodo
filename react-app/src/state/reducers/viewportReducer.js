@@ -1,5 +1,4 @@
 import { UPDATE_VIEWPORT, RESET_VIEWPORT, SET_KING, SET_SNOHOMISH, SET_PIERCE } from "../constants"
-
 import { FlyToInterpolator } from 'react-map-gl'
 
 const initialState = {

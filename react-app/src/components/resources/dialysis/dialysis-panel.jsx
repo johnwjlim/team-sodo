@@ -18,6 +18,7 @@ const Container = styled.div`
   // height: 80vh;
   height: 100%;
   flex-shrink: 0;
+  padding-bottom: 0;
 `
 
 const Title = styled.h2`
@@ -50,7 +51,7 @@ const ListItem = styled.li`
 
 export default function Panel() {
   const activeCounty = useSelector(state => state.categoryReducer.activeCounty)
-  const data = useSelector(state => state.categoryReducer.data.dialysis)
+  const data = useSelector(state => state.categoryReducer.dialysis)
   const dispatch = useDispatch()
   const activeListing = useSelector(state => state.listingReducer.activeListing)
 
@@ -80,6 +81,7 @@ export default function Panel() {
     let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
     let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
     let listing = {...data, latitude: lat, longitude: long}
+    console.log(listing);
     dispatch({type: UPDATE_LISTING, payload: listing})
     
   }

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReactMapGL, {Marker, GeolocateControl, LinearInterpolator, FlyToInterpolator} from 'react-map-gl';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_VIEWPORT } from '../../../state/constants'
+import { UPDATE_VIEWPORT, UPDATE_LISTING } from '../../../state/constants'
 
 const TOKEN = 'pk.eyJ1Ijoid2psaW0iLCJhIjoiY2plNGtpMXFpNmw3ZTMzcXA4a3l1NmdwOSJ9.2Ou7bageJ-DCfiASBrV5HA';
 
@@ -27,15 +27,19 @@ export default function Map() {
   const dispatch = useDispatch()
   const viewport = useSelector(state => state.viewportReducer.viewport)
   const category = useSelector(state => state.categoryReducer)
+  const data = useSelector(state => state.categoryReducer.dialysis)
   const activeListing = useSelector(state => state.listingReducer.activeListing)
-  const activeCounty = category.activeCounty
+  const activeCounty = useSelector(state => state.categoryReducer.activeCounty)
+
+  const size = 20;
   
   // useEffect(() => console.log(category), [category])
   // useEffect(() => console.log(activeListing))
   // useEffect(() => console.log(viewport))
+  // useEffect(() => console.log(data))
   useEffect(() => {
     if (Object.keys(activeListing).length !== 0) {
-      _goToViewport(activeListing.longitude, activeListing.latitude)
+      _goToViewport(activeListing.coords[0], activeListing.coords[1])
     }
   },[activeListing])
   
@@ -74,17 +78,20 @@ export default function Map() {
 
 
   function compileMarkers() {
-    let data = category.data.dialysis;
-    if (data != null) {
+    if (data.length !== 0) {
       if (Object.keys(activeListing).length !== 0) {
         return (
           <Marker
-            latitude={activeListing.latitude}
-            longitude={activeListing.longitude}
-            offsetLeft={-12}
-            offsetRight={-24}
+            latitude={activeListing.coords[1]}
+            longitude={activeListing.coords[0]}
+            // offsetLeft={-12}
+            // offsetTop={-24}
           >
-            <svg style={{...pinStyle}}>
+            <svg 
+              height={size}
+              viewBox="0 0 24 24"
+              style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
+              >
               <path d={ICON}></path>
             </svg>
           </Marker>
@@ -107,17 +114,24 @@ export default function Map() {
   function renderMarkers(data) {
     return data.map((object, index) => {
       let raw = object.Location;
-      let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
-      let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
+      // let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
+      // let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
+      let lat = object.coords[1]
+      let long = object.coords[0]
+      // console.log(object.coords[0])
+      let listing = {...object, latitude: lat, longitude: long}
       return (
         <Marker
           key={index}
           latitude={lat}
           longitude={long}
-          offsetLeft={-12}
-          offsetRight={-24}
         >
-          <svg style={{...pinStyle}}>
+          <svg 
+            height={size}
+            viewBox="0 0 24 24"
+            style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
+            onClick={() => dispatch({type: UPDATE_LISTING, payload: object})}
+          >
             <path d={ICON}></path>
           </svg>
         </Marker>
@@ -133,13 +147,13 @@ export default function Map() {
         {...settings}
         onViewportChange={_onViewportChange}
       >
-        <GeolocateStyle>
+        {/* <GeolocateStyle>
           <GeolocateControl 
             onViewportChange={_onViewportChange}
             positionptions={{enableHighAccuracy: true}}
             trackUserLocation={true}
           />
-        </GeolocateStyle>
+        </GeolocateStyle> */}
         {compileMarkers()}
       </ReactMapGL>
   )

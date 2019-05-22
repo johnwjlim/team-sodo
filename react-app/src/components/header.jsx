@@ -65,6 +65,7 @@ class Header extends React.Component {
             <StyledLink to="/">About</StyledLink>
             <StyledLink to="/resources">Resources</StyledLink>
             <StyledLink to="/roadalerts">Road Alerts</StyledLink>
+            <StyledLink to="/test">Beta</StyledLink>
           </Links>
         </Container>
       </Wrap>
