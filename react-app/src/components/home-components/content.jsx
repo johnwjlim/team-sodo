@@ -58,8 +58,12 @@ const ContactSection = styled.div`
 function Content() {
   return (
     <Background>
+
       <Container>
+    
         <Box>
+          <br/>
+          <br/>
           <Header>RARET Workgroup</Header>
           <p> The Regional Alliance for Resilient and Equitable Transportation (RARET) workgroup works to increase the life-sustaining transportation services available to seniors, people with disabilities,
             low-income individuals, and other vulnerable populations in the event of a major emergency such as a natural or man-made disaster, severe weather event, or terrorist incident. It will increase the
@@ -67,9 +71,9 @@ function Content() {
             life-sustaining medical services and other necessary trips.</p>
           <p> The ultimate goal of the project is to expand the network of special needs vehicles and resources available to the community to supplement the transit systems and to alleviate pressure on our
             emergency response fleet.</p>
-          <p> If you are interested in joining the workgroup or attending a meeting, please contact:</p>
-          <br/>
-          <hr width="50%" align="center" padding-right="1rem"></hr>
+        
+          <br/><br/>
+          <hr width="50%" align="center" padding-right="1rem"></hr><br/><br/> <br/><p> If you are interested in joining the workgroup or attending a meeting, please contact:</p>
         
           <ContactSection>
             

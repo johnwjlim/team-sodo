@@ -57,7 +57,7 @@ min-height: 70vh;
 
 `;
 
-class EMcontacts extends React.Component {
+class EMContacts extends React.Component {
 
     constructor(props) {
         super(props);
@@ -280,6 +280,7 @@ class EMcontacts extends React.Component {
             dictArray.push(blah);
         }
         let currentCounty = this.state.currentCountyArray;
+   
 
         return (
             <div>
@@ -332,4 +333,4 @@ class EMcontacts extends React.Component {
         );
     }
 }
-export default EMcontacts;
+export default EMContacts;
