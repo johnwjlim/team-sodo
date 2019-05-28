@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components' 
 import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_LISTING } from '../../../state/constants'
+import { UPDATE_LISTING, SET_DIALYSIS_LISTING } from '../../../state/constants'
 
 import SegmentedControl from '../segmentedControl'
 import Card from "../card"
@@ -56,17 +56,17 @@ const ListItem = styled.li`
 
 
 export default function Panel() {
-  const activeCounty = useSelector(state => state.categoryReducer.activeCounty)
-  const data = useSelector(state => state.categoryReducer.dialysis)
+  const activeCounty = useSelector(state => state.dialysisReducer.activeCounty)
+  const data = useSelector(state => state.dialysisReducer.data)
   const dispatch = useDispatch()
-  const activeListing = useSelector(state => state.listingReducer.activeListing)
+  const activeListing = useSelector(state => state.dialysisReducer.activeListing)
 
   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   } 
 
   function compileList() {
-    if (data != null) {
+    if (data.length !== 0) {
       if (activeCounty === "ALL") {
         return renderList(data)
       } else {
@@ -81,7 +81,7 @@ export default function Panel() {
       }
     } else {
       return (
-      <h2>Loading...</h2>
+      <h4>Loading...</h4>
       )
     }
   }
@@ -92,7 +92,7 @@ export default function Panel() {
     let long = data.coords[0]
     let listing = {...data, latitude: lat, longitude: long}
     // console.log(listing);
-    dispatch({type: UPDATE_LISTING, payload: data})
+    dispatch({type: SET_DIALYSIS_LISTING, payload: data})
     
   }
 
@@ -116,7 +116,7 @@ export default function Panel() {
           <>
             <Title>Dialysis Centers</Title>
             <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
-            <SegmentedControl />
+            <SegmentedControl category={"dialysis"} />
             <List>
               {/* <Card /> */}
               {compileList()}
