@@ -1,0 +1,121 @@
+import React, { Component, useState, useEffect } from 'react';
+import styled from 'styled-components'
+import 'mapbox-gl/dist/mapbox-gl.css';
+import firebase from "../../firebase";
+import { useSelector, useDispatch } from 'react-redux'
+import { RESET_LISTING, SET_COUNTY, RESET_VIEWPORT, SET_CANCER_DATA } from '../../state/constants'
+import Panel from "../../components/resources/cancer/panel"
+import Map from "../../components/resources/cancer/map"
+
+import { getDialysisData, getCancerData, getEMContacts } from '../../components/resources/parse'
+
+import Header from '../../components/resources/test-header';
+import SEO from '../../components/seo';
+
+const TOKEN = 'pk.eyJ1Ijoid2psaW0iLCJhIjoiY2plNGtpMXFpNmw3ZTMzcXA4a3l1NmdwOSJ9.2Ou7bageJ-DCfiASBrV5HA';
+const mbxGeocode = require('@mapbox/mapbox-sdk/services/geocoding');
+const geocodeService = mbxGeocode({ accessToken: TOKEN });
+
+const Container = styled.div`
+  display: flex;
+  // height: 100vh;
+  overflow: hidden;
+`;
+
+export default function Cancer() {
+  const ref = firebase.database().ref("cancer");
+
+  const dispatch = useDispatch();
+  const parentState = useSelector(state => state)
+  const cancerState = useSelector(state => state.categoryReducer.cancer)
+
+  useEffect(() => {
+    dispatch({type: RESET_LISTING})
+    dispatch({type: SET_COUNTY, payload: "ALL"})
+    dispatch({type: RESET_VIEWPORT})
+  },[])
+
+  // useEffect(() => {
+  //   console.log(cancerState)
+  // })
+
+  useEffect(() => {
+    ref.on('value', async snapshot => {
+      let value = snapshot.val()
+      // let cancerData = await getCancerData();
+      // let parsedKeys = cancerData.map((object, index) => {
+      //   return object.facilityName
+      // })
+
+      // let databaseKeys = value.map((object) => {
+      //   return object.facilityName
+      // })
+      
+      // if (arraysMatch(parsedKeys, databaseKeys)) {
+      //   let array = await checkCoordinates(value)
+      //   ref.set(array)
+      //   dispatch({type: SET_CANCER_DATA, payload: value})
+      // } else {
+      //   console.log("nothing")
+      //   appendData()
+      // }
+
+      dispatch({type: SET_CANCER_DATA, payload: value})
+    })
+  }, [])
+
+
+  function appendData() {
+
+  }
+
+  async function requestCoordinates(string) {
+    return await geocodeService.forwardGeocode({
+      query: string,
+      limit: 1
+    })
+    .send()
+    .then(response => {
+      return response.body.features[0].center
+    })
+  }
+
+  async function checkCoordinates(data) {
+    return await Promise.all(data.map(async (object) => {
+      if (!object.hasOwnProperty('coords')) {
+        let query = object.addressLine1 + " " + object.city
+        let coordinates = await requestCoordinates(query)
+        // console.log("if")
+        return {...object, coords: coordinates}
+      } else {
+        // console.log("else")
+        return object
+      }
+    }))
+  }
+
+  function arraysMatch(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    for (var i = 0; arr1.length < i; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+
+  return (
+    <>
+      <SEO title={"Cancer Centers"} />
+      <Header />
+      <Container>
+        <Panel/>
+        <Map />
+      </Container>
+    </>
+  )
+}

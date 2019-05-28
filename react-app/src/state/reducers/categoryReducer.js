@@ -1,4 +1,4 @@
-import { UPDATE_ACTIVE, SET_DATA, SET_DIALYSIS_DATA, SET_COUNTY  } from "../constants"
+import { UPDATE_ACTIVE, SET_DATA, SET_DIALYSIS_DATA, SET_COUNTY, SET_CANCER_DATA  } from "../constants"
 
 const initialState = {
   data: {},
@@ -25,6 +25,11 @@ const categoryReducer = (state = initialState, action) => {
       return {
         ...state,
         dialysis: action.payload,
+      }
+    case SET_CANCER_DATA: 
+      return {
+        ...state,
+        cancer: action.payload
       }
     case SET_COUNTY:
       return {

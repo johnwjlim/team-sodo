@@ -68,10 +68,9 @@ export default function Listing(props) {
   const county = useSelector(state => state.categoryReducer.activeCounty)
 
   useEffect(() => {
-    return () => {
-      goBack()
-    }
-  })
+    console.log(props.object)
+    return () => goBack()
+  }, [])
 
   function goBack() {
     dispatch({type: RESET_LISTING})
@@ -87,10 +86,14 @@ export default function Listing(props) {
     }
   }
 
+  // function renderSubtitle() {
+  //   let city = manipulateString(props.object.City)
+  //   let county = props.object.County.charAt(0) + props.object.County.slice(1).toLowerCase()
+  //   return city + " | " + county + " County"
+  // }
+
   function renderSubtitle() {
-    let city = manipulateString(props.object.City)
-    let county = props.object.County.charAt(0) + props.object.County.slice(1).toLowerCase()
-    return city + " | " + county + " County"
+    return props.object.addressLine1
   }
 
   function manipulateString(string) {
@@ -107,36 +110,23 @@ export default function Listing(props) {
       <StyledLink onClick={() => goBack()}>
         {/* <i className="material-icons" style={{fontSize: "28px", color: "#333333"}}>chevron_left</i> */}
         <i className="material-icons" >chevron_left</i>
-        <BackControl>Dialysis Centers</BackControl>
+        <BackControl>Cancer Centers</BackControl>
       </StyledLink>
       <Title>{props.object.facilityName}</Title>
-      <Subtitle>{renderSubtitle()}</Subtitle>
+      {/* <Subtitle>{renderSubtitle()}</Subtitle> */}
       <List>
-        {/* <ListItem/> */}
         <ListItem>
-          <MicroText>Address</MicroText>
+          <MicroText>Address Line 1</MicroText>
           <Text>{props.object.addressLine1}</Text>
         </ListItem>
         <ListItem>
-          <MicroText>ZIP</MicroText>
-          <Text>{props.object.Zip}</Text>
+          <MicroText>Address Line 2</MicroText>
+          <Text>{props.object.city}</Text>
         </ListItem>
         <ListItem>
           <MicroText>Phone Number</MicroText>
-          <Text>{props.object.phoneNumber}</Text>
+          <Text>{props.object.phone}</Text>
         </ListItem>
-        <ListItem>
-          <MicroText>Provider Number</MicroText>
-          <Text>{props.object.providerNumber}</Text>
-        </ListItem>
-        {
-          props.object.chainOwned === "TRUE" ?
-          <ListItem>
-            <MicroText>Organization</MicroText>
-            <Text>{props.object.chainOrganization}</Text>
-          </ListItem> :
-          <></>
-        }
       </List>
     </Container>
   )
