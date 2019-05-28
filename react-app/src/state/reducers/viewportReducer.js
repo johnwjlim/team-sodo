@@ -7,7 +7,8 @@ const initialState = {
     latitude: 47.527,
     zoom: 8.35, 
     width: "100vw",
-    height: "100vh"
+    // height: "100vh"
+    height: "94vh"
   }
 }
 

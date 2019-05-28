@@ -147,7 +147,7 @@ export default function Dialysis() {
   return (
     <>
       <SEO title="Dialysis Centers"/>
-      {/* <Header /> */}
+      <Header />
       <Container>
         <Panel />
         <Map />

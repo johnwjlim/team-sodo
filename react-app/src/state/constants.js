@@ -11,5 +11,6 @@ export const SET_COUNTY = "SET_COUNTY"
 export const SET_KING = "SET_KING"
 export const SET_SNOHOMISH = "SET_SNOHOMISH"
 export const SET_PIERCE = "SET_PIERCE"
+export const SET_CANCER_DATA = "SET_CANCER_DATA"
 
 

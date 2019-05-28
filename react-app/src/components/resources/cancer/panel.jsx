@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components' 
+import React from 'react'
+import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { UPDATE_LISTING } from '../../../state/constants'
 
-import SegmentedControl from '../segmentedControl'
 import Card from "../card"
 import Listing from "./listing"
-// import Header from "./panel-header"
 
 const Wrap = styled.div`
   display: block;
@@ -53,17 +51,11 @@ const ListItem = styled.li`
   }
 `;
 
-
-
 export default function Panel() {
   const activeCounty = useSelector(state => state.categoryReducer.activeCounty)
-  const data = useSelector(state => state.categoryReducer.dialysis)
+  const data = useSelector(state => state.categoryReducer.cancer)
   const dispatch = useDispatch()
   const activeListing = useSelector(state => state.listingReducer.activeListing)
-
-  function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  } 
 
   function compileList() {
     if (data != null) {
@@ -86,8 +78,17 @@ export default function Panel() {
     }
   }
 
+  function renderList(data) {
+    return data.map((object, index) => {
+      return (
+        <ListItem key={index} onClick={() => setActive(object)} >
+          <Card object={object} category={"cancer"} index={index}/>
+        </ListItem>
+      )
+    })
+  }
+
   function setActive(data) {
-    let raw = data.Location;
     let lat = data.coords[1]
     let long = data.coords[0]
     let listing = {...data, latitude: lat, longitude: long}
@@ -96,36 +97,22 @@ export default function Panel() {
     
   }
 
-  function renderList(data) {
-    return data.map((object, index) => {
-      return (
-        <ListItem key={index} onClick={() => setActive(object)}>
-          <Card object={object} category={"dialysis"} index={index}/>
-        </ListItem>
-      )
-    })
-  }
-
 
   return (
     <Wrap>
-      {/* <Header /> */}
       <Container>
         {
-          Object.keys(activeListing).length === 0 ? 
+          Object.keys(activeListing).length === 0 ?
           <>
-            <Title>Dialysis Centers</Title>
-            <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
-            <SegmentedControl />
+            <Title>Cancer Centers</Title>
+            <Subtitle>Cancer centers in the Puget Sound region</Subtitle>
             <List>
-              {/* <Card /> */}
               {compileList()}
-            </List> 
-          </>:
+            </List>
+          </> :
           <Listing object={activeListing} />
         }
       </Container>
     </Wrap>
   )
 }
-
