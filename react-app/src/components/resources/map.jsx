@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReactMapGL, {Marker, GeolocateControl, LinearInterpolator, FlyToInterpolator} from 'react-map-gl';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_VIEWPORT, UPDATE_LISTING } from '../../../state/constants'
+import { UPDATE_VIEWPORT, UPDATE_LISTING } from '../../state/constants'
 
 const TOKEN = 'pk.eyJ1Ijoid2psaW0iLCJhIjoiY2plNGtpMXFpNmw3ZTMzcXA4a3l1NmdwOSJ9.2Ou7bageJ-DCfiASBrV5HA';
 
@@ -23,26 +23,21 @@ const GeolocateStyle = styled.div`
   padding: 1.25em 1em;
 `;
 
-export default function Map() {
+export default function Map(props) {
   const dispatch = useDispatch()
   const viewport = useSelector(state => state.viewportReducer.viewport)
-  const category = useSelector(state => state.categoryReducer)
-  const data = useSelector(state => state.categoryReducer.dialysis)
-  const activeListing = useSelector(state => state.listingReducer.activeListing)
-  const activeCounty = useSelector(state => state.categoryReducer.activeCounty)
+  const data = props.state.data
+  const activeListing = props.state.activeListing
+  const activeCounty = props.state.activeCounty
 
-  const size = 20;
-  
-  // useEffect(() => console.log(category), [category])
-  // useEffect(() => console.log(activeListing))
-  // useEffect(() => console.log(viewport))
-  // useEffect(() => console.log(data))
+  const size = 20
+
   useEffect(() => {
     if (Object.keys(activeListing).length !== 0) {
       _goToViewport(activeListing.coords[0], activeListing.coords[1])
     }
   },[activeListing])
-  
+
   const [settings, setSettings] = useState({
     dragPan: true,
     dragRotate: true,
@@ -75,7 +70,6 @@ export default function Map() {
       payload: newViewport
     })
   }
-
 
   function compileMarkers() {
     if (data.length !== 0) {
@@ -130,7 +124,7 @@ export default function Map() {
             height={size}
             viewBox="0 0 24 24"
             style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
-            onClick={() => dispatch({type: UPDATE_LISTING, payload: object})}
+            onClick={() => dispatch({type: props.setListing, payload: object})}
           >
             <path d={ICON}></path>
           </svg>
@@ -140,23 +134,23 @@ export default function Map() {
   }
 
   return (
-      <ReactMapGL
-        mapboxApiAccessToken={TOKEN}
-        mapStyle="mapbox://styles/wjlim/cju7ha5756yds1fo9r7tz519u"
-        {...viewport}
-        {...settings}
-        onViewportChange={_onViewportChange}
-      >
-        {/* <GeolocateStyle>
-          <GeolocateControl 
-            onViewportChange={_onViewportChange}
-            positionptions={{enableHighAccuracy: true}}
-            trackUserLocation={true}
-          />
-        </GeolocateStyle> */}
-        {compileMarkers()}
-      </ReactMapGL>
-  )
+    <ReactMapGL
+      mapboxApiAccessToken={TOKEN}
+      mapStyle="mapbox://styles/wjlim/cju7ha5756yds1fo9r7tz519u"
+      {...viewport}
+      {...settings}
+      onViewportChange={_onViewportChange}
+    >
+      {/* <GeolocateStyle>
+        <GeolocateControl 
+          onViewportChange={_onViewportChange}
+          positionptions={{enableHighAccuracy: true}}
+          trackUserLocation={true}
+        />
+      </GeolocateStyle> */}
+      {compileMarkers()}
+    </ReactMapGL>
+)
 
 }
-  
+

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import firebase from "../../firebase";
 import { useSelector, useDispatch } from 'react-redux'
-import { RESET_LISTING, SET_COUNTY, RESET_VIEWPORT } from '../../state/constants'
+import { RESET_LISTING, SET_COUNTY, RESET_VIEWPORT, UNMOUNT_DIALYSIS, SET_DIALYSIS_LISTING, SET_CANCER_LISTING } from '../../state/constants'
 
 
 import "firebase/auth";
@@ -12,7 +12,8 @@ import 'firebase/database';
 
 import Header from '../../components/resources/test-header';
 import SEO from '../../components/seo';
-import Map from '../../components/resources/dialysis/dialysis-map'
+import Map from '../../components/resources/map'
+// import Map from '../../components/resources/dialysis/dialysis-map'
 import Panel from '../../components/resources/dialysis/dialysis-panel'
 
 import { getDialysisData, getCancerData, getEMContacts } from '../../components/resources/parse'
@@ -29,8 +30,6 @@ const Container = styled.div`
 
 export default function Dialysis() {
   const [dialysis, setDialysis] = useState([]);
-  const [cancer, setCancer] = useState([]);
-  const [emContact, setEmContact] = useState([]);
 
   /**
    * Firebase Database Root Reference
@@ -42,12 +41,18 @@ export default function Dialysis() {
    */
   const dispatch = useDispatch();
   const parentState = useSelector(state => state)
+  const dialysisState = useSelector(state => state.dialysisReducer)
 
   useEffect(() => {
-    dispatch({type: RESET_LISTING})
-    dispatch({type: SET_COUNTY, payload: "ALL"})
-    dispatch({type: RESET_VIEWPORT})
+    return () => {
+      dispatch({type: UNMOUNT_DIALYSIS})
+      dispatch({type: RESET_VIEWPORT})
+    }
   },[])
+
+  useEffect(() => {
+    console.log(parentState)
+  })
 
   useEffect(() => {
     async function fetchData() {
@@ -136,21 +141,13 @@ export default function Dialysis() {
     return true;
   }
 
-  function loadChecker() {
-    if (dialysis.length < 1) {
-      return <h4>Loading</h4>
-    } else {
-      return <h4>Load complete</h4>
-    }
-  }
-
   return (
     <>
       <SEO title="Dialysis Centers"/>
       <Header />
       <Container>
-        <Panel />
-        <Map />
+        <Panel state={dialysisState} />
+        <Map state={dialysisState} setListing={SET_DIALYSIS_LISTING} />
       </Container>
     </>
   )

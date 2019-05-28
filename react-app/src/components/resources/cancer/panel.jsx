@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_LISTING } from '../../../state/constants'
+import { SET_CANCER_LISTING } from '../../../state/constants'
 
 import Card from "../card"
 import Listing from "./listing"
@@ -52,13 +52,13 @@ const ListItem = styled.li`
 `;
 
 export default function Panel() {
-  const activeCounty = useSelector(state => state.categoryReducer.activeCounty)
-  const data = useSelector(state => state.categoryReducer.cancer)
+  const activeCounty = useSelector(state => state.cancerReducer.activeCounty)
+  const data = useSelector(state => state.cancerReducer.data)
   const dispatch = useDispatch()
-  const activeListing = useSelector(state => state.listingReducer.activeListing)
+  const activeListing = useSelector(state => state.cancerReducer.activeListing)
 
   function compileList() {
-    if (data != null) {
+    if (data.length !== 0) {
       if (activeCounty === "ALL") {
         return renderList(data)
       } else {
@@ -73,7 +73,7 @@ export default function Panel() {
       }
     } else {
       return (
-      <h2>Loading...</h2>
+      <h4>Loading...</h4>
       )
     }
   }
@@ -91,9 +91,7 @@ export default function Panel() {
   function setActive(data) {
     let lat = data.coords[1]
     let long = data.coords[0]
-    let listing = {...data, latitude: lat, longitude: long}
-    // console.log(listing);
-    dispatch({type: UPDATE_LISTING, payload: data})
+    dispatch({type: SET_CANCER_LISTING, payload: data})
     
   }
 

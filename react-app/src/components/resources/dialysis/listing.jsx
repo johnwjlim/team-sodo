@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { RESET_LISTING, RESET_VIEWPORT, SET_KING, SET_SNOHOMISH, SET_PIERCE } from "../../../state/constants"
+import { RESET_LISTING, RESET_VIEWPORT, SET_KING, SET_SNOHOMISH, SET_PIERCE, RESET_DIALYSIS_LISTING } from "../../../state/constants"
 
 const Container = styled.div``;
 
@@ -65,16 +65,14 @@ const Text = styled.p`
 
 export default function Listing(props) {
   const dispatch = useDispatch()
-  const county = useSelector(state => state.categoryReducer.activeCounty)
+  const county = useSelector(state => state.dialysisReducer.activeCounty)
 
   useEffect(() => {
-    return () => {
-      goBack()
-    }
-  })
+    return () => goBack()
+  }, [])
 
   function goBack() {
-    dispatch({type: RESET_LISTING})
+    dispatch({type: RESET_DIALYSIS_LISTING})
     // dispatch({type: RESET_VIEWPORT})
     if (county === "ALL") {
       dispatch({type: RESET_VIEWPORT})
@@ -87,7 +85,7 @@ export default function Listing(props) {
     }
   }
 
-  function renderSubtitle() {
+  function renderSubtitle() { 
     let city = manipulateString(props.object.City)
     let county = props.object.County.charAt(0) + props.object.County.slice(1).toLowerCase()
     return city + " | " + county + " County"
@@ -105,7 +103,6 @@ export default function Listing(props) {
   return (
     <Container>
       <StyledLink onClick={() => goBack()}>
-        {/* <i className="material-icons" style={{fontSize: "28px", color: "#333333"}}>chevron_left</i> */}
         <i className="material-icons" >chevron_left</i>
         <BackControl>Dialysis Centers</BackControl>
       </StyledLink>

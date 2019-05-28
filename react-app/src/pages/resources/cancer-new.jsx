@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import firebase from "../../firebase";
 import { useSelector, useDispatch } from 'react-redux'
-import { RESET_LISTING, SET_COUNTY, RESET_VIEWPORT, SET_CANCER_DATA } from '../../state/constants'
+import { RESET_LISTING, SET_COUNTY, RESET_VIEWPORT, SET_CANCER_DATA, UNMOUNT_CANCER } from '../../state/constants'
 import Panel from "../../components/resources/cancer/panel"
-import Map from "../../components/resources/cancer/map"
+import Map from "../../components/resources/map"
 
 import { getDialysisData, getCancerData, getEMContacts } from '../../components/resources/parse'
 
@@ -24,20 +24,17 @@ const Container = styled.div`
 
 export default function Cancer() {
   const ref = firebase.database().ref("cancer");
-
   const dispatch = useDispatch();
-  const parentState = useSelector(state => state)
-  const cancerState = useSelector(state => state.categoryReducer.cancer)
+
+  const cancerState = useSelector(state => state.cancerReducer)
 
   useEffect(() => {
-    dispatch({type: RESET_LISTING})
-    dispatch({type: SET_COUNTY, payload: "ALL"})
-    dispatch({type: RESET_VIEWPORT})
-  },[])
 
-  // useEffect(() => {
-  //   console.log(cancerState)
-  // })
+    return function cleanup() {
+      dispatch({type: RESET_VIEWPORT})
+      dispatch({type: UNMOUNT_CANCER})
+    }
+  },[])
 
   useEffect(() => {
     ref.on('value', async snapshot => {
@@ -114,7 +111,7 @@ export default function Cancer() {
       <Header />
       <Container>
         <Panel/>
-        <Map />
+        <Map state={cancerState} setListing={"SET_CANCER_LISTING"} />
       </Container>
     </>
   )

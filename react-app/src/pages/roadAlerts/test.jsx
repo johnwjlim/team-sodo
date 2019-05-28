@@ -104,7 +104,7 @@ export default function SimpleMap() {
 
   function createList(array) {
     return array.map(object => {
-      // console.log(object)
+      console.log(object)
       return (
         <li 
           key={object.name} 
@@ -159,7 +159,7 @@ export default function SimpleMap() {
   });
     kingLayer.setMap(map)
     snohomishLayer.setMap(map)
-    trafficLayer.setMap(map)  
+    // trafficLayer.setMap(map)  
     // map.setCenter({lat: 47.60, lng: -122.33});
   }
 
