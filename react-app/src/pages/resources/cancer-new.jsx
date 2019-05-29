@@ -25,16 +25,19 @@ const Container = styled.div`
 export default function Cancer() {
   const ref = firebase.database().ref("cancer");
   const dispatch = useDispatch();
-
   const cancerState = useSelector(state => state.cancerReducer)
+  const parentState = useSelector(state => state)
 
   useEffect(() => {
-
     return function cleanup() {
       dispatch({type: RESET_VIEWPORT})
       dispatch({type: UNMOUNT_CANCER})
     }
   },[])
+
+  useEffect(() => {
+    console.log(parentState)
+  },[cancerState])
 
   useEffect(() => {
     ref.on('value', async snapshot => {

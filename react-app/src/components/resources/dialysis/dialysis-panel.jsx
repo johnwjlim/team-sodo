@@ -61,6 +61,7 @@ export default function Panel() {
   const dispatch = useDispatch()
   const activeListing = useSelector(state => state.dialysisReducer.activeListing)
 
+
   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   } 

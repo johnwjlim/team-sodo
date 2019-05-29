@@ -68,6 +68,7 @@ export default function Listing(props) {
   const county = useSelector(state => state.dialysisReducer.activeCounty)
 
   useEffect(() => {
+    console.log(props.object)
     return () => goBack()
   }, [])
 
