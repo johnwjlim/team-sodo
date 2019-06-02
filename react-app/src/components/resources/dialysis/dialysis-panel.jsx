@@ -114,7 +114,7 @@ export default function Panel() {
       <Container>
         {
           Object.keys(activeListing).length === 0 ? 
-          <>
+          <React.Fragment>
             <Title>Dialysis Centers</Title>
             <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
             <SegmentedControl category={"dialysis"} />
@@ -122,7 +122,7 @@ export default function Panel() {
               {/* <Card /> */}
               {compileList()}
             </List> 
-          </>:
+          </React.Fragment>:
           <Listing object={activeListing} />
         }
       </Container>

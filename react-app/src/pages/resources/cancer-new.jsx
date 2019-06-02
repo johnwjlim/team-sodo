@@ -7,7 +7,7 @@ import { RESET_LISTING, SET_COUNTY, RESET_VIEWPORT, SET_CANCER_DATA, UNMOUNT_CAN
 import Panel from "../../components/resources/cancer/panel"
 import Map from "../../components/resources/map"
 
-import { getDialysisData, getCancerData, getEMContacts } from '../../components/resources/parse'
+import { getCancerData } from '../../components/resources/parse'
 
 import Header from '../../components/resources/test-header';
 import SEO from '../../components/seo';
@@ -42,32 +42,33 @@ export default function Cancer() {
   useEffect(() => {
     ref.on('value', async snapshot => {
       let value = snapshot.val()
-      // let cancerData = await getCancerData();
-      // let parsedKeys = cancerData.map((object, index) => {
-      //   return object.facilityName
-      // })
-
-      // let databaseKeys = value.map((object) => {
-      //   return object.facilityName
-      // })
-      
-      // if (arraysMatch(parsedKeys, databaseKeys)) {
-      //   let array = await checkCoordinates(value)
-      //   ref.set(array)
-      //   dispatch({type: SET_CANCER_DATA, payload: value})
-      // } else {
-      //   console.log("nothing")
-      //   appendData()
-      // }
-
+      if (!checkCoordinates(value)) {
+        let updatedArray = await getCoordinates(value)
+        ref.set(updatedArray);
+      }
       dispatch({type: SET_CANCER_DATA, payload: value})
     })
   }, [])
 
-
-  function appendData() {
-
-  }
+   /**
+   * This effect parses the source CSV and compares the result to database contents. 
+   * Function will rewrite the database at the relevant ref if parsed data does not match data contained in database.
+   * This function should only be executed once on component mount
+   */
+  useEffect(() => {
+    function appendData() {
+      ref.once('value').then(async snapshot => {
+        let parse = await getCancerData()
+        if (parse.length > 0) {
+          if (!arraysMatch(parse, snapshot.val())) {
+            // TODO: rewrite databse
+            ref.set(parse)
+          }
+        }
+      })
+    }
+    appendData()
+  }, [])
 
   async function requestCoordinates(string) {
     return await geocodeService.forwardGeocode({
@@ -80,18 +81,31 @@ export default function Cancer() {
     })
   }
 
-  async function checkCoordinates(data) {
+  async function getCoordinates(data) {
     return await Promise.all(data.map(async (object) => {
       if (!object.hasOwnProperty('coords')) {
         let query = object.addressLine1 + " " + object.city
         let coordinates = await requestCoordinates(query)
-        // console.log("if")
         return {...object, coords: coordinates}
       } else {
-        // console.log("else")
         return object
       }
     }))
+  }
+
+   /**
+   * Checks if objects in array have coordinates. Returns false if an object does not have coordinates
+   * 
+   * @param {Array} data - array of listing objects 
+   * @return {Boolean}
+   */
+  async function checkCoordinates(data) {
+    for (var object of data) {
+      if (!object.hasOwnProperty('coords')) {
+        return false
+      }
+    }
+    return true;
   }
 
   function arraysMatch(arr1, arr2) {
