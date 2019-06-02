@@ -30,10 +30,16 @@ export default function Card(props) {
         <Title>{props.object.facilityName}</Title>
         {
           props.category === "dialysis" ?
-          <Subtitle>{props.object.phoneNumber}</Subtitle> :
-          <Subtitle>{props.object.phone}</Subtitle>
+          <>
+            <Subtitle>{props.object.phoneNumber}</Subtitle>
+            <Subtitle>{props.object.addressLine1 + " | " + props.object.City}</Subtitle>
+          </> :
+          <>
+            <Subtitle>{props.object.phone}</Subtitle>
+            <Subtitle>{props.object.addressLine1}</Subtitle>
+            {/* <Subtitle>{props.object.addressLine1 + " | " + props.object.addressLine2}</Subtitle> */}
+          </>
         }
-        <Subtitle>{props.object.addressLine1}</Subtitle>
       </CardBody>
     )
   }
