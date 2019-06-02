@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import Header from "../components/header";
+import Header from "../components/resources/test-header"
+// import Header from "../components/header"
 import SEO from '../components/seo'
 
 import Hero from "../images/hero.jpg"

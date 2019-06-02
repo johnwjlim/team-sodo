@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 import styled from "styled-components"
 import { Card} from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
-import Header from '../../components/header'
+import Header from '../../components/resources/test-header'
 import SEO from '../../components/seo'
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/"

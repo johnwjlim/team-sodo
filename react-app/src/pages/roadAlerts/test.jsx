@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import GoogleMapReact from 'google-map-react';
 // import Header from '../../components/resources/test-header'
-import Header from '../../components/header'
+import Header from '../../components/resources/test-header'
 
 
 import { kingAlerts, snohomishAlerts } from "../../components/datascrape/alerts"

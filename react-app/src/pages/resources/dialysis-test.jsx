@@ -5,15 +5,12 @@ import firebase from "../../firebase";
 import { useSelector, useDispatch } from 'react-redux'
 import { RESET_LISTING, SET_COUNTY, RESET_VIEWPORT, UNMOUNT_DIALYSIS, SET_DIALYSIS_LISTING, SET_CANCER_LISTING } from '../../state/constants'
 
-
 // import "firebase/auth";
 // import 'firebase/database';
-
 
 import Header from '../../components/resources/test-header';
 import SEO from '../../components/seo'
 import Map from '../../components/resources/map'
-// import Map from '../../components/resources/dialysis/dialysis-map'
 import Panel from '../../components/resources/dialysis/dialysis-panel'
 
 import { getDialysisData } from '../../components/resources/parse'
@@ -29,18 +26,8 @@ const Container = styled.div`
 `;
 
 export default function Dialysis() {
-  const [dialysis, setDialysis] = useState([]);
-
-  /**
-   * Firebase Database Root Reference
-   */
   const ref = firebase.database().ref("dialysis");
-
-  /**
-   * Redux selectors and dispatch 
-   */
   const dispatch = useDispatch();
-  const parentState = useSelector(state => state)
   const dialysisState = useSelector(state => state.dialysisReducer)
 
   useEffect(() => {
@@ -49,10 +36,6 @@ export default function Dialysis() {
       dispatch({type: RESET_VIEWPORT})
     }
   },[])
-
-  useEffect(() => {
-    // console.log(parentState)
-  },[dialysisState])
 
   useEffect(() => {
     async function fetchData() {
@@ -85,7 +68,6 @@ export default function Dialysis() {
       let parse = await getDialysisData()
       if (parse.length > 0) {
         if (!arraysMatch(parse, snapshot.val())) {
-          // TODO: rewrite databse
           ref.set(parse)
         }
       }
@@ -110,7 +92,7 @@ export default function Dialysis() {
   /**
    * This function requests coordinates of a given location using Mapbox's Forward Geocode Service
    * 
-   * @param {String} string - Address or landmark to query
+   * @param {String} string - Query string
    * @return {Array} - Returns coordinates in an array: [longitude, latitidue]
    */
   async function requestCoordinates(string) {
@@ -154,7 +136,6 @@ export default function Dialysis() {
     if (arr1.length !== arr2.length) {
       return false;
     }
-
     for (var i = 0; arr1.length < i; i++) {
       if (arr1[i] !== arr2[i]) {
         return false;
