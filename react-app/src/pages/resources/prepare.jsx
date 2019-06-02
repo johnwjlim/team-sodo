@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 import styled from "styled-components"
 import { Card } from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
-import Header from '../../components/header'
+import Header from '../../components/resources/test-header'
 import SEO from '../../components/seo'
 import coverImage from './rain.jpg'
 import './styles.css'
@@ -195,7 +195,7 @@ class Prepare extends React.Component {
         return (
             <div>
 
-                <SEO title="Preparation" />
+                <SEO title="Preparedness" />
                 <Header />
                 <ImageWrapper>
                     <Image src={coverImage} />
