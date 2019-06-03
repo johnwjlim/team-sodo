@@ -35,15 +35,18 @@ export default function Cancer() {
     }
   },[])
 
-  useEffect(() => {
-    console.log(parentState)
-  },[cancerState])
+  // useEffect(() => {
+  //   console.log(parentState)
+  // },[cancerState])
 
   useEffect(() => {
     ref.on('value', async snapshot => {
       let value = snapshot.val()
-      if (!checkCoordinates(value)) {
+      // console.log(checkCoordinates(value))
+      if (checkCoordinates(value) === false) {
+        console.log(checkCoordinates(value))
         let updatedArray = await getCoordinates(value)
+        console.log(updatedArray)
         ref.set(updatedArray);
       }
       dispatch({type: SET_CANCER_DATA, payload: value})
@@ -99,9 +102,10 @@ export default function Cancer() {
    * @param {Array} data - array of listing objects 
    * @return {Boolean}
    */
-  async function checkCoordinates(data) {
+  function checkCoordinates(data) {
     for (var object of data) {
       if (!object.hasOwnProperty('coords')) {
+        // console.log('false')
         return false
       }
     }
