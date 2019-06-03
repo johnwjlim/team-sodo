@@ -20,7 +20,7 @@ const Wrap = styled.div`
   margin: 0 auto;
 `;
 
-const Container = styled.div`
+const Container = styled.nav`
   // top: 0;
   // left: 14vw;
   // width: 100%;
@@ -72,6 +72,8 @@ const StyledLink = styled(Link)`
 
 const Logo = styled.div`
   display: flex;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
 
   &:hover {
     cursor: pointer;
@@ -81,6 +83,14 @@ const Logo = styled.div`
 
 const Image = styled.img`
   margin: 0.5em;
+`
+
+const Content = styled.nav`
+  // margin: 0 auto;
+  // padding: 0.5rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  color: #333333;
 `
 
 export default function Header() {
@@ -106,7 +116,6 @@ export default function Header() {
   }
   return (
     <Wrap>
-      <Container>
         <Media query="(max-width: 1080px)">
           {matches => matches ? (
             <>
@@ -127,7 +136,7 @@ export default function Header() {
               </Logo>
             </>
           ): (
-            <>
+            <Container>
               <TitleLink to="/">RARET</TitleLink>
               <Links>
                 <StyledLink to="/">About</StyledLink>
@@ -137,13 +146,12 @@ export default function Header() {
                 <StyledLink to="/prepare">Preparedness</StyledLink>
                 <StyledLink to="/test">Road Alerts</StyledLink>
               </Links>
-             </>
+            </Container>
           )}
         </Media>
         <animated.div style={menuStyles}>
           <MobileMenu />
         </animated.div>
-      </Container>
     </Wrap>
   )
 }
