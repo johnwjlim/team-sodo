@@ -67,7 +67,7 @@ class Resources extends React.Component {
           <Card>
             <CardBody>
               <CardTitle>Dialysis Centers</CardTitle>
-              <FontAwesomeIcon icon="angle-right" size="2x" />
+              <FontAwesomeIcon icon="angle-right" size="2x" aria-label="click"/>
             </CardBody>
           </Card>
         </StyledLink>
@@ -75,7 +75,7 @@ class Resources extends React.Component {
           <Card>
             <CardBody>
               <CardTitle>Cancer Centers</CardTitle>
-              <FontAwesomeIcon icon="angle-right" size="2x" />
+              <FontAwesomeIcon icon="angle-right" size="2x" aria-label="click"/>
             </CardBody>
           </Card>
         </StyledLink>
@@ -83,7 +83,7 @@ class Resources extends React.Component {
           <Card>
             <CardBody>
               <CardTitle>Emergency Manager Contacts</CardTitle>
-              <FontAwesomeIcon icon="angle-right" size="2x" />
+              <FontAwesomeIcon icon="angle-right" size="2x" aria-label="click"/>
             </CardBody>
           </Card>
         </StyledLink>
@@ -91,7 +91,7 @@ class Resources extends React.Component {
           <Card>
             <CardBody>
               <CardTitle>Preparation</CardTitle>
-              <FontAwesomeIcon icon="angle-right" size="2x" />
+              <FontAwesomeIcon icon="angle-right" size="2x" aria-label="click"/>
             </CardBody>
           </Card>
         </StyledLink>

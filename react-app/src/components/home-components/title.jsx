@@ -38,8 +38,8 @@ const Subheader = styled.h2`
 export default function Title() {
   return (
     <Container>
-      <Header>RARET</Header>
-      <Subheader>Regional Alliance for Resilient and Equitable Transportation</Subheader>
+      <Header aria-label="title header">RARET</Header>
+      <Subheader aria-label="subheader">Regional Alliance for Resilient and Equitable Transportation</Subheader>
     </Container>
   )
 }

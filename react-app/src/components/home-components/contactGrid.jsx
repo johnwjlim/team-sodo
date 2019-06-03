@@ -38,8 +38,8 @@ export default function contactGrid() {
             <Card>
 
                 <Body>
-                    <CardHeader>David Lynch</CardHeader>
-                    <CardSub> Program Manager, Mobility Management <br />
+                    <CardHeader aria-label="contact name">David Lynch</CardHeader>
+                    <CardSub aria-label="contact details"> Program Manager, Mobility Management <br />
                         dlynch@hopelink.org <br />
                         425.943.6751 <br /></CardSub>
                 </Body>
@@ -49,8 +49,8 @@ export default function contactGrid() {
             <Card>
 
                 <Body>
-                    <CardHeader>Melissa Brown Rotholtz</CardHeader>
-                    <CardSub>Mobility Coordinator <br />
+                    <CardHeader aria-label="contact name">Melissa Brown Rotholtz</CardHeader>
+                    <CardSub aria-label="contact details"> Mobility Coordinator <br />
                         mbrown@hopelink.org <br />
                         425.943.6730 <br /></CardSub>
                 </Body>

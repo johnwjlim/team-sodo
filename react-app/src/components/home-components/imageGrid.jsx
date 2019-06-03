@@ -43,28 +43,28 @@ export default function imageGrid() {
   return (
     <Grid>
       <Card>
-        <Image src={Robin} />
+        <Image src={Robin} alt="Robin" />
         <Body>
           <CardHeader>Robin Yang</CardHeader>
           <CardSub>Product Manager</CardSub>
         </Body>
       </Card>
       <Card>
-        <Image src={Christian} />
+        <Image src={Christian} alt="Christian" />
         <Body>
           <CardHeader>Christian Hahn</CardHeader>
           <CardSub>Full Stack Dev</CardSub>
         </Body>
       </Card>
       <Card>
-        <Image src={John} />
+        <Image src={John} alt="John" />
         <Body>
           <CardHeader>John Lim</CardHeader>
           <CardSub>Product Design</CardSub>
         </Body>
       </Card>
       <Card>
-        <Image src={Kelsie} />
+        <Image src={Kelsie} alt="Kelsie" />
         <Body>
           <CardHeader>Kelsie Johnson</CardHeader>
           <CardSub>Back End Dev</CardSub>
