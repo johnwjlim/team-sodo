@@ -7,6 +7,7 @@ import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'bo
 
 import MobileMenu from '../mobileMenu'
 import Arrow from "../../images/baseline-keyboard_arrow_down-24px.svg"
+import Cross from "../../images/baseline-close-24px.svg"
 
 const Wrap = styled.div`
   position: sticky;
@@ -84,7 +85,8 @@ const Image = styled.img`
 
 export default function Header() {
   const [open, toggle] = useState(false)
-  const props = useSpring({opacity: open ? 1 : 0})
+  const menuStyles = useSpring({opacity: open ? 1 : 0})
+  const iconStyles = useSpring({opacity: open ? 1 : 0})
   let targetElement = null
   useEffect(() => {
     targetElement = document.querySelector('#root');
@@ -117,7 +119,11 @@ export default function Header() {
                 toggle(!open)
               } }>
               <Title>RARET</Title>
-              <Image src={Arrow} />
+              {
+                open ?
+                <Image src={Cross} /> :
+                <Image src={Arrow} />
+              }
               </Logo>
             </>
           ): (
@@ -134,7 +140,7 @@ export default function Header() {
              </>
           )}
         </Media>
-        <animated.div style={props}>
+        <animated.div style={menuStyles}>
           <MobileMenu />
         </animated.div>
       </Container>
