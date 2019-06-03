@@ -23,7 +23,7 @@ const Container = styled.div`
 class App extends Component {
   render() {
     return (
-      <Container>
+      <Container >
         <Router>
           <Home path="/"/>
           <RoadAlerts path="/roadalerts"/>
