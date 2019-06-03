@@ -107,29 +107,27 @@ export default function Map(props) {
 
   function renderMarkers(data) {
     return data.map((object, index) => {
-      let raw = object.Location;
-      // let lat = parseFloat(raw.slice(1, raw.indexOf(",")))
-      // let long = parseFloat(raw.slice(raw.indexOf(" ") + 1, raw.indexOf(")")))
-      let lat = object.coords[1]
-      let long = object.coords[0]
-      // console.log(object.coords[0])
-      let listing = {...object, latitude: lat, longitude: long}
-      return (
-        <Marker
-          key={index}
-          latitude={lat}
-          longitude={long}
-        >
-          <svg 
-            height={size}
-            viewBox="0 0 24 24"
-            style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
-            onClick={() => dispatch({type: props.setListing, payload: object})}
+      if (Object.keys(object).includes("coords")) {
+        let raw = object.Location;
+        let lat = object.coords[1]
+        let long = object.coords[0]
+        return (
+          <Marker
+            key={index}
+            latitude={lat}
+            longitude={long}
           >
-            <path d={ICON}></path>
-          </svg>
-        </Marker>
-      )
+            <svg 
+              height={size}
+              viewBox="0 0 24 24"
+              style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
+              onClick={() => dispatch({type: props.setListing, payload: object})}
+            >
+              <path d={ICON}></path>
+            </svg>
+          </Marker>
+        )
+      }
     })
   }
 

@@ -41,7 +41,7 @@ export default function Dialysis() {
     async function fetchData() {
       ref.on('value', async snapshot => {
         let value = snapshot.val()
-        if (!checkCoordinates(value)) {
+        if (checkCoordinates(value) === false) {
           let updatedArray = await getCoordinates(value)
           ref.set(updatedArray);
         }
@@ -80,7 +80,7 @@ export default function Dialysis() {
    * @param {Array} data - array of listing objects 
    * @return {Boolean}
    */
-  async function checkCoordinates(data) {
+  function checkCoordinates(data) {
     for (var object of data) {
       if (!object.hasOwnProperty('coords')) {
         return false
