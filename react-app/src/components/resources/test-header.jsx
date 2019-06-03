@@ -95,7 +95,11 @@ const Content = styled.nav`
 
 export default function Header() {
   const [open, toggle] = useState(false)
-  const menuStyles = useSpring({opacity: open ? 1 : 0})
+  // const menuStyles = useSpring({opacity: open ? 1 : 0})
+  const menuStyles = useSpring({ 
+    visibility: open ? 'visible' : 'hidden',
+    opacity: open ? 1 : 0,
+  })
   const iconStyles = useSpring({opacity: open ? 1 : 0})
   let targetElement = null
   useEffect(() => {
