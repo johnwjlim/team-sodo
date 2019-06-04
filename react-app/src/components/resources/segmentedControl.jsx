@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { SET_COUNTY, SET_KING, RESET_VIEWPORT, SET_SNOHOMISH, SET_PIERCE } from "../../state/constants"
+import { SET_COUNTY, SET_KING, RESET_VIEWPORT, SET_SNOHOMISH, SET_PIERCE, SET_DIALYSIS_COUNTY } from "../../state/constants"
 
 const Container = styled.section`
   display: flex;
@@ -26,12 +26,13 @@ const ControlTitle = styled.h4`
 `;
 
 export default function Control() {
-  const county = useSelector(state => state.categoryReducer.activeCounty)
+  // const county = useSelector(state => state.categoryReducer.activeCounty)
+  const county = useSelector(state => state.dialysisReducer.activeCounty)
   const dispatch = useDispatch();
 
   function setActive(data) {
     let newCounty = data.toUpperCase();
-    dispatch({type: SET_COUNTY, payload: newCounty } )
+    dispatch({type: SET_DIALYSIS_COUNTY, payload: newCounty } )
     if (newCounty === "ALL") {
       dispatch({type: RESET_VIEWPORT})
     } else if (newCounty === "KING") {

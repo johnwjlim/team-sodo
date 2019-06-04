@@ -4,9 +4,14 @@ import Papa from 'papaparse';
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/"
 
-const dialysisSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/dialysis.csv';
-const cancerSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/Cancer-Treatment-Facility-Spreadsheet-inprogress.csv'
-const emSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/Tri-County-Emergency-Management-Resources.csv'
+// const dialysisSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/dialysis.csv';
+// const cancerSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/Cancer-Treatment-Facility-Spreadsheet-inprogress.csv'
+// const emSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/Tri-County-Emergency-Management-Resources.csv'
+
+const dialysisSource = proxyurl + 'https://raw.githubusercontent.com/johnwjlim/team-sodo/master/landing-page/public/data/Dialysis.csv';
+const cancerSource = proxyurl + 'https://raw.githubusercontent.com/johnwjlim/team-sodo/master/landing-page/public/data/Cancer.csv'
+const emSource = proxyurl + 'https://github.com/johnwjlim/team-sodo/blob/master/landing-page/public/data/Emergency%20Management.csv'
+
 
 
 export async function getDialysisData() {

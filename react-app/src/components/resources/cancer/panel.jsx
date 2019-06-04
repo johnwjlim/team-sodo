@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components' 
+import React from 'react'
+import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_LISTING, SET_DIALYSIS_LISTING } from '../../../state/constants'
+import { SET_CANCER_LISTING } from '../../../state/constants'
 
-import SegmentedControl from '../segmentedControl'
 import Card from "../card"
 import Listing from "./listing"
-// import Header from "./panel-header"
 
 const Wrap = styled.div`
   display: block;
@@ -53,18 +51,11 @@ const ListItem = styled.li`
   }
 `;
 
-
-
 export default function Panel() {
-  const activeCounty = useSelector(state => state.dialysisReducer.activeCounty)
-  const data = useSelector(state => state.dialysisReducer.data)
+  const activeCounty = useSelector(state => state.cancerReducer.activeCounty)
+  const data = useSelector(state => state.cancerReducer.data)
   const dispatch = useDispatch()
-  const activeListing = useSelector(state => state.dialysisReducer.activeListing)
-
-
-  function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  } 
+  const activeListing = useSelector(state => state.cancerReducer.activeListing)
 
   function compileList() {
     if (data.length !== 0) {
@@ -87,46 +78,39 @@ export default function Panel() {
     }
   }
 
-  function setActive(data) {
-    let raw = data.Location;
-    let lat = data.coords[1]
-    let long = data.coords[0]
-    let listing = {...data, latitude: lat, longitude: long}
-    // console.log(listing);
-    dispatch({type: SET_DIALYSIS_LISTING, payload: data})
-    
-  }
-
   function renderList(data) {
     return data.map((object, index) => {
       return (
-        <ListItem key={index} onClick={() => setActive(object)}>
-          <Card object={object} category={"dialysis"} index={index}/>
+        <ListItem key={index} onClick={() => setActive(object)} >
+          <Card object={object} category={"cancer"} index={index}/>
         </ListItem>
       )
     })
   }
 
+  function setActive(data) {
+    let lat = data.coords[1]
+    let long = data.coords[0]
+    dispatch({type: SET_CANCER_LISTING, payload: data})
+    
+  }
+
 
   return (
     <Wrap>
-      {/* <Header /> */}
       <Container>
         {
-          Object.keys(activeListing).length === 0 ? 
-          <React.Fragment>
-            <Title>Dialysis Centers</Title>
-            <Subtitle>Dialysis centers in the Puget Sound region</Subtitle>
-            <SegmentedControl category={"dialysis"} />
+          Object.keys(activeListing).length === 0 ?
+          <>
+            <Title>Cancer Centers</Title>
+            <Subtitle>Cancer centers in the Puget Sound region</Subtitle>
             <List>
-              {/* <Card /> */}
               {compileList()}
-            </List> 
-          </React.Fragment>:
+            </List>
+          </> :
           <Listing object={activeListing} />
         }
       </Container>
     </Wrap>
   )
 }
-

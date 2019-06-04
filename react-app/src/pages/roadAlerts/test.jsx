@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import GoogleMapReact from 'google-map-react';
 // import Header from '../../components/resources/test-header'
-import Header from '../../components/header'
+import Header from '../../components/resources/test-header'
 
 
 import { kingAlerts, snohomishAlerts } from "../../components/datascrape/alerts"
@@ -94,23 +94,17 @@ export default function SimpleMap() {
   
   useEffect(() => {
     async function fetchData() {
-      const data = await kingAlerts();
-      setKingDict(data);
+      const kingData = await kingAlerts();
+      const snohoData = await snohomishAlerts()
+      setKingDict(kingData);
+      setSnohoDict(snohoData)
     }
     fetchData();
   }, [])
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await snohomishAlerts()
-      setSnohoDict(data)
-    }
-    fetchData()
-  }, [])
-
   function createList(array) {
     return array.map(object => {
-      // console.log(object)
+      console.log(object)
       return (
         <li 
           key={object.name} 
@@ -165,7 +159,7 @@ export default function SimpleMap() {
   });
     kingLayer.setMap(map)
     snohomishLayer.setMap(map)
-    trafficLayer.setMap(map)  
+    // trafficLayer.setMap(map)  
     // map.setCenter({lat: 47.60, lng: -122.33});
   }
 

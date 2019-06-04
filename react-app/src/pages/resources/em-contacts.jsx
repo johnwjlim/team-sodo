@@ -3,8 +3,11 @@ import Papa from 'papaparse';
 import styled from "styled-components"
 import { Card} from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
-import Header from '../../components/header'
+import Header from '../../components/resources/test-header'
 import SEO from '../../components/seo'
+
+const proxyurl = "https://cors-anywhere.herokuapp.com/"
+const emSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/Tri-County-Emergency-Management-Resources.csv'
 
 const Container = styled.div`
   position: relative;
@@ -170,7 +173,7 @@ class EMContacts extends React.Component {
     }
 
     fetchCsv() {
-        return fetch('https://cors.io/?http://raw.githubusercontent.com/kelsiej/csv/master/Tri-County-Emergency-Management-Resources.csv').then(function (response) {
+        return fetch(emSource).then(function (response) {
             let reader = response.body.getReader();
             let decoder = new TextDecoder('utf-8');
 

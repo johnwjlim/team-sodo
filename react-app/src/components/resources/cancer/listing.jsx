@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { RESET_LISTING, RESET_VIEWPORT, SET_KING, SET_SNOHOMISH, SET_PIERCE, RESET_DIALYSIS_LISTING } from "../../../state/constants"
+import { RESET_CANCER_LISTING, RESET_VIEWPORT, SET_KING, SET_SNOHOMISH, SET_PIERCE } from "../../../state/constants"
 
 const Container = styled.div``;
 
@@ -65,16 +65,14 @@ const Text = styled.p`
 
 export default function Listing(props) {
   const dispatch = useDispatch()
-  const county = useSelector(state => state.dialysisReducer.activeCounty)
+  const county = useSelector(state => state.cancerReducer.activeCounty)
 
   useEffect(() => {
-    console.log(props.object)
     return () => goBack()
   }, [])
 
   function goBack() {
-    dispatch({type: RESET_DIALYSIS_LISTING})
-    // dispatch({type: RESET_VIEWPORT})
+    // dispatch({type: RESET_CANCER_LISTING})
     if (county === "ALL") {
       dispatch({type: RESET_VIEWPORT})
     } else if (county === "KING") {
@@ -86,55 +84,29 @@ export default function Listing(props) {
     }
   }
 
-  function renderSubtitle() { 
-    let city = manipulateString(props.object.City)
-    let county = props.object.County.charAt(0) + props.object.County.slice(1).toLowerCase()
-    return city + " | " + county + " County"
-  }
-
-  function manipulateString(string) {
-    let stringArray = string.split(' ');
-    let result = ""
-    stringArray.forEach((string) => {
-      result = result + " " + string.charAt(0) + string.slice(1).toLowerCase();
-    })
-    return result;
-  }
 
   return (
     <Container>
-      <StyledLink onClick={() => goBack()}>
+      <StyledLink onClick={() => dispatch({type: RESET_CANCER_LISTING})}>
+        {/* <i className="material-icons" style={{fontSize: "28px", color: "#333333"}}>chevron_left</i> */}
         <i className="material-icons" >chevron_left</i>
-        <BackControl>Dialysis Centers</BackControl>
+        <BackControl>Cancer Centers</BackControl>
       </StyledLink>
       <Title>{props.object.facilityName}</Title>
-      <Subtitle>{renderSubtitle()}</Subtitle>
+      {/* <Subtitle>{renderSubtitle()}</Subtitle> */}
       <List>
-        {/* <ListItem/> */}
         <ListItem>
-          <MicroText>Address</MicroText>
+          <MicroText>Address Line 1</MicroText>
           <Text>{props.object.addressLine1}</Text>
         </ListItem>
         <ListItem>
-          <MicroText>ZIP</MicroText>
-          <Text>{props.object.Zip}</Text>
+          <MicroText>Address Line 2</MicroText>
+          <Text>{props.object.city}</Text>
         </ListItem>
         <ListItem>
           <MicroText>Phone Number</MicroText>
-          <Text>{props.object.phoneNumber}</Text>
+          <Text>{props.object.phone}</Text>
         </ListItem>
-        <ListItem>
-          <MicroText>Provider Number</MicroText>
-          <Text>{props.object.providerNumber}</Text>
-        </ListItem>
-        {
-          props.object.chainOwned === "TRUE" ?
-          <ListItem>
-            <MicroText>Organization</MicroText>
-            <Text>{props.object.chainOrganization}</Text>
-          </ListItem> :
-          <></>
-        }
       </List>
     </Container>
   )

@@ -43,10 +43,12 @@ h1, h2, h3, h4 ,h5 , h6, p {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h4, h5, h6 {
   letter-spacing: -0.25px;
   /* font-weight: 600; */
 }
+
+
 
 /* React transition group styles */
 
@@ -83,3 +85,11 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 300ms, transform 300ms;
 }
 
+
+/* html, body {
+  overflow: hidden;
+} */
+
+/* body {
+  -webkit-overflow-scrolling: touch;
+} */

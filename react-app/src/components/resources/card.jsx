@@ -24,13 +24,22 @@ const Subtitle = styled.h5`
 `;
 
 export default function Card(props) {
-
   function renderCard() {
     return (
       <CardBody>
         <Title>{props.object.facilityName}</Title>
-        <Subtitle>{props.object.phoneNumber}</Subtitle>
-        <Subtitle>{props.object.addressLine1}</Subtitle>
+        {
+          props.category === "dialysis" ?
+          <>
+            <Subtitle>{props.object.phoneNumber}</Subtitle>
+            <Subtitle>{props.object.addressLine1 + " | " + props.object.City}</Subtitle>
+          </> :
+          <>
+            <Subtitle>{props.object.phone}</Subtitle>
+            <Subtitle>{props.object.addressLine1}</Subtitle>
+            {/* <Subtitle>{props.object.addressLine1 + " | " + props.object.addressLine2}</Subtitle> */}
+          </>
+        }
       </CardBody>
     )
   }
