@@ -31,9 +31,10 @@ export default function Dialysis() {
   const dialysisState = useSelector(state => state.dialysisReducer)
 
   useEffect(() => {
+    dispatch({type: RESET_VIEWPORT})
     return function cleanup() {
       dispatch({type: UNMOUNT_DIALYSIS})
-      dispatch({type: RESET_VIEWPORT})
+      // dispatch({type: RESET_VIEWPORT})
     }
   },[])
 
