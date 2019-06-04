@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/johnwjlim/team-sodo/issues"
   },
-  "homepage": "https://github.com/johnwjlim/team-sodo#readme"
+  "homepage": "https://github.com/johnwjlim/team-sodo#readme",
+  "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.6.0",
+    "mapbox": "^1.0.0-beta10",
+    "mapbox-geocoding": "^0.1.5"
+  }
 }
