@@ -64,8 +64,8 @@ function Content() {
         <Box>
           <br/>
           <br/>
-          <Header>RARET Workgroup</Header>
-          <p> The Regional Alliance for Resilient and Equitable Transportation (RARET) workgroup works to increase the life-sustaining transportation services available to seniors, people with disabilities,
+          <Header aria-label="section header">RARET Workgroup</Header>
+          <p aria-label="description"> The Regional Alliance for Resilient and Equitable Transportation (RARET) workgroup works to increase the life-sustaining transportation services available to seniors, people with disabilities,
             low-income individuals, and other vulnerable populations in the event of a major emergency such as a natural or man-made disaster, severe weather event, or terrorist incident. It will increase the
             preparedness and ability of special needs transportation providers to assist in the evacuation of special needs populations, transportation to emergency shelters, and/or maintaining access to
             life-sustaining medical services and other necessary trips.</p>

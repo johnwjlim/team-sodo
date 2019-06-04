@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 import styled from "styled-components"
 import { Card } from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
-import Header from '../../components/resources/test-header'
+import Header from '../../components/header'
 import SEO from '../../components/seo'
 import coverImage from './rain.jpg'
 import './styles.css'
@@ -188,7 +188,7 @@ class Prepare extends React.Component {
         return (
             <div>
 
-                <SEO title="Preparedness" />
+                <SEO title="Preparation" />
                 <Header />
                 <ImageWrapper>
                     <Image src={coverImage} alt="background image - rainy road" />
@@ -227,7 +227,7 @@ class Prepare extends React.Component {
                         <Text><StyledLink href="https://www.co.pierce.wa.us/Index.aspx?NID=104" target="_blank" aria-label="clickable link">Pierce County Emergency Management</StyledLink></Text>
                         <br /><br /><br /><br />
 
-                        <Header3 aria-label="header4">Take Weather By Storm</Header3>
+                        <Header3 aria-label="header4">Take Weather By StyledLink Storm</Header3>
                         <Bar></Bar>
                         <br /><br /><br />
                         <Text aria-label="header 4 description"><StyledLink href="http://takewinterbystorm.org/" target="_blank" aria-label="clickable link">Take Winter by Storm</StyledLink> is StyledLink winter weather preparedness resource for all of Western Washington. Washington State has many
@@ -260,7 +260,7 @@ class Prepare extends React.Component {
                             <br /><br />
                         </CenterLinks>
                         <Text>Personal and family preparedness is one of the most important things. If your employees are prepared at home, they are more likely to come to work. You should encourage your employees
-                                to create <StyledLink href="https://www.hopelink.org/sites/default/files/Family%20Emegency%20Plan.pdf" target="_blank" aria-label="clickable link">Family Emergency Plan</StyledLink> and know <StyledLink href=
+                                to create StyledLink <StyledLink href="https://www.hopelink.org/sites/default/files/Family%20Emegency%20Plan.pdf" target="_blank" aria-label="clickable link">Family Emergency Plan</StyledLink> and know <StyledLink href=
                                 "https://www.hopelink.org/sites/default/files/Alternative%20Routes%20to%20Work.docx" target="_blank" aria-label="clickable link">Alternative Routes to Work</StyledLink> .</Text>
                         <br /><br /><br /><br />
 
@@ -281,7 +281,7 @@ class Prepare extends React.Component {
                         <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Sanitation%20and%20Hygiene%20Supplies.docx" target="_blank" aria-label="clickable link">Sanitation and Hygiene Supplies</StyledLink></Text>
                         <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Water.pdf" target="_blank" aria-label="clickable link">Water</StyledLink></Text>
                         <br /> <br />
-                        <Text aria-label="header 7 description"><b>Driving or taking public transit in the winter can be tricky. Below is a list of resources to help you navigate the winter weather.</b></Text>
+                        <Text aria-label="header 7 description"><b>Driving or taking public transit in the winter can be tricky. Below is StyledLink list of resources to help you navigate the winter weather.</b></Text>
                         <br />
                         <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Driving%20Brochure.pdf" target="_blank" aria-label="clickable link"> WSDOT Driving Brochure</StyledLink></Text>
                         <Text><StyledLink href="https://www.hopelink.org/sites/default/files/Take%20Winter%20by%20Storm%20-%20Transit.pdf" target="_blank" aria-label="clickable link">Transit</StyledLink></Text>

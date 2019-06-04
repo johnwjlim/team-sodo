@@ -312,10 +312,10 @@ class Dialysis extends React.Component {
                             <Header1>Dialysis Clinics</Header1>
 
                             <div class="flex-container">
-                                <Button className='btn1' onClick={this.handleAllCountiesClick} variant="dark">All</Button>
-                                <Button className='btn1' onClick={this.handleKingClick} variant="dark">King</Button>
-                                <Button className='btn1' onClick={this.handlePierceClick} variant="dark">Pierce</Button>
-                                <Button className='btn1' onClick={this.handleSnohoClick} variant="dark">Snohomish</Button>
+                                <Button className='btn1' onClick={this.handleAllCountiesClick} variant="dark" aria-label="click">All</Button>
+                                <Button className='btn1' onClick={this.handleKingClick} variant="dark" aria-label="click">King</Button>
+                                <Button className='btn1' onClick={this.handlePierceClick} variant="dark" aria-label="click">Pierce</Button>
+                                <Button className='btn1' onClick={this.handleSnohoClick} variant="dark" aria-label="click">Snohomish</Button>
                             </div>
 
                         </Content>

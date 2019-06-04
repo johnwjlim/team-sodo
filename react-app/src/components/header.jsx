@@ -60,12 +60,12 @@ class Header extends React.Component {
     return (
       <Wrap>
         <Container>
-          <Title to="/">RARET</Title>
+          <Title aria-label="title" to="/">RARET</Title>
           <Links>
-            <StyledLink to="/">About</StyledLink>
-            <StyledLink to="/resources">Resources</StyledLink>
-            <StyledLink to="/roadalerts">Road Alerts</StyledLink>
-            <StyledLink to="/test">Beta</StyledLink>
+            <StyledLink to="/" aria-label="about">About</StyledLink>
+            <StyledLink to="/resources" aria-label="resources">Resources</StyledLink>
+            <StyledLink to="/roadalerts" aria-label="road alerts">Road Alerts</StyledLink>
+            <StyledLink to="/test" aria-label="beta">Beta</StyledLink>
           </Links>
         </Container>
       </Wrap>

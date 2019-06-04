@@ -28,8 +28,9 @@ const SubText = styled.h3`
 const Image = styled.img`
   max-width: 100%;
   height: auto;
-  min-height: 800px;
+  min-height: 600px;
   object-fit: cover;
+  background-size: cover;
 `;
 
 const ImageWrapper = styled.div`
@@ -49,7 +50,7 @@ export default class Home extends React.Component {
         <SEO title="Home" />
         <Header/>
         <ImageWrapper>
-         <Image src={Hero} />
+         <Image src={Hero} alt="hero image - Seattle view" />
         </ImageWrapper>
         <Title />
         <Content/>

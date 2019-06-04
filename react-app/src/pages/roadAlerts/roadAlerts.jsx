@@ -33,6 +33,7 @@ const CardBody = styled.div`
 const CardTitle = styled.h3`
   font-weight: 600;
   margin: 0;
+  padding-bottom: 1em;
 `;
 
 const CardText = styled.p`
@@ -68,19 +69,13 @@ class RoadAlerts extends React.Component{
               <Card>
                 <CardBody>
                 <CardTitle>King County</CardTitle>
-                <CardText>
-                  4 alerts
-                </CardText>
-                <Button variant="dark"><ButtonLink to="kingalerts">Select</ButtonLink></Button>
+                <Button variant="dark" aria-label="click"><ButtonLink to="kingalerts">Select</ButtonLink></Button>
                 </CardBody>
               </Card>
               <Card>
                 <CardBody>
                 <CardTitle>Snohomish County</CardTitle>
-                <CardText>
-                  9 alerts
-                </CardText>
-                <Button variant="dark"><ButtonLink to="snohomishalerts">Select</ButtonLink></Button>
+                <Button variant="dark" aria-label="click"><ButtonLink to="snohomishalerts">Select</ButtonLink></Button>
                 </CardBody>
               </Card>
               {/* <Card>
