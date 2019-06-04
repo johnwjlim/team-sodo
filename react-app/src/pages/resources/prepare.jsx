@@ -230,10 +230,10 @@ class Prepare extends React.Component {
                         <Header3 aria-label="header4">Take Weather By Storm</Header3>
                         <Bar></Bar>
                         <br /><br /><br />
-                        <Text aria-label="header 4 description"><StyledLink href="http://takewinterbystorm.org/" target="_blank" aria-label="clickable link">Take Winter by Storm</StyledLink> is StyledLink winter weather preparedness resource for all of Western Washington. Washington State has many
+                        <Text aria-label="header 4 description"><StyledLink href="http://takewinterbystorm.org/" target="_blank" aria-label="clickable link">Take Winter by Storm</StyledLink> is a winter weather preparedness resource for all of Western Washington. Washington State has many
                             hazards including heavy winds, earthquakes, freezing temperatures, and flooding. Check out the <StyledLink href="http://takewinterbystorm.org/" target="_blank" aria-label="clickable link">Take Winter by Storm</StyledLink> website
                             to learn what the most relevant threats are in your area. Then, use the <StyledLink href="https://www.hopelink.org/sites/default/files/Know%20Your%20Hazards.docx" target="_blank" aria-label="clickable link">Know Your Hazards</StyledLink> document
-                            to create StyledLink plan.</Text>
+                            to create a plan.</Text>
                         <br /><br /><br /><br />
 
                         <Header3 aria-label="header5">All Hazards Preparedness</Header3>

@@ -143,12 +143,12 @@ export default function Header() {
             <Container>
               <TitleLink to="/">RARET</TitleLink>
               <Links>
-                <StyledLink to="/">About</StyledLink>
-                <StyledLink to="/cancer">Cancer Facilities</StyledLink>
-                <StyledLink to="/dialysis">Dialysis Facilities</StyledLink>
-                <StyledLink to="/em-contacts">Emergency Manager Contacts</StyledLink>
-                <StyledLink to="/prepare">Preparedness</StyledLink>
-                <StyledLink to="/test">Road Alerts</StyledLink>
+                <StyledLink to="/" tabindex='0' aria-label='tab1'>About</StyledLink>
+                <StyledLink to="/cancer" aria-label='tab2'>Cancer Facilities</StyledLink>
+                <StyledLink to="/dialysis" aria-label='tab3'>Dialysis Facilities</StyledLink>
+                <StyledLink to="/em-contacts" aria-label='tab4'>Emergency Manager Contacts</StyledLink>
+                <StyledLink to="/prepare" aria-label='tab5'>Preparedness</StyledLink>
+                <StyledLink to="/test" aria-label='tab6'>Road Alerts</StyledLink>
               </Links>
             </Container>
           )}
