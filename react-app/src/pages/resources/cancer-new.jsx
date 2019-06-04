@@ -29,8 +29,9 @@ export default function Cancer() {
   const parentState = useSelector(state => state)
 
   useEffect(() => {
+    dispatch({type: RESET_VIEWPORT})
     return function cleanup() {
-      dispatch({type: RESET_VIEWPORT})
+      // dispatch({type: RESET_VIEWPORT})
       dispatch({type: UNMOUNT_CANCER})
     }
   },[])
