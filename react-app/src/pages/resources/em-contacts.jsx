@@ -310,15 +310,15 @@ class EMContacts extends React.Component {
                                
                                 return <div className={"row"} key={i}>
                                     <Card>
-                                        {[<Card.Body><Card.Title>{object.city} </Card.Title>
-                                            <Card.Text className="fosfo" key={i}>   
+                            {<br></br>}{[<Card.Body><Card.Title><b>{object.city}</b> </Card.Title>
+                                            <Card.Text className="fosfo" key={i}>   {<br></br>}
                                             {object.EMOfficePhone != '' ? 'EM Office Phone: ' + object.EMOfficePhone : ''} {object.EMOfficePhone != '' ? <br/> : ''}  
                                             {object.email != '' ? 'Email: ' + object.email : ''} {object.email != '' ? <br/> : ''} 
                                             {object.TTY != '' ? 'TTY: ' + object.TTY : ''} {object.TTY != '' ? <br/> : ''}  
                                             {object.emergencyManager != '' ? 'Emergency Manager: ' + object.emergencyManager : ''}  {object.emergencyManager != '' ? <br/> : ''} 
                                             {object.title != '' ? 'Title: ' + object.title : ''} {object.title != '' ? <br/> : ''}
                                             {object.email != '' ? 'Email: ' + object.email : ''} {object.email != '' ? <br/> : ''} 
-                                            {object.phone != '' ? 'Phone: ' + object.phone : ''} {object.phone != '' ? <br/> : ''}
+                                        {object.phone != '' ? 'Phone: ' + object.phone : ''} {object.phone != '' ? <br/> : ''} {<br></br>}{<hr width="50%" align="left" padding-right="1rem"></hr>}
                                                 </Card.Text>
                                         </Card.Body>,
                                         ]}

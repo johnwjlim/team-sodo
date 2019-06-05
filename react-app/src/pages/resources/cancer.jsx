@@ -40,7 +40,7 @@ min-height: 70vh;
 `;
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/"
-const cancerSource = proxyurl + 'http://raw.githubusercontent.com/kelsiej/csv/master/Cancer-Treatment-Facility-Spreadsheet-inprogress.csv'
+const cancerSource = proxyurl + 'https://raw.githubusercontent.com/johnwjlim/team-sodo/master/react-app/src/components/resources/csv/Cancer-Treatment-Facility-Spreadsheet-inprogress.csv'
 
 class Cancer extends React.Component {
 
